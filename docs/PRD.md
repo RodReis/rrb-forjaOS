@@ -13,6 +13,7 @@
 | Equipe | Solo, 100 % comunitário |
 | Licença do código próprio | Apache-2.0 |
 | Status | Fase 0 (Fundação) |
+| Status operacional | ver `docs/STATUS.md` (gerado) e `docs/roadmap/index.html` |
 
 **Regras deste documento**
 
@@ -135,6 +136,8 @@ Instalador próprio, loja de apps própria, COSMIC como desktop, spin tiling com
 ```
 
 ### 5.2 Repositórios
+
+> **Revogado por ADR-026 (2026-11-08):** o projeto é um monorepo em `rrb-forjaOS`; a tabela abaixo permanece como registro histórico. Mapeamento: `forjaos-image` → `image/`, `forja-cli` → `cli/`, `hero` → `hero/`, `hero-mcp` → `hero-mcp/`, `hero-memory` → `hero-memory/`, `forjaos-brand` → `brand/`, `forjaos-site` → `site/`. Ver `docs/adr/0026-monorepo.md`.
 
 | Repo | Conteúdo | Linguagem | Release |
 | --- | --- | --- | --- |
