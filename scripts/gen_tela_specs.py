@@ -134,7 +134,7 @@ TELAS = [
     dict(slug="forjaos_bootloader_grub", pendencias=["Efeito scanlines/CRT do protótipo não será implementado (sem valor funcional, custo de legibilidade).", "GRUB não renderiza blur/translucidez: fundo sólido `void` com wallpaper opcional a 20 %."], nome="Bootloader GRUB", fr="FR-002, FR-008, FR-011", tema="dark",
          alvo="GRUB theme (`theme.txt`, fontes PF2 geradas de Plus Jakarta Sans/JetBrains Mono, PNGs de borda)", pasta="brand/grub",
          regioes=[
-             ("Fundo", "`#05070b`→ usar `void` (#0a0d14) com wallpaper desfocado a 20 % opcional; scanlines **não** (efeito de protótipo, custo zero de valor)", "FR-002"),
+             ("Fundo", "o quase-preto do protótipo vira `void` (#0a0d14), com wallpaper desfocado a 20 % opcional; scanlines **não** (efeito de protótipo, custo zero de valor)", "FR-002"),
              ("Cabeçalho", "faixa 72 px: logo 32 px + 'FORJA OS' `headline-sm`; direita: 'UEFI x86-64 · Secure Boot' `label-xs` muted", "FR-012"),
              ("Lista de entradas", "cards 100 % largura, padding 20 px, raio 12 px, gap 12 px; entrada ativa com borda esquerda 3 px ciano e gradiente ciano→violeta 12 %; título `headline-sm`, subtítulo `code-sm` muted (commit bootc, kernel); tecla de atalho em chip `label-xs` à direita", "FR-008"),
              ("Entradas", "1) ForjaOS <versão> (stable · padrão) 2) ForjaOS rollback anterior (commit) 3) Windows Boot Manager (dual boot) 4) Modo de resgate", "FR-008, FR-011"),
