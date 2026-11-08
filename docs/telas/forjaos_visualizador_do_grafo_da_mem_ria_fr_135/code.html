@@ -1,0 +1,829 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="pt-BR"><head><meta charset="utf-8"/><meta content="width=device-width, initial-scale=1.0" name="viewport"/><meta content="web_dashboard" name="shell-type"/><link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet"/><link href="https://fonts.googleapis.com" rel="preconnect"/><link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&amp;family=JetBrains+Mono:wght@400;500;600;700&amp;family=Plus+Jakarta+Sans:wght@600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/><style>@layer base{html,body{margin:0;padding:0;}body{overscroll-behavior:none;}main>:first-child{margin-top:0!important;}main>:last-child{margin-bottom:0!important;}}::-webkit-scrollbar{display:none;}</style><script src="https://cdn.tailwindcss.com"></script><script id="tailwind-config">tailwind.config = {
+    darkMode: "class",
+    theme: {
+      extend: {
+        "colors": {
+          "primary-fixed-dim": "#00daf3",
+          "on-primary-fixed": "#001f24",
+          "on-tertiary-container": "#953f00",
+          "background": "#0f131d",
+          "surface": "#0f131d",
+          "on-error": "#690005",
+          "on-secondary-container": "#c4abff",
+          "tertiary-fixed-dim": "#ffb690",
+          "on-tertiary": "#552100",
+          "secondary": "#d0bcff",
+          "on-error-container": "#ffdad6",
+          "surface-variant": "#313540",
+          "primary": "#c3f5ff",
+          "error": "#ffb4ab",
+          "on-secondary-fixed": "#23005c",
+          "on-primary-fixed-variant": "#004f58",
+          "surface-container": "#1b1f2a",
+          "tertiary-container": "#ffc4a6",
+          "error-container": "#93000a",
+          "surface-container-low": "#171b26",
+          "surface-tint": "#00daf3",
+          "on-background": "#dfe2f0",
+          "outline": "#849396",
+          "tertiary-fixed": "#ffdbca",
+          "on-primary-container": "#00626e",
+          "secondary-container": "#571bc1",
+          "secondary-fixed": "#e9ddff",
+          "on-primary": "#00363d",
+          "inverse-primary": "#006875",
+          "inverse-on-surface": "#2c303b",
+          "on-surface-variant": "#bac9cc",
+          "surface-container-highest": "#313540",
+          "secondary-fixed-dim": "#d0bcff",
+          "surface-bright": "#353944",
+          "surface-container-high": "#262a35",
+          "surface-dim": "#0f131d",
+          "on-tertiary-fixed-variant": "#783200",
+          "outline-variant": "#3b494c",
+          "on-tertiary-fixed": "#341100",
+          "on-surface": "#dfe2f0",
+          "on-secondary": "#3c0091",
+          "on-secondary-fixed-variant": "#5516be",
+          "inverse-surface": "#dfe2f0",
+          "surface-container-lowest": "#0a0e18",
+          "primary-fixed": "#9cf0ff",
+          "primary-container": "#00e5ff",
+          "tertiary": "#ffe9df"
+        },
+        "borderRadius": {
+          "DEFAULT": "0.125rem",
+          "lg": "0.25rem",
+          "xl": "0.5rem",
+          "full": "0.75rem"
+        },
+        "spacing": {
+          "space-xl": "2rem",
+          "gutter-compact": "0.375rem",
+          "space-xs": "0.25rem",
+          "gutter": "0.75rem",
+          "margin-dock": "0.5rem",
+          "space-lg": "1.25rem",
+          "margin": "1rem",
+          "space-sm": "0.5rem",
+          "space-md": "0.75rem"
+        },
+        "fontFamily": {
+          "display-sm": [
+            "Plus Jakarta Sans"
+          ],
+          "display-lg": [
+            "Plus Jakarta Sans"
+          ],
+          "body-lg": [
+            "Inter"
+          ],
+          "label-md": [
+            "JetBrains Mono"
+          ],
+          "headline-lg": [
+            "Plus Jakarta Sans"
+          ],
+          "headline-sm": [
+            "Plus Jakarta Sans"
+          ],
+          "body-md": [
+            "Inter"
+          ],
+          "body-sm": [
+            "Inter"
+          ],
+          "code-md": [
+            "JetBrains Mono"
+          ],
+          "code-lg": [
+            "JetBrains Mono"
+          ],
+          "headline-md": [
+            "Plus Jakarta Sans"
+          ],
+          "code-sm": [
+            "JetBrains Mono"
+          ],
+          "label-xs": [
+            "JetBrains Mono"
+          ]
+        },
+        "fontSize": {
+          "display-sm": [
+            "30px",
+            {
+              "lineHeight": "38px",
+              "letterSpacing": "-0.015em",
+              "fontWeight": "600"
+            }
+          ],
+          "display-lg": [
+            "40px",
+            {
+              "lineHeight": "48px",
+              "letterSpacing": "-0.02em",
+              "fontWeight": "700"
+            }
+          ],
+          "body-lg": [
+            "16px",
+            {
+              "lineHeight": "24px",
+              "fontWeight": "400"
+            }
+          ],
+          "label-md": [
+            "12px",
+            {
+              "lineHeight": "16px",
+              "letterSpacing": "0.04em",
+              "fontWeight": "600"
+            }
+          ],
+          "headline-lg": [
+            "24px",
+            {
+              "lineHeight": "32px",
+              "letterSpacing": "-0.01em",
+              "fontWeight": "600"
+            }
+          ],
+          "headline-sm": [
+            "16px",
+            {
+              "lineHeight": "24px",
+              "fontWeight": "600"
+            }
+          ],
+          "body-md": [
+            "14px",
+            {
+              "lineHeight": "20px",
+              "fontWeight": "400"
+            }
+          ],
+          "body-sm": [
+            "12px",
+            {
+              "lineHeight": "16px",
+              "fontWeight": "400"
+            }
+          ],
+          "code-md": [
+            "13px",
+            {
+              "lineHeight": "18px",
+              "fontWeight": "400"
+            }
+          ],
+          "code-lg": [
+            "14px",
+            {
+              "lineHeight": "22px",
+              "fontWeight": "500"
+            }
+          ],
+          "headline-md": [
+            "20px",
+            {
+              "lineHeight": "28px",
+              "fontWeight": "600"
+            }
+          ],
+          "code-sm": [
+            "11px",
+            {
+              "lineHeight": "16px",
+              "fontWeight": "400"
+            }
+          ],
+          "label-xs": [
+            "10px",
+            {
+              "lineHeight": "14px",
+              "letterSpacing": "0.06em",
+              "fontWeight": "600"
+            }
+          ]
+        }
+      },
+    },
+  }</script></head><body class="bg-surface font-body-md text-on-surface antialiased select-none"><header class="fixed top-0 left-0 right-0 h-16 bg-surface-container-lowest/90 backdrop-blur-xl z-50 shadow-[0_1px_8px_rgba(0,0,0,0.4)] flex flex-col justify-between"><div class="h-8 px-space-md flex items-center justify-between bg-surface-container-low/60"><div class="flex items-center gap-space-sm"><span class="flex items-center justify-center w-5 h-5 rounded bg-surface-container-high"><span class="material-symbols-outlined text-primary text-headline-sm">memory</span></span><span class="font-code-sm text-code-sm text-on-surface tracking-tight">Forja Memory · memd v1.0 <span class="text-outline">[~/ForjaOS/vault]</span></span></div><div class="flex items-center gap-space-md font-label-xs text-label-xs"><div class="flex items-center gap-space-xs text-on-surface-variant"><span class="material-symbols-outlined text-code-sm text-primary">hub</span><span>14.280 nós · 38.410 arestas</span></div><div class="flex items-center gap-space-xs text-on-surface-variant"><span class="w-1.5 h-1.5 rounded-full bg-secondary animate-pulse"></span><span>memd: 84 MB · 0.2% CPU</span></div><div class="flex items-center gap-space-xs text-primary"><span class="material-symbols-outlined text-code-sm">verified</span><span>sqlite-vec pronto</span></div><div class="flex items-center gap-space-xs ml-space-sm"><button class="w-6 h-5 flex items-center justify-center hover:bg-surface-container-high hover:text-on-surface text-outline transition-colors" type="button"><span class="material-symbols-outlined text-headline-sm">minimize</span></button><button class="w-6 h-5 flex items-center justify-center hover:bg-surface-container-high hover:text-on-surface text-outline transition-colors" type="button"><span class="material-symbols-outlined text-body-sm">crop_square</span></button><button class="w-6 h-5 flex items-center justify-center hover:bg-error-container hover:text-on-error-container text-outline transition-colors" type="button"><span class="material-symbols-outlined text-headline-sm">close</span></button></div></div></div><div class="h-8 px-space-md flex items-center justify-between bg-surface-container-lowest"><nav class="flex items-center gap-space-xs h-full" data-active-classes="bg-surface-container text-primary font-code-md"><a aria-current="page" class="h-7 px-space-sm flex items-center gap-space-xs rounded transition-colors bg-surface-container text-primary font-code-md" data-path="grafo-de-conhecimento" href="#">Grafo de Conhecimento <span class="font-label-xs text-label-xs text-outline">Ctrl+1</span></a><a class="h-7 px-space-sm flex items-center gap-space-xs rounded font-code-md text-code-md text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-colors" data-path="linha-do-tempo-daily" href="#">Linha do Tempo (Daily) <span class="font-label-xs text-label-xs text-outline">Ctrl+2</span></a><a class="h-7 px-space-sm flex items-center gap-space-xs rounded font-code-md text-code-md text-on-surface-variant hover:bg-space-container-high hover:text-on-surface transition-colors" data-path="busca-semantica-fts5" href="#">Busca Semântica &amp; FTS5 <span class="font-label-xs text-label-xs text-outline">Ctrl+3</span></a></nav><div class="flex items-center gap-space-sm"><button class="h-6 px-space-sm flex items-center gap-space-xs rounded bg-surface-container-high hover:bg-primary-container text-on-surface hover:text-on-primary-container transition-all font-code-sm text-code-sm" type="button"><span class="material-symbols-outlined text-code-sm">sync</span><span>Sincronizar Vault</span></button><div class="h-4 w-[1px] bg-surface-variant"></div><img alt="Profile" class="w-8 h-8 rounded-full object-cover" src="https://lh3.googleusercontent.com/aida/ALJJyrAdPqr7tJHyW3K8e3K2vp8VJPzFQG331rdZhxagw-MLB6QveJztNZCof6jfaBCRKSwNQrMzyVLQGWBu9judS_FHipCyxVVUu3aPP-VL4_TIVtJp7bZ4JGJoEZdf_oQc8gv0B3dE1zLrzYuS6GxsOzRS2pM8B3ByDEWCLnx2ZJRRXffbJMtzJMdzisMprYCr0rTHxDXlQ6tgnQIByoKS053Ii0dHoMxswglncFNvf3iqKQ"/></div></div></header><aside class="fixed left-0 top-16 bottom-0 w-64 bg-surface-container-lowest/80 backdrop-blur-xl z-40 flex flex-col justify-between py-space-sm shadow-[0_1px_8px_rgba(0,0,0,0.2)]"><div class="flex flex-col gap-space-xs px-space-xs"><div class="px-space-sm py-space-xs font-label-xs text-label-xs text-outline uppercase tracking-wider">Navegador Kirigami</div><nav class="flex flex-col gap-space-xs" data-active-classes="bg-surface-container text-primary font-code-md"><a aria-current="page" class="flex items-center gap-space-sm px-space-sm py-space-xs rounded transition-colors bg-surface-container text-primary font-code-md" data-path="grafo-de-conhecimento" href="#"><span class="material-symbols-outlined text-headline-sm">scatter_plot</span>Grafo Geral</a><a class="flex items-center gap-space-sm px-space-sm py-space-xs rounded text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-colors font-body-sm text-body-sm" data-path="linha-do-tempo-daily" href="#"><span class="material-symbols-outlined text-headline-sm">calendar_month</span>Linha Temporal</a><a class="flex items-center gap-space-sm px-space-sm py-space-xs rounded text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-colors font-body-sm text-body-sm" data-path="busca-semantica-fts5" href="#"><span class="material-symbols-outlined text-headline-sm">manage_search</span>Vetores &amp; FTS5</a><a class="flex items-center gap-space-sm px-space-sm py-space-xs rounded text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-colors font-body-sm text-body-sm" data-path="filtros-e-clusters" href="#"><span class="material-symbols-outlined text-headline-sm">category</span>Clusters &amp; Tags</a></nav></div><div class="px-space-sm py-space-xs bg-surface-container-low/40 rounded mx-space-xs flex flex-col gap-space-xs"><div class="flex items-center justify-between font-label-xs text-label-xs text-on-surface-variant"><span>VRAM / GPU</span><span class="text-primary">0.8 GB</span></div><div class="w-full bg-surface-container-high h-1 rounded-full overflow-hidden"><div class="bg-primary-container h-full w-1/4"></div></div><div class="flex items-center justify-between font-code-sm text-code-sm text-outline"><span class="flex items-center gap-1"><span class="w-1.5 h-1.5 rounded-full bg-primary-fixed-dim"></span>graph.json</span><span>38.4k r</span></div></div></aside><div class="pl-64"><main class="relative pt-16 min-h-screen bg-surface w-full"><div class="flex flex-col w-full">
+<!-- 1. BARRA SUPERIOR DE FILTROS & CONTROLE DO GRAFO (Sub-header) -->
+<section class="w-full bg-surface-container-lowest/90 backdrop-blur-md px-space-md py-space-sm flex flex-col gap-space-sm shadow-md relative z-30">
+<div class="flex flex-wrap items-center justify-between gap-space-sm">
+<!-- Search Input com FTS5 + nomic-embed-text -->
+<div class="flex-1 min-w-[340px] max-w-2xl relative">
+<div class="flex items-center bg-surface-container-lowest rounded-lg px-space-sm py-1.5 shadow-sm group focus-within:shadow-[0_0_16px_rgba(0,229,255,0.25)] transition-all">
+<span class="material-symbols-outlined text-outline group-focus-within:text-primary-container text-body-lg mr-space-xs transition-colors">travel_explore</span>
+<input class="w-full bg-transparent font-code-md text-code-md text-on-surface placeholder:text-outline/70 focus:outline-none" placeholder="Buscar entidades, wikilinks, commits, comandos shell ou diálogos HERO... (Ctrl+F)" type="text" value="projects/game-api"/>
+<div class="flex items-center gap-space-xs shrink-0 pl-space-xs">
+<span class="px-1.5 py-0.5 rounded bg-surface-container-high font-label-xs text-label-xs text-primary-container tracking-wider flex items-center gap-1">
+<span class="w-1.5 h-1.5 rounded-full bg-primary-container animate-pulse"></span>
+              FTS5 + nomic-embed
+            </span>
+<kbd class="px-1.5 py-0.5 rounded bg-surface-container text-outline font-label-xs text-label-xs">Ctrl+F</kbd>
+</div>
+</div>
+</div>
+<!-- Graph Physics & Viewport Controls -->
+<div class="flex items-center gap-space-xs overflow-x-auto py-0.5">
+<!-- Physics Button -->
+<button class="h-8 px-space-sm rounded bg-surface-container-high hover:bg-surface-bright text-on-surface font-code-sm text-code-sm flex items-center gap-1.5 transition-colors" type="button">
+<span class="material-symbols-outlined text-primary-container text-body-md">hub</span>
+<span>Barnes-Hut (Força)</span>
+</button>
+<!-- Slider Gravity -->
+<div class="h-8 px-space-sm rounded bg-surface-container flex items-center gap-2">
+<span class="font-label-xs text-label-xs text-outline">G/Repulsão</span>
+<input class="w-20 accent-primary-container h-1 bg-surface-container-highest rounded-full cursor-pointer appearance-none" max="100" min="1" type="range" value="68"/>
+<span class="font-label-xs text-label-xs text-primary-container font-semibold">68%</span>
+</div>
+<!-- 60FPS Toggle -->
+<button class="h-8 px-2.5 rounded bg-surface-container text-on-surface-variant hover:text-on-surface font-label-xs text-label-xs flex items-center gap-1.5 transition-colors" type="button">
+<span class="w-1.5 h-1.5 rounded-full bg-emerald-400"></span>
+<span>60 FPS</span>
+</button>
+<div class="h-5 w-px bg-surface-variant/40 mx-0.5"></div>
+<!-- Zoom Controls Group -->
+<div class="flex items-center bg-surface-container rounded p-0.5">
+<button class="w-7 h-7 flex items-center justify-center rounded hover:bg-surface-container-high text-on-surface-variant hover:text-primary transition-colors" title="Aumentar Zoom" type="button">
+<span class="material-symbols-outlined text-body-md">zoom_in</span>
+</button>
+<button class="w-7 h-7 flex items-center justify-center rounded hover:bg-surface-container-high text-on-surface-variant hover:text-primary transition-colors" title="Diminuir Zoom" type="button">
+<span class="material-symbols-outlined text-body-md">zoom_out</span>
+</button>
+<button class="px-2 h-7 flex items-center gap-1 rounded hover:bg-surface-container-high text-on-surface-variant hover:text-primary font-label-xs text-label-xs transition-colors" title="Ajustar à Tela (Espaço)" type="button">
+<span class="material-symbols-outlined text-body-md">fit_screen</span>
+<span class="hidden sm:inline">Fit</span>
+</button>
+</div>
+<!-- 2D / 3D Toggle -->
+<div class="flex bg-surface-container rounded p-0.5">
+<button class="px-2 py-1 rounded bg-primary-container text-on-primary-container font-label-xs text-label-xs font-semibold shadow-xs" type="button">2D</button>
+<button class="px-2 py-1 rounded text-outline hover:text-on-surface font-label-xs text-label-xs transition-colors" type="button">3D</button>
+</div>
+</div>
+</div>
+<!-- Filtros rápidos por tipo de entidade -->
+<div class="flex items-center gap-space-xs overflow-x-auto pb-0.5">
+<!-- Todos -->
+<button class="h-6 px-2.5 rounded-full bg-surface-container-highest text-primary font-label-xs text-label-xs flex items-center gap-1.5 shadow-xs shrink-0" type="button">
+<span class="font-bold">Todos</span>
+<span class="px-1.5 py-0.2 rounded-full bg-surface-container text-on-surface-variant text-[9px]">14.280</span>
+</button>
+<!-- Git Repos -->
+<button class="h-6 px-2.5 rounded-full bg-primary-container/15 hover:bg-primary-container/25 text-primary-container font-label-xs text-label-xs flex items-center gap-1.5 transition-colors shrink-0" type="button">
+<span class="w-1.5 h-1.5 rounded-full bg-primary-container shadow-[0_0_6px_#00E5FF]"></span>
+<span>Git Repos</span>
+<span class="text-primary-container/80 text-[10px] font-semibold">18</span>
+</button>
+<!-- Markdown & Wikilinks -->
+<button class="h-6 px-2.5 rounded-full bg-emerald-500/10 hover:bg-emerald-500/20 text-emerald-300 font-label-xs text-label-xs flex items-center gap-1.5 transition-colors shrink-0" type="button">
+<span class="w-1.5 h-1.5 rounded-full bg-emerald-400 shadow-[0_0_6px_#10B981]"></span>
+<span>Notas &amp; Wikilinks</span>
+<span class="text-emerald-300/80 text-[10px] font-semibold">2.410</span>
+</button>
+<!-- Shell (atuin) -->
+<button class="h-6 px-2.5 rounded-full bg-secondary-container/25 hover:bg-secondary-container/40 text-secondary-fixed font-label-xs text-label-xs flex items-center gap-1.5 transition-colors shrink-0" type="button">
+<span class="w-1.5 h-1.5 rounded-full bg-secondary shadow-[0_0_6px_#8B5CF6]"></span>
+<span>Shell (atuin)</span>
+<span class="text-secondary-fixed/80 text-[10px] font-semibold">8.950</span>
+</button>
+<!-- Diálogos HERO -->
+<button class="h-6 px-2.5 rounded-full bg-tertiary-container/20 hover:bg-tertiary-container/30 text-tertiary-fixed-dim font-label-xs text-label-xs flex items-center gap-1.5 transition-colors shrink-0" type="button">
+<span class="w-1.5 h-1.5 rounded-full bg-[#FB923C] shadow-[0_0_6px_#F97316]"></span>
+<span>Diálogos HERO</span>
+<span class="text-tertiary-fixed-dim/80 text-[10px] font-semibold">820</span>
+</button>
+<!-- Janelas & Apps -->
+<button class="h-6 px-2.5 rounded-full bg-pink-500/10 hover:bg-pink-500/20 text-pink-300 font-label-xs text-label-xs flex items-center gap-1.5 transition-colors shrink-0" type="button">
+<span class="w-1.5 h-1.5 rounded-full bg-pink-400"></span>
+<span>Janelas &amp; Apps</span>
+<span class="text-pink-300/80 text-[10px] font-semibold">2.082</span>
+</button>
+<!-- Commits & Diffs -->
+<button class="h-6 px-2.5 rounded-full bg-blue-500/10 hover:bg-blue-500/20 text-blue-300 font-label-xs text-label-xs flex items-center gap-1.5 transition-colors shrink-0" type="button">
+<span class="w-1.5 h-1.5 rounded-full bg-blue-400"></span>
+<span>Commits &amp; Diffs</span>
+<span class="text-blue-300/80 text-[10px] font-semibold">1.104</span>
+</button>
+</div>
+</section>
+<!-- 2. ÁREA CENTRAL (GRAFO) + 3. PAINEL LATERAL DIREITO (INSPETOR) -->
+<div class="relative w-full h-[calc(100vh-8.75rem)] flex overflow-hidden">
+<!-- ÁREA CENTRAL DO GRAFO (Canvas Interativo / WebGL Mockup) -->
+<div class="relative flex-1 h-full bg-surface-container-lowest overflow-hidden select-none cursor-grab active:cursor-grabbing">
+<!-- Fundo de Grade Cibernética e Coordenadas Sutis -->
+<div class="absolute inset-0 opacity-20 bg-[radial-gradient(#00E5FF_1px,transparent_1px)] [background-size:28px_28px] pointer-events-none"></div>
+<div class="absolute inset-0 bg-gradient-to-tr from-surface-container-lowest via-transparent to-surface-container-lowest/80 pointer-events-none"></div>
+<!-- Retícula de Coordenadas de Fundo -->
+<div class="absolute top-4 left-4 font-label-xs text-label-xs text-outline/50 flex flex-col gap-0.5 pointer-events-none">
+<span>FR-135 / GRAPH_TOPOLOGY_VIEWER</span>
+<span>POS: [x: 412.8, y: -198.4, z: 0.0]</span>
+<span>BARNES_HUT_THETA: 0.52 · RESOLVER: WebGL2</span>
+</div>
+<!-- RENDERIZAÇÃO VETORIAL DA CONSTELAÇÃO DE GRAFOS -->
+<svg class="absolute inset-0 w-full h-full pointer-events-none overflow-visible" xmlns="http://www.w3.org/2000/svg">
+<defs>
+<lineargradient id="link-cyan-glow" x1="0%" x2="100%" y1="0%" y2="100%">
+<stop offset="0%" stop-color="#00E5FF" stop-opacity="0.8"></stop>
+<stop offset="100%" stop-color="#00626E" stop-opacity="0.2"></stop>
+</lineargradient>
+<lineargradient id="link-violet-glow" x1="0%" x2="100%" y1="0%" y2="100%">
+<stop offset="0%" stop-color="#8B5CF6" stop-opacity="0.7"></stop>
+<stop offset="100%" stop-color="#3C0091" stop-opacity="0.15"></stop>
+</lineargradient>
+<lineargradient id="link-emerald-glow" x1="0%" x2="100%" y1="0%" y2="100%">
+<stop offset="0%" stop-color="#10B981" stop-opacity="0.75"></stop>
+<stop offset="100%" stop-color="#047857" stop-opacity="0.2"></stop>
+</lineargradient>
+<lineargradient id="link-guara-glow" x1="0%" x2="100%" y1="0%" y2="100%">
+<stop offset="0%" stop-color="#F97316" stop-opacity="0.8"></stop>
+<stop offset="100%" stop-color="#953F00" stop-opacity="0.2"></stop>
+</lineargradient>
+<filter height="140%" id="neon-glow" width="140%" x="-20%" y="-20%">
+<fegaussianblur result="blur" stddeviation="3"></fegaussianblur>
+<fecomposite in="SourceGraphic" in2="blur" operator="over"></fecomposite>
+</filter>
+</defs>
+<!-- Arestas de Conexão (Links Inter-Clusters & Intra-Clusters) -->
+<!-- Cluster Central game-api (X: 480, Y: 320) Conexões -->
+<g stroke-linecap="round">
+<!-- game-api -> docker-compose -->
+<path d="M 480 320 Q 430 260 380 230" fill="none" opacity="0.85" stroke="url(#link-cyan-glow)" stroke-width="2.2"></path>
+<!-- game-api -> commit raycasting -->
+<path d="M 480 320 Q 560 250 620 220" fill="none" opacity="0.8" stroke="url(#link-cyan-glow)" stroke-width="2"></path>
+<!-- game-api -> POST /v1/auth -->
+<path d="M 480 320 Q 580 340 640 370" fill="none" opacity="0.75" stroke="url(#link-cyan-glow)" stroke-width="1.8"></path>
+<!-- game-api -> schema.sql -->
+<path d="M 480 320 Q 420 390 390 420" fill="none" opacity="0.8" stroke="url(#link-cyan-glow)" stroke-width="2"></path>
+<!-- game-api -> herod -->
+<path d="M 480 320 Q 370 330 280 340" fill="none" opacity="0.9" stroke="url(#link-cyan-glow)" stroke-width="2.5"></path>
+<!-- Conexão entre Cluster game-api e Cluster hero-daemon (Rust) -->
+<path d="M 480 320 C 350 200, 220 180, 190 140" fill="none" opacity="0.6" stroke="#8B5CF6" stroke-dasharray="4 3" stroke-width="1.8"></path>
+<!-- Conexão entre Cluster game-api e Daily Notes -->
+<path d="M 480 320 C 560 450, 680 470, 740 500" fill="none" opacity="0.7" stroke="#10B981" stroke-width="2"></path>
+<!-- Conexão entre game-api e Atuin Shell -->
+<path d="M 480 320 C 320 450, 260 520, 220 540" fill="none" opacity="0.65" stroke="#8B5CF6" stroke-width="1.6"></path>
+<!-- Conexão entre game-api e Diálogos Guará -->
+<path d="M 480 320 C 600 240, 700 220, 750 180" fill="none" opacity="0.7" stroke="#F97316" stroke-width="1.8"></path>
+<!-- Links Internos: hero-daemon (X: 190, Y: 140) -->
+<path d="M 190 140 L 130 90" fill="none" opacity="0.7" stroke="url(#link-violet-glow)" stroke-width="1.5"></path>
+<path d="M 190 140 L 110 160" fill="none" opacity="0.6" stroke="url(#link-violet-glow)" stroke-width="1.4"></path>
+<path d="M 190 140 L 220 70" fill="none" opacity="0.6" stroke="url(#link-violet-glow)" stroke-width="1.4"></path>
+<path d="M 190 140 L 270 120" fill="none" opacity="0.7" stroke="url(#link-violet-glow)" stroke-width="1.5"></path>
+<!-- Links Internos: Daily Notes (X: 740, Y: 500) -->
+<path d="M 740 500 L 820 480" fill="none" opacity="0.7" stroke="url(#link-emerald-glow)" stroke-width="1.8"></path>
+<path d="M 820 480 L 880 450" fill="none" opacity="0.6" stroke="url(#link-emerald-glow)" stroke-width="1.4"></path>
+<path d="M 740 500 L 760 570" fill="none" opacity="0.55" stroke="url(#link-emerald-glow)" stroke-width="1.4"></path>
+<!-- Links Internos: Atuin Shell (X: 220, Y: 540) -->
+<path d="M 220 540 L 160 520" fill="none" opacity="0.6" stroke="url(#link-violet-glow)" stroke-width="1.2"></path>
+<path d="M 220 540 L 180 580" fill="none" opacity="0.5" stroke="url(#link-violet-glow)" stroke-width="1.2"></path>
+<path d="M 220 540 L 250 610" fill="none" opacity="0.5" stroke="url(#link-violet-glow)" stroke-width="1.2"></path>
+<!-- Links Internos: Diálogos HERO (X: 750, Y: 180) -->
+<path d="M 750 180 L 830 150" fill="none" opacity="0.7" stroke="url(#link-guara-glow)" stroke-width="1.5"></path>
+<path d="M 750 180 L 820 220" fill="none" opacity="0.6" stroke="url(#link-guara-glow)" stroke-width="1.4"></path>
+<path d="M 750 180 L 710 110" fill="none" opacity="0.5" stroke="url(#link-guara-glow)" stroke-width="1.4"></path>
+</g>
+</svg>
+<!-- NÓS INTERATIVOS EM CAMADA HTML ABSOLUTA -->
+<div class="absolute inset-0 pointer-events-auto">
+<!-- 1. CLUSTER: proj/game-api (Centro em 480, 320) -->
+<!-- Floating Cluster Label -->
+<div class="absolute left-[360px] top-[190px] px-2 py-0.5 rounded bg-surface-container-high/80 backdrop-blur-sm shadow-sm pointer-events-none">
+<span class="font-label-xs text-[10px] text-primary-container tracking-wider uppercase">Cluster: proj/game-api · 84 edges</span>
+</div>
+<!-- Nó Central Selecionado (game-api.md) -->
+<div class="absolute left-[480px] top-[320px] -translate-x-1/2 -translate-y-1/2 group cursor-pointer">
+<!-- Pulse Halo Effect -->
+<div class="absolute -inset-4 rounded-full bg-primary-container/20 animate-ping opacity-60 pointer-events-none"></div>
+<div class="absolute -inset-2.5 rounded-full bg-primary-container/40 blur-xs"></div>
+<!-- Node Ring Outer -->
+<div class="relative w-12 h-12 rounded-full bg-surface-container-lowest flex items-center justify-center shadow-[0_0_24px_rgba(0,229,255,0.7)]">
+<div class="w-8 h-8 rounded-full bg-gradient-to-br from-primary-container to-primary flex items-center justify-center">
+<span class="material-symbols-outlined text-surface-container-lowest text-headline-sm font-bold">folder_open</span>
+</div>
+</div>
+<!-- Label do Nó Ativo -->
+<div class="absolute top-14 left-1/2 -translate-x-1/2 whitespace-nowrap bg-surface-container-high/90 backdrop-blur px-2.5 py-1 rounded shadow-md flex items-center gap-1.5">
+<span class="w-2 h-2 rounded-full bg-primary-container shadow-[0_0_8px_#00E5FF]"></span>
+<span class="font-code-md text-code-md text-primary font-semibold">projects/game-api.md</span>
+<span class="font-label-xs text-[9px] text-outline">[Rank #1]</span>
+</div>
+</div>
+<!-- Nó Filho: docker-compose.yml -->
+<div class="absolute left-[380px] top-[230px] -translate-x-1/2 -translate-y-1/2 group cursor-pointer hover:scale-110 transition-transform">
+<div class="w-7 h-7 rounded-full bg-primary-container/30 flex items-center justify-center shadow-xs">
+<div class="w-4 h-4 rounded-full bg-primary-container"></div>
+</div>
+<span class="absolute left-8 top-1 whitespace-nowrap font-code-sm text-code-sm text-on-surface-variant group-hover:text-primary transition-colors">docker-compose.yml</span>
+</div>
+<!-- Nó Filho: commit raycasting physics -->
+<div class="absolute left-[620px] top-[220px] -translate-x-1/2 -translate-y-1/2 group cursor-pointer hover:scale-110 transition-transform">
+<div class="w-6 h-6 rounded-full bg-blue-500/30 flex items-center justify-center shadow-xs">
+<div class="w-3.5 h-3.5 rounded-full bg-blue-400"></div>
+</div>
+<span class="absolute left-7 top-0.5 whitespace-nowrap font-code-sm text-code-sm text-blue-200 group-hover:text-blue-100 transition-colors">feat: raycast-physics</span>
+</div>
+<!-- Nó Filho: POST /v1/auth -->
+<div class="absolute left-[640px] top-[370px] -translate-x-1/2 -translate-y-1/2 group cursor-pointer hover:scale-110 transition-transform">
+<div class="w-6 h-6 rounded-full bg-primary-container/25 flex items-center justify-center shadow-xs">
+<div class="w-3 h-3 rounded-full bg-primary-fixed-dim"></div>
+</div>
+<span class="absolute left-7 top-0.5 whitespace-nowrap font-code-sm text-code-sm text-on-surface-variant group-hover:text-primary transition-colors">POST /v1/auth</span>
+</div>
+<!-- Nó Filho: schema.sql -->
+<div class="absolute left-[390px] top-[420px] -translate-x-1/2 -translate-y-1/2 group cursor-pointer hover:scale-110 transition-transform">
+<div class="w-6 h-6 rounded-full bg-primary-container/25 flex items-center justify-center shadow-xs">
+<div class="w-3.5 h-3.5 rounded-full bg-primary"></div>
+</div>
+<span class="absolute left-7 top-0.5 whitespace-nowrap font-code-sm text-code-sm text-on-surface-variant group-hover:text-primary transition-colors">schema.sql</span>
+</div>
+<!-- Nó Filho: herod daemon link -->
+<div class="absolute left-[280px] top-[340px] -translate-x-1/2 -translate-y-1/2 group cursor-pointer hover:scale-110 transition-transform">
+<div class="w-7 h-7 rounded-full bg-secondary-container/40 flex items-center justify-center shadow-xs">
+<div class="w-4 h-4 rounded-full bg-secondary"></div>
+</div>
+<span class="absolute -top-5 left-1/2 -translate-x-1/2 whitespace-nowrap font-code-sm text-code-sm text-secondary-fixed">herod_service</span>
+</div>
+<!-- 2. CLUSTER: hero-daemon (Rust) (Centro em 190, 140) -->
+<div class="absolute left-[80px] top-[60px] px-2 py-0.5 rounded bg-surface-container-high/80 backdrop-blur-sm pointer-events-none">
+<span class="font-label-xs text-[10px] text-secondary tracking-wider uppercase">Cluster: hero-daemon (Rust)</span>
+</div>
+<div class="absolute left-[190px] top-[140px] -translate-x-1/2 -translate-y-1/2 group cursor-pointer hover:scale-105 transition-transform">
+<div class="w-10 h-10 rounded-full bg-secondary-container/30 flex items-center justify-center shadow-[0_0_16px_rgba(139,92,246,0.4)]">
+<div class="w-6 h-6 rounded-full bg-secondary flex items-center justify-center text-on-secondary">
+<span class="material-symbols-outlined text-body-md">smart_toy</span>
+</div>
+</div>
+<span class="absolute top-11 left-1/2 -translate-x-1/2 whitespace-nowrap font-code-sm text-code-sm text-secondary font-medium">hero-daemon</span>
+</div>
+<!-- Satélites do hero-daemon -->
+<div class="absolute left-[130px] top-[90px] -translate-x-1/2 -translate-y-1/2 group cursor-pointer">
+<div class="w-5 h-5 rounded-full bg-secondary/30 flex items-center justify-center">
+<div class="w-2.5 h-2.5 rounded-full bg-secondary"></div>
+</div>
+<span class="absolute right-6 top-0 font-code-sm text-code-sm text-outline group-hover:text-secondary whitespace-nowrap">pipewire-rs</span>
+</div>
+<div class="absolute left-[110px] top-[160px] -translate-x-1/2 -translate-y-1/2 group cursor-pointer">
+<div class="w-5 h-5 rounded-full bg-secondary/30 flex items-center justify-center">
+<div class="w-2.5 h-2.5 rounded-full bg-secondary"></div>
+</div>
+<span class="absolute right-6 top-0 font-code-sm text-code-sm text-outline group-hover:text-secondary whitespace-nowrap">openWakeWord</span>
+</div>
+<div class="absolute left-[220px] top-[70px] -translate-x-1/2 -translate-y-1/2 group cursor-pointer">
+<div class="w-5 h-5 rounded-full bg-secondary/30 flex items-center justify-center">
+<div class="w-2.5 h-2.5 rounded-full bg-secondary"></div>
+</div>
+<span class="absolute left-6 top-0 font-code-sm text-code-sm text-outline group-hover:text-secondary whitespace-nowrap">faster-whisper</span>
+</div>
+<div class="absolute left-[270px] top-[120px] -translate-x-1/2 -translate-y-1/2 group cursor-pointer">
+<div class="w-5 h-5 rounded-full bg-secondary/30 flex items-center justify-center">
+<div class="w-2.5 h-2.5 rounded-full bg-secondary"></div>
+</div>
+<span class="absolute left-6 top-0 font-code-sm text-code-sm text-outline group-hover:text-secondary whitespace-nowrap">routes.toml</span>
+</div>
+<!-- 3. CLUSTER: Daily Notes (Novembro 2026) (Centro em 740, 500) -->
+<div class="absolute left-[690px] top-[430px] px-2 py-0.5 rounded bg-surface-container-high/80 backdrop-blur-sm pointer-events-none">
+<span class="font-label-xs text-[10px] text-emerald-300 tracking-wider uppercase">Cluster: Daily Notes (Nov 2026)</span>
+</div>
+<div class="absolute left-[740px] top-[500px] -translate-x-1/2 -translate-y-1/2 group cursor-pointer hover:scale-105 transition-transform">
+<div class="w-9 h-9 rounded-full bg-emerald-500/20 flex items-center justify-center shadow-[0_0_16px_rgba(16,185,129,0.4)]">
+<div class="w-5 h-5 rounded-full bg-emerald-400 flex items-center justify-center text-surface-container-lowest">
+<span class="material-symbols-outlined text-body-sm">calendar_today</span>
+</div>
+</div>
+<span class="absolute top-10 left-1/2 -translate-x-1/2 whitespace-nowrap font-code-sm text-code-sm text-emerald-300 font-semibold">2026-11-08.md</span>
+</div>
+<div class="absolute left-[820px] top-[480px] -translate-x-1/2 -translate-y-1/2 group cursor-pointer">
+<div class="w-6 h-6 rounded-full bg-emerald-500/20 flex items-center justify-center">
+<div class="w-3 h-3 rounded-full bg-emerald-400"></div>
+</div>
+<span class="absolute top-7 left-1/2 -translate-x-1/2 whitespace-nowrap font-code-sm text-code-sm text-emerald-300/80">2026-11-07.md</span>
+</div>
+<div class="absolute left-[880px] top-[450px] -translate-x-1/2 -translate-y-1/2 group cursor-pointer">
+<div class="w-5 h-5 rounded-full bg-emerald-500/20 flex items-center justify-center">
+<div class="w-2.5 h-2.5 rounded-full bg-emerald-400"></div>
+</div>
+<span class="absolute top-6 left-1/2 -translate-x-1/2 whitespace-nowrap font-code-sm text-code-sm text-emerald-300/70">2026-11-06.md</span>
+</div>
+<!-- 4. CLUSTER: Atuin Shell History (Centro em 220, 540) -->
+<div class="absolute left-[120px] top-[480px] px-2 py-0.5 rounded bg-surface-container-high/80 backdrop-blur-sm pointer-events-none">
+<span class="font-label-xs text-[10px] text-secondary-fixed tracking-wider uppercase">Cluster: Atuin Shell</span>
+</div>
+<div class="absolute left-[220px] top-[540px] -translate-x-1/2 -translate-y-1/2 group cursor-pointer hover:scale-105 transition-transform">
+<div class="w-8 h-8 rounded-full bg-secondary-container/30 flex items-center justify-center shadow-xs">
+<div class="w-4 h-4 rounded-full bg-secondary"></div>
+</div>
+<span class="absolute top-9 left-1/2 -translate-x-1/2 whitespace-nowrap font-code-sm text-code-sm text-secondary-fixed">forja doctor</span>
+</div>
+<div class="absolute left-[160px] top-[520px] -translate-x-1/2 -translate-y-1/2 group cursor-pointer">
+<div class="w-4 h-4 rounded-full bg-secondary/30 flex items-center justify-center">
+<div class="w-2 h-2 rounded-full bg-secondary"></div>
+</div>
+<span class="absolute right-5 top-0 whitespace-nowrap font-code-sm text-code-sm text-outline">cargo build --release</span>
+</div>
+<div class="absolute left-[180px] top-[580px] -translate-x-1/2 -translate-y-1/2 group cursor-pointer">
+<div class="w-4 h-4 rounded-full bg-secondary/30 flex items-center justify-center">
+<div class="w-2 h-2 rounded-full bg-secondary"></div>
+</div>
+<span class="absolute left-5 top-0 whitespace-nowrap font-code-sm text-code-sm text-outline">git commit -m ...</span>
+</div>
+<!-- 5. CLUSTER: Diálogos com HERO (Guará) (Centro em 750, 180) -->
+<div class="absolute left-[680px] top-[90px] px-2 py-0.5 rounded bg-surface-container-high/80 backdrop-blur-sm pointer-events-none">
+<span class="font-label-xs text-[10px] text-tertiary-fixed-dim tracking-wider uppercase">Cluster: Diálogos HERO</span>
+</div>
+<div class="absolute left-[750px] top-[180px] -translate-x-1/2 -translate-y-1/2 group cursor-pointer hover:scale-105 transition-transform">
+<div class="w-9 h-9 rounded-full bg-[#FB923C]/20 flex items-center justify-center shadow-[0_0_16px_rgba(249,115,22,0.4)]">
+<div class="w-5 h-5 rounded-full bg-[#FB923C] flex items-center justify-center text-surface-container-lowest">
+<span class="material-symbols-outlined text-body-sm">record_voice_over</span>
+</div>
+</div>
+<span class="absolute top-10 left-1/2 -translate-x-1/2 whitespace-nowrap font-code-sm text-code-sm text-tertiary-fixed-dim font-medium">hero: "Sobe compose"</span>
+</div>
+<div class="absolute left-[830px] top-[150px] -translate-x-1/2 -translate-y-1/2 group cursor-pointer">
+<div class="w-5 h-5 rounded-full bg-[#FB923C]/20 flex items-center justify-center">
+<div class="w-2.5 h-2.5 rounded-full bg-[#FB923C]"></div>
+</div>
+<span class="absolute left-6 top-0 whitespace-nowrap font-code-sm text-code-sm text-tertiary-fixed-dim/80">hero: "Erro de build"</span>
+</div>
+<div class="absolute left-[820px] top-[220px] -translate-x-1/2 -translate-y-1/2 group cursor-pointer">
+<div class="w-5 h-5 rounded-full bg-[#FB923C]/20 flex items-center justify-center">
+<div class="w-2.5 h-2.5 rounded-full bg-[#FB923C]"></div>
+</div>
+<span class="absolute left-6 top-0 whitespace-nowrap font-code-sm text-code-sm text-tertiary-fixed-dim/70">hero: "Auditar VRAM"</span>
+</div>
+</div>
+<!-- HUD Flutuante: MINIMAPA (Canto Inferior Esquerdo) -->
+<div class="absolute bottom-4 left-4 w-48 h-32 bg-surface-container-lowest/80 backdrop-blur-md rounded-lg p-2 shadow-lg flex flex-col justify-between pointer-events-auto">
+<div class="flex items-center justify-between text-outline font-label-xs text-[10px]">
+<span class="flex items-center gap-1">
+<span class="material-symbols-outlined text-[12px]">map</span>
+            VISÃO GERAL
+          </span>
+<span>14.2K NÓS</span>
+</div>
+<!-- Canvas Minimap Representation -->
+<div class="relative w-full h-20 bg-surface-container/60 rounded overflow-hidden">
+<!-- Dots of clusters -->
+<div class="absolute left-1/2 top-1/2 w-1.5 h-1.5 -translate-x-1/2 -translate-y-1/2 rounded-full bg-primary-container"></div>
+<div class="absolute left-1/4 top-1/4 w-1 h-1 rounded-full bg-secondary"></div>
+<div class="absolute left-3/4 top-3/4 w-1 h-1 rounded-full bg-emerald-400"></div>
+<div class="absolute left-1/4 top-3/4 w-1 h-1 rounded-full bg-secondary-fixed"></div>
+<div class="absolute left-3/4 top-1/4 w-1 h-1 rounded-full bg-[#FB923C]"></div>
+<!-- Viewport Viewfinder Rectangle -->
+<div class="absolute left-[32%] top-[28%] w-[42%] h-[46%] rounded bg-primary-container/10 border-primary-container shadow-[0_0_8px_rgba(0,229,255,0.3)]"></div>
+</div>
+<div class="flex items-center justify-between font-label-xs text-[9px] text-outline">
+<span>Escala 1:12</span>
+<span class="text-primary">Ativo: game-api</span>
+</div>
+</div>
+<!-- HUD Flutuante: CONTROLES DE VIEWPORT (Canto Inferior Centro-Direita) -->
+<div class="absolute bottom-4 right-6 flex items-center gap-space-xs bg-surface-container-lowest/80 backdrop-blur-md p-1 rounded-lg shadow-lg pointer-events-auto">
+<button class="h-8 px-2.5 rounded hover:bg-surface-container-high text-on-surface-variant hover:text-primary font-code-sm text-code-sm flex items-center gap-1.5 transition-colors" title="Centralizar Nó Ativo" type="button">
+<span class="material-symbols-outlined text-body-md text-primary-container">filter_center_focus</span>
+<span>Focar Ativo</span>
+</button>
+<button class="h-8 px-2.5 rounded hover:bg-surface-container-high text-on-surface-variant hover:text-on-surface font-code-sm text-code-sm flex items-center gap-1.5 transition-colors" title="Alternar Camadas Visíveis" type="button">
+<span class="material-symbols-outlined text-body-md">layers</span>
+<span>Camadas (7)</span>
+</button>
+<button class="h-8 w-8 rounded hover:bg-surface-container-high text-on-surface-variant hover:text-amber-300 flex items-center justify-center transition-colors" title="Congelar Simulação de Física" type="button">
+<span class="material-symbols-outlined text-body-md">pause</span>
+</button>
+</div>
+</div>
+<!-- 3. PAINEL LATERAL DIREITO: INSPETOR DE NÓ & VISUALIZADOR DE VAULT (380px) -->
+<aside class="w-[380px] h-full bg-surface-container-lowest/95 backdrop-blur-xl flex flex-col justify-between overflow-y-auto shadow-xl z-20 shrink-0">
+<!-- Cabeçalho do Inspetor -->
+<div class="p-space-md bg-surface-container-low/60 flex flex-col gap-space-xs">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-space-xs text-primary font-label-xs text-label-xs tracking-wider uppercase">
+<span class="material-symbols-outlined text-body-md">article</span>
+<span>Inspetor de Vault &amp; Entidade</span>
+</div>
+<div class="flex items-center gap-1">
+<button class="w-6 h-6 rounded flex items-center justify-center text-outline hover:text-on-surface hover:bg-surface-container transition-colors" title="Fixar Painel" type="button">
+<span class="material-symbols-outlined text-code-sm">push_pin</span>
+</button>
+<button class="w-6 h-6 rounded flex items-center justify-center text-outline hover:text-on-surface hover:bg-surface-container transition-colors" title="Fechar Inspetor" type="button">
+<span class="material-symbols-outlined text-body-md">chevron_right</span>
+</button>
+</div>
+</div>
+<div class="flex items-start gap-space-sm mt-1">
+<div class="w-10 h-10 rounded-lg bg-surface-container flex items-center justify-center text-primary-container shrink-0 shadow-xs">
+<span class="material-symbols-outlined text-headline-sm">description</span>
+</div>
+<div class="flex flex-col min-w-0">
+<h2 class="font-headline-sm text-headline-sm text-on-surface truncate font-semibold">projects/game-api.md</h2>
+<span class="font-code-sm text-code-sm text-outline truncate">~/ForjaOS/vault/projects/game-api.md</span>
+</div>
+</div>
+<div class="flex flex-wrap gap-1.5 mt-2">
+<span class="px-2 py-0.5 rounded bg-primary-container/20 text-primary-container font-label-xs text-[10px] font-semibold">Entidade: Repositório</span>
+<span class="px-2 py-0.5 rounded bg-surface-container-high text-on-surface-variant font-label-xs text-[10px]">Grau: 84 conexões</span>
+<span class="px-2 py-0.5 rounded bg-surface-container-high text-tertiary-fixed-dim font-label-xs text-[10px] flex items-center gap-1">
+<span class="w-1 h-1 rounded-full bg-orange-400"></span>
+            Modificado: há 14m por HERO
+          </span>
+</div>
+</div>
+<!-- Corpo de Conteúdo com Abas/Seções -->
+<div class="flex-1 p-space-md flex flex-col gap-space-md overflow-y-auto">
+<!-- Visualizador de Markdown Formatado -->
+<div class="flex flex-col gap-space-xs">
+<div class="flex items-center justify-between font-label-xs text-label-xs text-outline uppercase tracking-wider">
+<span>Prévia Markdown do Vault</span>
+<span class="text-primary-container font-code-sm">v1.4</span>
+</div>
+<div class="p-space-sm rounded-lg bg-surface-container-low shadow-inner flex flex-col gap-space-xs">
+<!-- Frontmatter Box -->
+<div class="p-space-xs rounded bg-surface-container-lowest font-code-sm text-[11px] text-on-surface-variant space-y-0.5">
+<div class="text-outline">---</div>
+<div><span class="text-secondary-fixed">tags:</span> [gamedev, rust, actix, docker]</div>
+<div><span class="text-secondary-fixed">status:</span> active</div>
+<div><span class="text-secondary-fixed">herod_tracked:</span> <span class="text-primary-container">true</span></div>
+<div class="text-outline">---</div>
+</div>
+<!-- Markdown Title & Rendered Text -->
+<h3 class="font-headline-sm text-[15px] text-on-surface font-semibold mt-1"># game-api (Godot 4 + Rust Backend)</h3>
+<p class="font-body-sm text-body-sm text-on-surface-variant leading-relaxed">
+              Módulo central de sincronização de estado do multiplayer. Conectado a 
+              <a class="inline-flex items-center px-1.5 py-0.2 rounded bg-emerald-500/20 text-emerald-300 font-code-sm text-[11px] hover:underline" href="#">[[daily/2026-11-08]]</a> 
+              e monitorado ativamente pelo daemon 
+              <a class="inline-flex items-center px-1.5 py-0.2 rounded bg-secondary-container/40 text-secondary-fixed font-code-sm text-[11px] hover:underline" href="#">[[hero-system]]</a>. 
+              Depende do serviço de persistência vetorial 
+              <a class="inline-flex items-center px-1.5 py-0.2 rounded bg-primary-container/20 text-primary-container font-code-sm text-[11px] hover:underline" href="#">[[postgres-data]]</a>.
+            </p>
+</div>
+</div>
+<!-- Seção: Entidades e Wikilinks Conectados -->
+<div class="flex flex-col gap-space-xs">
+<div class="flex items-center justify-between font-label-xs text-label-xs text-outline uppercase tracking-wider">
+<span>Conexões Diretas (1º &amp; 2º Grau)</span>
+<span class="text-on-surface-variant font-code-sm text-code-sm">84 arestas</span>
+</div>
+<div class="flex flex-col gap-1.5">
+<!-- Conexão 1 -->
+<div class="p-2 rounded bg-surface-container-low hover:bg-surface-container transition-colors flex items-center justify-between cursor-pointer group shadow-xs">
+<div class="flex items-center gap-2 min-w-0">
+<span class="material-symbols-outlined text-emerald-400 text-body-md shrink-0">calendar_today</span>
+<div class="flex flex-col min-w-0">
+<span class="font-code-sm text-code-sm text-on-surface group-hover:text-emerald-300 truncate">[[daily/2026-11-08.md]]</span>
+<span class="font-label-xs text-[10px] text-outline">Wikilink Direto · Co-ocorrência temporal</span>
+</div>
+</div>
+<span class="font-code-sm text-code-sm text-emerald-400 shrink-0 font-semibold">0.98</span>
+</div>
+<!-- Conexão 2 -->
+<div class="p-2 rounded bg-surface-container-low hover:bg-surface-container transition-colors flex items-center justify-between cursor-pointer group shadow-xs">
+<div class="flex items-center gap-2 min-w-0">
+<span class="material-symbols-outlined text-blue-400 text-body-md shrink-0">commit</span>
+<div class="flex flex-col min-w-0">
+<span class="font-code-sm text-code-sm text-on-surface group-hover:text-blue-300 truncate">feat: raycasting physics</span>
+<span class="font-label-xs text-[10px] text-outline">Git Commit · Coletor ForjaOS</span>
+</div>
+</div>
+<span class="font-code-sm text-code-sm text-blue-400 shrink-0 font-semibold">0.94</span>
+</div>
+<!-- Conexão 3 -->
+<div class="p-2 rounded bg-surface-container-low hover:bg-surface-container transition-colors flex items-center justify-between cursor-pointer group shadow-xs">
+<div class="flex items-center gap-2 min-w-0">
+<span class="material-symbols-outlined text-secondary text-body-md shrink-0">terminal</span>
+<div class="flex flex-col min-w-0">
+<span class="font-code-sm text-code-sm text-on-surface group-hover:text-secondary-fixed truncate">forja up game-api</span>
+<span class="font-label-xs text-[10px] text-outline">Atuin Shell History · Coletor</span>
+</div>
+</div>
+<span class="font-code-sm text-code-sm text-secondary shrink-0 font-semibold">0.89</span>
+</div>
+<!-- Conexão 4 -->
+<div class="p-2 rounded bg-surface-container-low hover:bg-surface-container transition-colors flex items-center justify-between cursor-pointer group shadow-xs">
+<div class="flex items-center gap-2 min-w-0">
+<span class="material-symbols-outlined text-[#FB923C] text-body-md shrink-0">forum</span>
+<div class="flex flex-col min-w-0">
+<span class="font-code-sm text-code-sm text-on-surface group-hover:text-tertiary-fixed-dim truncate">"Guará, sobe o ambiente..."</span>
+<span class="font-label-xs text-[10px] text-outline">Diálogo HERO · Áudio Transcrito</span>
+</div>
+</div>
+<span class="font-code-sm text-code-sm text-[#FB923C] shrink-0 font-semibold">0.87</span>
+</div>
+</div>
+</div>
+<!-- Seção: Similaridade Semântica (sqlite-vec) -->
+<div class="flex flex-col gap-space-xs">
+<div class="flex items-center justify-between font-label-xs text-label-xs text-outline uppercase tracking-wider">
+<span class="flex items-center gap-1 text-primary-container">
+<span class="material-symbols-outlined text-code-sm">neurology</span>
+              Similaridade Semântica (sqlite-vec)
+            </span>
+<span class="text-outline text-[10px]">KNN (k=3)</span>
+</div>
+<div class="flex flex-col gap-1.5">
+<!-- Semantic Item 1 -->
+<div class="p-2 rounded bg-surface-container-low hover:bg-surface-container transition-colors flex items-center justify-between cursor-pointer shadow-xs">
+<div class="flex items-center gap-2 min-w-0">
+<span class="w-1.5 h-1.5 rounded-full bg-primary-container"></span>
+<div class="flex flex-col min-w-0">
+<span class="font-code-sm text-code-sm text-on-surface truncate">godot-cyberforge.md</span>
+<span class="font-label-xs text-[10px] text-outline">Distância Cosseno: 0.08</span>
+</div>
+</div>
+<span class="px-1.5 py-0.5 rounded bg-primary-container/20 text-primary-container font-label-xs text-[10px] font-bold">92%</span>
+</div>
+<!-- Semantic Item 2 -->
+<div class="p-2 rounded bg-surface-container-low hover:bg-surface-container transition-colors flex items-center justify-between cursor-pointer shadow-xs">
+<div class="flex items-center gap-2 min-w-0">
+<span class="w-1.5 h-1.5 rounded-full bg-primary-fixed-dim"></span>
+<div class="flex flex-col min-w-0">
+<span class="font-code-sm text-code-sm text-on-surface truncate">routes.toml</span>
+<span class="font-label-xs text-[10px] text-outline">Distância Cosseno: 0.15</span>
+</div>
+</div>
+<span class="px-1.5 py-0.5 rounded bg-primary-container/20 text-primary-container font-label-xs text-[10px] font-bold">85%</span>
+</div>
+<!-- Semantic Item 3 -->
+<div class="p-2 rounded bg-surface-container-low hover:bg-surface-container transition-colors flex items-center justify-between cursor-pointer shadow-xs">
+<div class="flex items-center gap-2 min-w-0">
+<span class="w-1.5 h-1.5 rounded-full bg-outline"></span>
+<div class="flex flex-col min-w-0">
+<span class="font-code-sm text-code-sm text-on-surface truncate">schema_sqlite.md</span>
+<span class="font-label-xs text-[10px] text-outline">Distância Cosseno: 0.22</span>
+</div>
+</div>
+<span class="px-1.5 py-0.5 rounded bg-surface-container-high text-on-surface-variant font-label-xs text-[10px] font-bold">78%</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Botões de Ação na Base do Inspetor -->
+<div class="p-space-md bg-surface-container-low/80 flex flex-col gap-2">
+<button class="w-full h-8 px-space-sm rounded bg-gradient-to-r from-primary-container to-primary-fixed-dim text-on-primary-container font-headline-sm text-body-sm font-semibold flex items-center justify-center gap-2 shadow-[0_0_12px_rgba(0,229,255,0.3)] hover:shadow-[0_0_18px_rgba(0,229,255,0.5)] transition-all" type="button">
+<span class="material-symbols-outlined text-body-md">open_in_new</span>
+<span>Abrir no Obsidian / Editor</span>
+</button>
+<div class="grid grid-cols-2 gap-2">
+<button class="h-8 px-space-xs rounded bg-surface-container-high hover:bg-surface-bright text-on-surface font-code-sm text-code-sm flex items-center justify-center gap-1.5 transition-colors" type="button">
+<span class="material-symbols-outlined text-body-md text-primary">explore</span>
+<span>Explorar Vizinhança</span>
+</button>
+<!-- Guará Trigger (Laranja) -->
+<button class="h-8 px-space-xs rounded bg-[#FB923C]/15 hover:bg-[#FB923C]/25 text-[#FB923C] font-code-sm text-code-sm flex items-center justify-center gap-1.5 transition-colors shadow-xs" type="button">
+<span class="material-symbols-outlined text-body-md">smart_toy</span>
+<span>Perguntar HERO</span>
+</button>
+</div>
+</div>
+</aside>
+</div>
+<!-- 4. BARRA DE STATUS INFERIOR NATIVA (KDE Plasma Style) -->
+<footer class="w-full h-7 bg-surface-container-lowest px-space-md flex items-center justify-between text-outline font-label-xs text-[11px] shadow-lg select-none z-30">
+<!-- Telemetria memd -->
+<div class="flex items-center gap-space-md">
+<div class="flex items-center gap-1.5">
+<span class="w-2 h-2 rounded-full bg-emerald-400"></span>
+<span class="text-on-surface-variant font-code-sm text-[11px]">memd v1.0:</span>
+<span class="text-on-surface">SQLite 42 MB</span>
+<span class="text-outline">·</span>
+<span class="text-on-surface">RAM 84 MB / 300 MB max</span>
+<span class="text-outline">·</span>
+<span class="text-emerald-400">CPU 0.1%</span>
+<span class="text-outline">·</span>
+<span class="text-on-surface-variant">I/O Idle</span>
+</div>
+<div class="h-3.5 w-px bg-surface-variant/40 hidden md:block"></div>
+<!-- Estatísticas do Grafo -->
+<div class="hidden md:flex items-center gap-1.5 text-on-surface-variant">
+<span class="material-symbols-outlined text-[13px] text-primary">share</span>
+<span>Nós: <strong class="text-primary">3.420</strong> / 14.280</span>
+<span class="text-outline">·</span>
+<span>Arestas: <strong class="text-on-surface">9.150</strong></span>
+<span class="text-outline">·</span>
+<span class="text-emerald-400 font-semibold">60 FPS WebGL</span>
+</div>
+</div>
+<!-- Sincronização & Atalho de Terminal -->
+<div class="flex items-center gap-space-md">
+<div class="hidden lg:flex items-center gap-1.5 text-on-surface-variant">
+<span class="material-symbols-outlined text-[13px] text-primary">cloud_done</span>
+<span>Vault Sincronizado</span>
+<span class="text-outline">·</span>
+<span>FTS5 Pronto</span>
+<span class="text-outline">·</span>
+<span>Próxima varredura: 14m</span>
+</div>
+<!-- Quick Command Badge -->
+<div class="flex items-center gap-1 bg-surface-container-low px-2 py-0.5 rounded text-outline font-code-sm text-[10px]">
+<span class="text-primary-container">$</span>
+<span class="text-on-surface">forja memory graph game-api</span>
+</div>
+</div>
+</footer>
+</div></main></div></body></html>

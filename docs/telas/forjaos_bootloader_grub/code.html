@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ForjaOS - Bootloader GRUB</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    body {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      background-color: #05070B;
+    }
+    .font-mono {
+      font-family: 'Fira Code', monospace;
+    }
+    .crt-scanlines {
+      background: linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.35) 50%);
+      background-size: 100% 3px;
+      pointer-events: none;
+    }
+    .glow-cyan {
+      box-shadow: 0 0 35px -5px rgba(0, 229, 255, 0.25);
+    }
+    .entry-active {
+      background: linear-gradient(90deg, rgba(0, 229, 255, 0.12) 0%, rgba(139, 92, 246, 0.08) 50%, rgba(10, 14, 24, 0) 100%);
+      border-left: 3px solid #00E5FF;
+    }
+  </style>
+</head>
+<body class="min-h-screen text-slate-300 relative flex flex-col justify-between overflow-hidden select-none">
+  <!-- Scanlines overlay para atmosfera sutil de firmware/boot -->
+  <div class="absolute inset-0 crt-scanlines z-10 opacity-60"></div>
+
+  <!-- Background Wallpaper Reference com backdrop escuro -->
+  <div class="absolute inset-0 z-0 opacity-20 filter blur-xl scale-105 pointer-events-none" style="background-image: url('https://lh3.googleusercontent.com/aida/ALJJyrBJR3Ib_O5WYry9vIkBuQ1okK6NXhHnO6Td4grENMqbwgNxUCYWKugDj1T6e_Aj-qB3VV_EffBJV_hUHxyMy-fktkfwZnxv3YOtQbQswcpyqoGUQ9XUd0lIGhcFJAZVlXur3biRBe7O75_gxttvwKhBpH0_UUxflfiLSK3wjtfwAtaasaL4-WW3NvhP4M5jeB-M8aNpUbvO6xFhTaFjkdOTKxphezHaUVXu5lTraX9A'); background-size: cover; background-position: center;"></div>
+
+  <!-- Top bar info firmware -->
+  <header class="relative z-20 px-10 py-6 flex items-center justify-between border-b border-slate-800/40 bg-slate-950/40 backdrop-blur-md">
+    <div class="flex items-center gap-4">
+      <img src="https://lh3.googleusercontent.com/aida/ALJJyrDlPs-k51C-0TPJse4gs3TQQWlxL3mprtcMOAkHKrNBzkC10ffpBvCNL0U9nkJLILa9g3qTlCRyKbfea8FBZgujCbcIwEBv7i4pf5kbhLW9NBeoEQkbOWQlPTRqtL89GkCJL2cH3WwF3pWjohSoTe9ZNS1LtCArenRDWtlMdfwEs8YLwLt3LakMbMFrnt7OzbokAZR6zrVIEvIlxGt6q3ZiEVQR0kqGdA52NNmqylcqdw" alt="Logo ForjaOS" class="w-8 h-8 rounded-lg">
+      <div class="flex flex-col">
+        <div class="flex items-center gap-2">
+          <span class="font-bold text-white tracking-wide text-sm">FORJA<span class="text-[#00E5FF]">OS</span></span>
+          <span class="text-xs px-2 py-0.5 rounded bg-cyan-950/60 text-[#00E5FF] border border-cyan-500/20 font-mono">EFI GRUB 2.12</span>
+        </div>
+        <span class="text-[11px] text-slate-500 font-mono">Kernel 6.x · Universal Blue Atomic · Secure Boot (ublue-MOK Enforcing)</span>
+      </div>
+    </div>
+
+    <!-- Hardware Snapshot -->
+    <div class="flex items-center gap-6 text-xs font-mono text-slate-400">
+      <div class="flex items-center gap-2">
+        <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
+        <span>UEFI x86_64</span>
+      </div>
+      <div class="hidden md:flex items-center gap-2 text-slate-500">
+        <span>GPU: RTX Driver Open</span>
+      </div>
+      <div class="text-slate-400">
+        Resolução: <span class="text-white">3840x2160 @ 144Hz</span>
+      </div>
+    </div>
+  </header>
+
+  <!-- Central Boot Entries Container -->
+  <main class="relative z-20 flex-1 flex flex-col justify-center max-w-4xl w-full mx-auto px-6 py-8">
+    <div class="bg-[#0A0E18]/85 border border-cyan-500/20 rounded-2xl p-8 backdrop-blur-2xl shadow-2xl glow-cyan">
+      
+      <!-- Cabeçalho do seletor -->
+      <div class="flex items-center justify-between pb-6 mb-6 border-b border-slate-800/60">
+        <div class="flex items-center gap-3">
+          <svg class="w-5 h-5 text-[#00E5FF]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 9l3 3-3 3m5 0h3M5 20h14a2 2 0 002-2V6a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"></path>
+          </svg>
+          <h1 class="text-base font-semibold text-white tracking-wide">Selecione o Sistema ou Snapshot para Inicialização</h1>
+        </div>
+        <div class="flex items-center gap-2 text-xs font-mono text-cyan-400/90 bg-cyan-950/40 px-3 py-1.5 rounded-lg border border-cyan-500/20">
+          <span>Boot automático em:</span>
+          <span class="font-bold text-[#00E5FF] text-sm">3s</span>
+        </div>
+      </div>
+
+      <!-- Lista de entradas de boot -->
+      <div class="space-y-3 font-mono text-sm">
+        
+        <!-- Entrada 1: Default Primário Ativo -->
+        <div class="entry-active rounded-xl p-4 cursor-pointer transition-all border border-cyan-500/40 shadow-lg flex items-center justify-between group">
+          <div class="flex items-center gap-4">
+            <div class="w-9 h-9 rounded-lg bg-[#00E5FF]/10 flex items-center justify-center text-[#00E5FF] border border-[#00E5FF]/30">
+              <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path>
+              </svg>
+            </div>
+            <div>
+              <div class="flex items-center gap-2">
+                <span class="text-white font-semibold text-base group-hover:text-[#00E5FF]">ForjaOS 2026.11 (stable · padrão)</span>
+                <span class="text-[10px] uppercase tracking-wider px-2 py-0.5 rounded bg-[#00E5FF]/20 text-[#00E5FF] font-bold">Atômico</span>
+                <span class="text-[10px] px-2 py-0.5 rounded bg-emerald-500/20 text-emerald-300">NVIDIA Open 590</span>
+              </div>
+              <p class="text-xs text-slate-400 mt-1">ostree/bootc commit 7f8c2e1 · Fedora Atomic 41 · Linux 6.12.8-bazzite</p>
+            </div>
+          </div>
+          <span class="text-xs font-sans text-cyan-400 font-medium px-3 py-1 rounded-md bg-cyan-500/10 border border-cyan-500/20 flex items-center gap-1.5">
+            <span>[ENTER] Iniciar</span>
+            <span class="text-xs">➔</span>
+          </span>
+        </div>
+
+        <!-- Entrada 2: Rollback Atômico (bootc) -->
+        <div class="rounded-xl p-4 cursor-pointer transition-all hover:bg-slate-900/60 border border-slate-800/80 flex items-center justify-between group">
+          <div class="flex items-center gap-4">
+            <div class="w-9 h-9 rounded-lg bg-indigo-500/10 flex items-center justify-center text-indigo-400 border border-indigo-500/20">
+              <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 10h10a8 8 0 018 8v2M3 10l6 6m-6-6l6-6"></path>
+              </svg>
+            </div>
+            <div>
+              <div class="flex items-center gap-2">
+                <span class="text-slate-200 font-medium text-sm group-hover:text-indigo-300">ForjaOS (Rollback Anterior · commit 3b4a11f)</span>
+                <span class="text-[10px] px-2 py-0.5 rounded bg-indigo-950 text-indigo-300">Ponto de Restauração</span>
+              </div>
+              <p class="text-xs text-slate-500 mt-0.5">Criado antes da atualização atômica de ontem às 23:40</p>
+            </div>
+          </div>
+          <span class="text-xs text-slate-500 group-hover:text-slate-300">F3</span>
+        </div>
+
+        <!-- Entrada 3: Dual Boot Windows 11 Preservado (FR-011) -->
+        <div class="rounded-xl p-4 cursor-pointer transition-all hover:bg-slate-900/60 border border-slate-800/80 flex items-center justify-between group">
+          <div class="flex items-center gap-4">
+            <div class="w-9 h-9 rounded-lg bg-sky-500/10 flex items-center justify-center text-sky-400 border border-sky-500/20">
+              <svg class="w-5 h-5" viewBox="0 0 24 24" fill="currentColor">
+                <path d="M0 3.449L9.75 2.1v9.451H0m10.949-9.602L24 0v11.4H10.949M0 12.6h9.75v9.451L0 20.699M10.949 12.6H24V24l-13.051-1.801"/>
+              </svg>
+            </div>
+            <div>
+              <div class="flex items-center gap-2">
+                <span class="text-slate-200 font-medium text-sm group-hover:text-sky-300">Windows Boot Manager</span>
+                <span class="text-[10px] px-2 py-0.5 rounded bg-slate-800 text-slate-400">NVMe0n1p1 (Dual Boot)</span>
+              </div>
+              <p class="text-xs text-slate-500 mt-0.5">Windows 11 Pro 64-bit · Partição NTFS preservada</p>
+            </div>
+          </div>
+          <span class="text-xs text-slate-500 group-hover:text-slate-300">F4</span>
+        </div>
+
+        <!-- Entrada 4: Recovery / Uki Diagnostics -->
+        <div class="rounded-xl p-3.5 cursor-pointer transition-all hover:bg-slate-900/40 border border-slate-800/50 flex items-center justify-between text-slate-400 group">
+          <div class="flex items-center gap-4">
+            <div class="w-9 h-9 rounded-lg bg-amber-500/10 flex items-center justify-center text-amber-400 border border-amber-500/20">
+              <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"></path>
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path>
+              </svg>
+            </div>
+            <div>
+              <span class="text-xs font-medium text-slate-300 group-hover:text-amber-300">Modo de Resgate & Diagnóstico EFI (MemTest86+ / Shell)</span>
+              <p class="text-[11px] text-slate-500">Reparo de initramfs e rollback emergencial via linha de comando</p>
+            </div>
+          </div>
+          <span class="text-xs text-slate-500">F8</span>
+        </div>
+
+      </div>
+
+      <!-- Quick Command Preview -->
+      <div class="mt-6 pt-5 border-t border-slate-800/60 flex items-center justify-between text-xs text-slate-500 font-mono">
+        <div class="flex items-center gap-2">
+          <span class="text-cyan-400 font-bold">$</span>
+          <span>boot-args:</span>
+          <span class="text-slate-400 bg-slate-900/80 px-2 py-0.5 rounded border border-slate-800">rd.driver.pre=nvidia-open quiet splash selinux=1</span>
+        </div>
+        <div class="text-[11px] text-slate-500">
+          Pressione <span class="text-slate-300 font-bold">‘e’</span> para editar os parâmetros de boot
+        </div>
+      </div>
+
+    </div>
+  </main>
+
+  <!-- Bottom Command Legend -->
+  <footer class="relative z-20 px-10 py-5 bg-[#070A11]/90 border-t border-slate-800/50 backdrop-blur-md flex items-center justify-between text-xs font-mono text-slate-400">
+    <div class="flex items-center gap-6">
+      <div class="flex items-center gap-2">
+        <kbd class="px-2 py-1 bg-slate-800 rounded border border-slate-700 text-slate-200 text-[11px]">↑ / ↓</kbd>
+        <span>Navegar</span>
+      </div>
+      <div class="flex items-center gap-2">
+        <kbd class="px-2 py-1 bg-slate-800 rounded border border-slate-700 text-slate-200 text-[11px]">Enter</kbd>
+        <span>Confirmar</span>
+      </div>
+      <div class="flex items-center gap-2">
+        <kbd class="px-2 py-1 bg-slate-800 rounded border border-slate-700 text-slate-200 text-[11px]">e</kbd>
+        <span>Editar linha</span>
+      </div>
+      <div class="flex items-center gap-2">
+        <kbd class="px-2 py-1 bg-slate-800 rounded border border-slate-700 text-slate-200 text-[11px]">c</kbd>
+        <span>Console GRUB</span>
+      </div>
+      <div class="flex items-center gap-2">
+        <kbd class="px-2 py-1 bg-slate-800 rounded border border-slate-700 text-slate-200 text-[11px]">Esc</kbd>
+        <span>Menu Firmware UEFI</span>
+      </div>
+    </div>
+
+    <div class="flex items-center gap-3 text-slate-500 text-[11px]">
+      <span>ForjaOS Project</span>
+      <span>•</span>
+      <span>Fedora Atomic Base</span>
+      <span>•</span>
+      <span class="text-cyan-400/80">forja.dev</span>
+    </div>
+  </footer>
+</body>
+</html>

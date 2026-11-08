@@ -1,0 +1,607 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ForjaOS - Plasmoid do Guará (KDE Plasma 6 Widget & Tray Popup)</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500;600&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['"Plus Jakarta Sans"', 'sans-serif'],
+            mono: ['"Fira Code"', 'monospace'],
+          },
+          colors: {
+            surface: {
+              DEFAULT: '#0f131d',
+              dim: '#0f131d',
+              bright: '#353944',
+              lowest: '#0a0e18',
+              low: '#171b26',
+              high: '#252a37',
+              highest: '#2e3444'
+            },
+            cyan: {
+              neon: '#00e5ff',
+              dim: '#0284c7'
+            },
+            violet: {
+              neon: '#8b5cf6',
+              dim: '#6366f1'
+            },
+            guara: {
+              orange: '#f97316',
+              alert: '#e11d48'
+            }
+          },
+          animation: {
+            'pulse-slow': 'pulse 3s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+            'spin-slow': 'spin 12s linear infinite',
+            'waveform': 'wave 1.2s ease-in-out infinite',
+          },
+          keyframes: {
+            wave: {
+              '0%, 100%': { height: '6px' },
+              '50%': { height: '22px' },
+            }
+          }
+        }
+      }
+    }
+  </script>
+  <style>
+    body {
+      background-color: #080b12;
+      color: #e2e8f0;
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      overflow-x: hidden;
+      background-image: 
+        radial-gradient(circle at 80% 20%, rgba(139, 92, 246, 0.08) 0%, transparent 40%),
+        radial-gradient(circle at 20% 80%, rgba(0, 229, 255, 0.06) 0%, transparent 50%);
+    }
+
+    .glass-panel {
+      background: rgba(15, 19, 29, 0.85);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      box-shadow: 0 20px 40px -15px rgba(0, 0, 0, 0.6), 0 0 1px 1px rgba(255, 255, 255, 0.05);
+    }
+
+    .glass-panel-neon {
+      background: rgba(23, 27, 38, 0.9);
+      backdrop-filter: blur(24px);
+      -webkit-backdrop-filter: blur(24px);
+      border: 1px solid rgba(0, 229, 255, 0.25);
+      box-shadow: 0 16px 36px rgba(0, 0, 0, 0.7), 0 0 20px rgba(0, 229, 255, 0.12);
+    }
+
+    .glow-cyan {
+      box-shadow: 0 0 15px rgba(0, 229, 255, 0.35);
+    }
+
+    .glow-violet {
+      box-shadow: 0 0 15px rgba(139, 92, 246, 0.35);
+    }
+
+    .glow-crimson {
+      box-shadow: 0 0 15px rgba(225, 29, 72, 0.4);
+    }
+
+    /* Custom scrollbar */
+    ::-webkit-scrollbar {
+      width: 5px;
+    }
+    ::-webkit-scrollbar-track {
+      background: rgba(10, 14, 24, 0.6);
+    }
+    ::-webkit-scrollbar-thumb {
+      background: #2e3444;
+      border-radius: 4px;
+    }
+    ::-webkit-scrollbar-thumb:hover {
+      background: #00e5ff;
+    }
+  </style>
+</head>
+<body class="min-h-screen flex flex-col justify-between p-0 m-0">
+
+  <!-- ========================================================= -->
+  <!-- 1. BARRA SUPERIOR DO PLASMA 6 (TOP PANEL DO FORJAOS)     -->
+  <!-- ========================================================= -->
+  <header class="w-full bg-[#0a0e18]/95 backdrop-blur-xl border-b border-white/10 px-4 py-2 z-50 sticky top-0 flex items-center justify-between text-xs select-none">
+    
+    <!-- Esquerda: Informações do Contexto e Projeto -->
+    <div class="flex items-center space-x-3 text-slate-300">
+      <div class="flex items-center space-x-2 bg-surface-low/80 px-2.5 py-1 rounded-md border border-white/5">
+        <span class="w-2 h-2 rounded-full bg-cyan-neon animate-pulse"></span>
+        <span class="font-semibold text-white tracking-wide text-[11px]">game-api</span>
+        <span class="text-slate-500 text-[10px]">·</span>
+        <span class="text-cyan-neon font-mono text-[10px]">branch main</span>
+      </div>
+      <div class="hidden sm:flex items-center space-x-2 text-slate-400 text-[11px] font-mono">
+        <span class="text-slate-600">/</span>
+        <span>~/proj/game-api</span>
+      </div>
+    </div>
+
+    <!-- Centro: Relógio & Data (Plasma 6 Digital Clock) -->
+    <div class="flex items-center space-x-2 text-slate-300 font-mono text-xs">
+      <span class="text-slate-400">dom 8 nov</span>
+      <span class="text-slate-600">·</span>
+      <span class="text-white font-bold tracking-wider">14:32:04</span>
+    </div>
+
+    <!-- Direita: System Tray com o PLASMOID DO GUARÁ (FR-120) -->
+    <div class="flex items-center space-x-2.5">
+      
+      <!-- Telemetria GPU / Sistema -->
+      <div class="hidden md:flex items-center space-x-2 bg-surface-lowest px-2.5 py-1 rounded-md border border-white/5 text-[11px] font-mono">
+        <span class="text-cyan-neon font-semibold">GPU</span>
+        <span class="text-slate-300">RTX 4070 · 46°C</span>
+      </div>
+
+      <!-- Conexões (Rede / BT / Escudo) -->
+      <div class="flex items-center space-x-2 text-slate-400 text-xs px-2 border-r border-white/10">
+        <span class="hover:text-cyan-neon cursor-pointer" title="Wi-Fi: DevLab 5G">
+          <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8.111 16.404a5.5 5.5 0 017.778 0M12 20h.01m-7.08-7.071c3.904-3.905 10.236-3.905 14.141 0M1.394 9.393c5.857-5.857 15.355-5.857 21.213 0"/></svg>
+        </span>
+        <span class="hover:text-cyan-neon cursor-pointer" title="Escudo Ativo (CrowdSec + Suricata)">
+          <svg class="w-3.5 h-3.5 text-emerald-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/></svg>
+        </span>
+      </div>
+
+      <!-- =================================================== -->
+      <!-- O PLASMOID HERO / GUARÁ ATIVO NA BANDEJA            -->
+      <!-- =================================================== -->
+      <div id="plasmoid-button" class="relative group cursor-pointer flex items-center space-x-2 bg-gradient-to-r from-surface-low to-surface-high hover:from-surface-high hover:to-surface-bright px-3 py-1 rounded-full border border-cyan-neon/40 shadow-[0_0_12px_rgba(0,229,255,0.25)] transition-all">
+        <!-- Ícone do Mascote Guará em Miniatura (Vetor SVG) -->
+        <div class="relative w-5 h-5 flex-shrink-0">
+          <svg viewBox="0 0 400 400" class="w-full h-full drop-shadow-[0_0_6px_rgba(0,229,255,0.8)]">
+            <polygon points="120,160 145,55 185,130" fill="#f97316"/>
+            <polygon points="280,160 255,55 215,130" fill="#f97316"/>
+            <polygon points="120,160 150,225 185,220 185,150" fill="#ea580c"/>
+            <polygon points="280,160 250,225 215,220 215,150" fill="#c2410c"/>
+            <polygon points="150,150 200,120 250,150 200,215" fill="#f97316"/>
+            <!-- Olhos e Centelha Ciano Neon -->
+            <polygon points="158,185 184,185 174,195 155,193" fill="#00e5ff"/>
+            <polygon points="242,185 216,185 226,195 245,193" fill="#00e5ff"/>
+            <polygon points="170,215 200,210 230,215 200,290" fill="#1e232e"/>
+            <circle cx="200" cy="160" r="3" fill="#00e5ff"/>
+          </svg>
+          <!-- Indicador Pulsante de Microfone PipeWire -->
+          <span class="absolute -bottom-0.5 -right-0.5 w-2 h-2 rounded-full bg-emerald-400 border border-[#0a0e18]"></span>
+        </div>
+        
+        <span class="font-bold text-white text-[11px] tracking-wide">Guará</span>
+        <span class="bg-cyan-500/20 text-cyan-neon text-[9px] px-1.5 py-0.5 rounded font-mono font-medium border border-cyan-neon/30">ESCUTANDO</span>
+      </div>
+
+    </div>
+  </header>
+
+  <!-- ========================================================= -->
+  <!-- 2. CORPO PRINCIPAL COM O POPUP FLYOUT & ESTADOS DO WIDGET -->
+  <!-- ========================================================= -->
+  <main class="flex-1 w-full max-w-7xl mx-auto px-4 py-8 flex flex-col lg:flex-row gap-8 items-start justify-center">
+
+    <!-- ======================================================= -->
+    <!-- COLUNA PRINCIPAL: POPUP DO PLASMOID (CLIQUE NA BANDEJA) -->
+    <!-- ======================================================= -->
+    <section class="w-full lg:w-[460px] flex-shrink-0 flex flex-col gap-4">
+      
+      <!-- Identificação do Componente Plasma 6 -->
+      <div class="flex items-center justify-between text-xs text-slate-400 px-1">
+        <div class="flex items-center space-x-2">
+          <span class="px-2 py-0.5 bg-surface-low rounded border border-white/10 font-mono text-[10px] text-cyan-neon font-semibold">QML / Kirigami</span>
+          <span class="text-white font-medium text-xs">org.forjaos.guaraplasmoid (v1.0)</span>
+        </div>
+        <span class="text-slate-500 font-mono text-[11px]">FR-120 · FR-054</span>
+      </div>
+
+      <!-- POPUP / FLYOUT CONTAINER -->
+      <div class="w-full glass-panel-neon rounded-2xl p-5 shadow-2xl relative overflow-hidden text-slate-200">
+        
+        <!-- Fundo sutil com gradiente polar -->
+        <div class="absolute -top-24 -right-24 w-48 h-48 bg-cyan-neon/10 rounded-full blur-3xl pointer-events-none"></div>
+        <div class="absolute -bottom-24 -left-24 w-48 h-48 bg-violet-neon/10 rounded-full blur-3xl pointer-events-none"></div>
+
+        <!-- 1. Cabeçalho do Pop-up com Mascote Interativo e Status do Daemon -->
+        <div class="flex items-start justify-between pb-4 border-b border-white/10 relative z-10">
+          
+          <div class="flex items-center space-x-3.5">
+            <!-- Avatar do Mascote com Aura e Estado Ativo -->
+            <div class="relative w-14 h-14 rounded-2xl bg-surface-lowest border border-cyan-neon/40 p-1.5 shadow-[0_0_18px_rgba(0,229,255,0.25)] flex items-center justify-center">
+              <img src="https://lh3.googleusercontent.com/aida/ALJJyrBMDt6oa65yO_Od3eXDKTWtOwJvXjq_7gBUvp78Ri_qR8xXbJjne8nxdCYR7RdCgjFYXCAzpvRXrQJN7s6woRdyvYHjMSrnxhx4PM_QTSIkrusOeq3CUVWs-mhWXpnt8NY5B0DcrOIO1M9uRWbmPOkJxyjfdkre93sTO9uJcVd7BrFjS5wvgfg6slaEOjtTnyAC7NZTGMyWgJZ6L6AZLU47e9wTDctD9ZphgRR886IRzw" alt="Guará Falando" class="w-full h-full object-contain filter drop-shadow-[0_0_8px_rgba(0,229,255,0.5)]">
+              <!-- Ponto de status do nó PipeWire -->
+              <span class="absolute -top-1 -right-1 flex h-3 w-3">
+                <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-cyan-neon opacity-75"></span>
+                <span class="relative inline-flex rounded-full h-3 w-3 bg-cyan-neon"></span>
+              </span>
+            </div>
+
+            <div>
+              <div class="flex items-center space-x-2">
+                <h3 class="font-bold text-white text-base tracking-wide">Guará</h3>
+                <span class="text-[10px] font-mono px-2 py-0.5 rounded-full bg-cyan-neon/20 text-cyan-neon border border-cyan-neon/40 font-semibold tracking-wider">HERO ACTIVE</span>
+              </div>
+              <p class="text-slate-400 text-xs mt-0.5">Assistente Local · <span class="text-slate-300 font-mono">herod (PID 4821)</span></p>
+              <div class="flex items-center space-x-2 text-[10px] text-slate-400 mt-1 font-mono">
+                <span class="text-emerald-400">● 100% Local</span>
+                <span>·</span>
+                <span>Piper Fabíola</span>
+                <span>·</span>
+                <span>faster-whisper</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Botão de Expandir para Overlay Hero (Super + Espaço) -->
+          <button class="p-2 rounded-xl bg-surface-low hover:bg-surface-high border border-white/10 text-slate-300 hover:text-white transition-all group" title="Expandir para Central de Comando HERO (Super+Espaço)">
+            <svg class="w-4 h-4 text-cyan-neon group-hover:scale-110 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 8V4m0 0h4M4 4l5 5m11-1V4m0 0h-4m4 0l-5 5M4 16v4m0 0h4m-4 0l5-5m11 5l-5-5m5 5v-4m0 4h-4"/>
+            </svg>
+          </button>
+        </div>
+
+        <!-- 2. Transcrição Ativa / Balão de Fala do Assistente -->
+        <div class="mt-4 bg-surface-lowest/80 rounded-xl p-3.5 border border-white/5 relative z-10">
+          <div class="flex items-center justify-between text-[11px] text-slate-400 mb-1.5">
+            <span class="flex items-center space-x-1.5">
+              <svg class="w-3.5 h-3.5 text-cyan-neon" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 11a7 7 0 01-7 7m0 0a7 7 0 01-7-7m7 7v4m0 0H8m4 0h4m-4-8a3 3 0 02-3-3V5a3 3 0 116 0v6a3 3 0 01-3 3z"/></svg>
+              <span class="font-mono text-slate-300">Entrada de Voz Transcrita</span>
+            </span>
+            <span class="text-[10px] text-slate-500 font-mono">latência 280ms</span>
+          </div>
+          <p class="text-xs text-white leading-relaxed font-sans font-medium">
+            “Guará, compile o backend do <span class="text-cyan-neon font-mono">game-api</span> em release e verifique os contêineres.”
+          </p>
+
+          <!-- Resposta Rápida com Ação Executada (Policy Engine Tier 1) -->
+          <div class="mt-3 pt-2.5 border-t border-white/10 flex items-center justify-between text-[11px]">
+            <div class="flex items-center space-x-2 text-slate-300">
+              <span class="w-1.5 h-1.5 rounded-full bg-cyan-neon"></span>
+              <span>Ação executada:</span>
+              <code class="px-1.5 py-0.5 rounded bg-surface-high font-mono text-[10px] text-cyan-neon">cargo build --release</code>
+            </div>
+            <span class="text-emerald-400 font-semibold font-mono text-[10px]">Tier 1 · OK</span>
+          </div>
+
+          <!-- Waveform do Piper TTS / Fala ao Vivo -->
+          <div class="mt-3 flex items-center justify-between px-2 py-1.5 bg-surface-low/50 rounded-lg">
+            <div class="flex items-center space-x-1">
+              <span class="w-1 bg-cyan-neon rounded-full h-3 animate-waveform"></span>
+              <span class="w-1 bg-cyan-neon rounded-full h-5 animate-waveform" style="animation-delay: 0.15s"></span>
+              <span class="w-1 bg-cyan-neon rounded-full h-2 animate-waveform" style="animation-delay: 0.3s"></span>
+              <span class="w-1 bg-cyan-neon rounded-full h-6 animate-waveform" style="animation-delay: 0.45s"></span>
+              <span class="w-1 bg-cyan-neon rounded-full h-4 animate-waveform" style="animation-delay: 0.6s"></span>
+              <span class="w-1 bg-cyan-neon rounded-full h-2 animate-waveform" style="animation-delay: 0.2s"></span>
+            </div>
+            <span class="text-[10px] font-mono text-cyan-neon/90">TTS Piper · Sintetizando voz</span>
+            <button class="text-slate-400 hover:text-white text-[11px]" title="Interromper fala (Barge-in)">Parar</button>
+          </div>
+        </div>
+
+        <!-- 3. Campo de Entrada Rápida de Texto (FR-085: Modo Texto Completo) -->
+        <div class="mt-4 relative z-10">
+          <label class="block text-[11px] font-medium text-slate-400 mb-1.5">Comando Rápido ao HERO (ou pressione <kbd class="px-1.5 py-0.5 bg-surface-high text-cyan-neon rounded border border-white/10 text-[10px]">Super+Espaço</kbd>)</label>
+          <div class="relative flex items-center">
+            <input type="text" placeholder="Ex: 'Status dos contêineres' ou 'Modo Jogo on'..." class="w-full bg-surface-lowest text-xs text-white placeholder-slate-500 rounded-xl px-3.5 py-2.5 pr-20 border border-white/10 focus:border-cyan-neon focus:outline-none focus:ring-1 focus:ring-cyan-neon transition-all font-mono">
+            <button class="absolute right-1.5 px-3 py-1 bg-gradient-to-r from-cyan-dim to-cyan-neon text-slate-950 font-bold text-xs rounded-lg hover:brightness-110 transition-all shadow-sm">
+              Enviar
+            </button>
+          </div>
+        </div>
+
+        <!-- 4. Quick Toggles do Plasmoid (Microfone, Modo Silencioso, Modo Jogo) -->
+        <div class="mt-4 grid grid-cols-3 gap-2 relative z-10">
+          
+          <!-- Toggle Mute Microfone (Super+M) -->
+          <button class="flex flex-col items-center justify-center p-2.5 rounded-xl bg-surface-low hover:bg-surface-high border border-white/5 hover:border-cyan-neon/30 transition-all text-center group">
+            <div class="w-7 h-7 rounded-lg bg-surface-lowest flex items-center justify-center mb-1 text-emerald-400 group-hover:text-cyan-neon">
+              <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 11a7 7 0 01-7 7m0 0a7 7 0 01-7-7m7 7v4m0 0H8m4 0h4m-4-8a3 3 0 02-3-3V5a3 3 0 116 0v6a3 3 0 01-3 3z"/></svg>
+            </div>
+            <span class="text-[11px] font-semibold text-white">Mic Ativo</span>
+            <span class="text-[9px] text-slate-400 font-mono">Super + M</span>
+          </button>
+
+          <!-- Toggle Push-to-Talk -->
+          <button class="flex flex-col items-center justify-center p-2.5 rounded-xl bg-surface-low hover:bg-surface-high border border-white/5 hover:border-violet-neon/30 transition-all text-center group">
+            <div class="w-7 h-7 rounded-lg bg-surface-lowest flex items-center justify-center mb-1 text-violet-neon">
+              <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 15l-2 5L9 9l11 4-5 2zm0 0l5 5M7.188 2.239l.777 2.897M5.136 7.965l-2.898-.777M13.95 4.05l-2.122 2.122m-5.657 5.656l-2.12 2.122"/></svg>
+            </div>
+            <span class="text-[11px] font-semibold text-white">Wake Word</span>
+            <span class="text-[9px] text-cyan-neon font-mono">“Ei, Guará”</span>
+          </button>
+
+          <!-- Toggle Modo Jogo (FR-043) -->
+          <button class="flex flex-col items-center justify-center p-2.5 rounded-xl bg-surface-low hover:bg-surface-high border border-white/5 hover:border-guara-orange/30 transition-all text-center group">
+            <div class="w-7 h-7 rounded-lg bg-surface-lowest flex items-center justify-center mb-1 text-slate-400 group-hover:text-guara-orange">
+              <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 4a2 2 0 114 0v1a1 1 0 001 1h3a1 1 0 011 1v3a1 1 0 01-1 1h-1a2 2 0 100 4h1a1 1 0 011 1v3a1 1 0 01-1 1h-3a1 1 0 01-1-1v-1a2 2 0 10-4 0v1a1 1 0 01-1 1H7a1 1 0 01-1-1v-3a1 1 0 00-1-1H4a2 2 0 110-4h1a1 1 0 001-1V7a1 1 0 011-1h3a1 1 0 001-1V4z"/></svg>
+            </div>
+            <span class="text-[11px] font-semibold text-slate-300">Modo Jogo</span>
+            <span class="text-[9px] text-slate-500 font-mono">Desligado</span>
+          </button>
+
+        </div>
+
+        <!-- 5. Rodapé do Flyout: Atalho para Vault de Memória & Configurações -->
+        <div class="mt-4 pt-3 border-t border-white/10 flex items-center justify-between text-xs text-slate-400 relative z-10">
+          <a href="#" class="flex items-center space-x-1.5 text-slate-300 hover:text-cyan-neon transition-colors text-[11px]">
+            <svg class="w-3.5 h-3.5 text-violet-neon" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"/></svg>
+            <span>Ver Memória do Dia (<span class="font-mono text-cyan-neon">142 eventos</span>)</span>
+          </a>
+
+          <div class="flex items-center space-x-2">
+            <button class="px-2 py-1 rounded bg-surface-low hover:bg-surface-high text-[10px] font-mono text-slate-300 hover:text-white border border-white/5">
+              Configurações
+            </button>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- ======================================================= -->
+      <!-- MENU DE CONTEXTO DO PLASMOID (CLIQUE COM O BOTÃO DIREITO) -->
+      <!-- ======================================================= -->
+      <div class="w-full glass-panel rounded-xl p-3 border border-white/10 shadow-lg text-slate-300">
+        <div class="flex items-center justify-between text-[11px] font-bold text-white px-2 py-1 mb-1 border-b border-white/5">
+          <span class="flex items-center space-x-1.5">
+            <span class="w-1.5 h-1.5 rounded-full bg-cyan-neon"></span>
+            <span>Menu de Contexto do Plasmoid (Clique Direito)</span>
+          </span>
+          <span class="text-[9px] text-slate-500 font-mono">KDE Plasma 6 Context</span>
+        </div>
+
+        <ul class="text-xs space-y-1 mt-1 font-medium">
+          <li class="flex items-center justify-between px-2.5 py-1.5 rounded-lg hover:bg-surface-high cursor-pointer transition-colors text-white">
+            <span class="flex items-center space-x-2">
+              <svg class="w-4 h-4 text-cyan-neon" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"/></svg>
+              <span>Abrir Central de Comando HERO</span>
+            </span>
+            <span class="text-[10px] font-mono text-slate-500">Super + Espaço</span>
+          </li>
+
+          <li class="flex items-center justify-between px-2.5 py-1.5 rounded-lg hover:bg-surface-high cursor-pointer transition-colors text-slate-300 hover:text-white">
+            <span class="flex items-center space-x-2">
+              <svg class="w-4 h-4 text-emerald-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 11a7 7 0 01-7 7m0 0a7 7 0 01-7-7m7 7v4m0 0H8m4 0h4m-4-8a3 3 0 02-3-3V5a3 3 0 116 0v6a3 3 0 01-3 3z"/></svg>
+              <span>Mutar Microfone (Mute Switch)</span>
+            </span>
+            <span class="text-[10px] font-mono text-slate-500">Super + M</span>
+          </li>
+
+          <li class="flex items-center justify-between px-2.5 py-1.5 rounded-lg hover:bg-surface-high cursor-pointer transition-colors text-slate-300 hover:text-white">
+            <span class="flex items-center space-x-2">
+              <svg class="w-4 h-4 text-violet-neon" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"/></svg>
+              <span>Abrir Visualizador de Memória</span>
+            </span>
+            <span class="text-[10px] font-mono text-slate-500">Ctrl + 1</span>
+          </li>
+
+          <li class="flex items-center justify-between px-2.5 py-1.5 rounded-lg hover:bg-surface-high cursor-pointer transition-colors text-slate-300 hover:text-white">
+            <span class="flex items-center space-x-2">
+              <svg class="w-4 h-4 text-amber-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 4a2 2 0 114 0v1a1 1 0 001 1h3a1 1 0 011 1v3a1 1 0 01-1 1h-1a2 2 0 100 4h1a1 1 0 011 1v3a1 1 0 01-1 1h-3a1 1 0 01-1-1v-1a2 2 0 10-4 0v1a1 1 0 01-1 1H7a1 1 0 01-1-1v-3a1 1 0 00-1-1H4a2 2 0 110-4h1a1 1 0 001-1V7a1 1 0 011-1h3a1 1 0 001-1V4z"/></svg>
+              <span>Ativar Modo Jogo (hero-game.target)</span>
+            </span>
+            <span class="text-[10px] font-mono text-slate-500">Super + G</span>
+          </li>
+
+          <li class="pt-1 mt-1 border-t border-white/5 flex items-center justify-between px-2.5 py-1.5 rounded-lg hover:bg-red-500/10 cursor-pointer transition-colors text-rose-400 hover:text-rose-300">
+            <span class="flex items-center space-x-2">
+              <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 14l2-2m0 0l2-2m-2 2l-2-2m2 2l2 2m7-2a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+              <span>Desligar HERO Daemon (systemctl --user stop herod)</span>
+            </span>
+            <span class="text-[10px] font-mono text-rose-500/80">kill switch</span>
+          </li>
+        </ul>
+      </div>
+
+    </section>
+
+    <!-- ======================================================= -->
+    <!-- COLUNA DA DIREITA: OS 5 ESTADOS DO PLASMOID NA BARRA    -->
+    <!-- ======================================================= -->
+    <section class="flex-1 w-full flex flex-col gap-6">
+      
+      <div>
+        <h2 class="text-xl font-bold text-white tracking-wide flex items-center space-x-3">
+          <span>Estados Operacionais do Plasmoid na Barra Superior</span>
+          <span class="px-2.5 py-0.5 rounded-full text-xs font-mono bg-cyan-500/15 text-cyan-neon border border-cyan-neon/30">FR-071 & FR-123</span>
+        </h2>
+        <p class="text-sm text-slate-400 mt-1">
+          O widget QML do Guará reside permanentemente na barra superior do Plasma 6, com animação a 60 fps, telemetria de áudio e transições de estado via sinais D-Bus (<code class="text-cyan-neon font-mono text-xs">org.forjaos.Hero</code>).
+        </p>
+      </div>
+
+      <!-- GRID DOS 5 ESTADOS -->
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+
+        <!-- 1. ESTADO: ESCUTANDO / OCIOSO (IDLE / LISTENING) -->
+        <div class="glass-panel rounded-2xl p-4 border border-cyan-neon/30 hover:border-cyan-neon transition-all relative overflow-hidden group">
+          <div class="flex items-center justify-between pb-3 border-b border-white/10">
+            <div class="flex items-center space-x-2">
+              <span class="w-2.5 h-2.5 rounded-full bg-cyan-neon animate-pulse"></span>
+              <h4 class="font-bold text-white text-sm">01. Escutando / Ocioso</h4>
+            </div>
+            <span class="text-[10px] font-mono px-2 py-0.5 rounded bg-cyan-neon/20 text-cyan-neon font-semibold">WAKE WORD ATIVA</span>
+          </div>
+
+          <!-- Preview da Barra do Plasmoid -->
+          <div class="my-3.5 bg-surface-lowest p-2.5 rounded-xl border border-white/5 flex items-center justify-between">
+            <span class="text-[10px] font-mono text-slate-500">Widget na Barra:</span>
+            <!-- Componente Plasmoid -->
+            <div class="flex items-center space-x-2 bg-surface-low px-3 py-1 rounded-full border border-cyan-neon/50 shadow-[0_0_10px_rgba(0,229,255,0.2)]">
+              <div class="w-5 h-5 flex items-center justify-center">
+                <svg viewBox="0 0 400 400" class="w-full h-full drop-shadow-[0_0_4px_rgba(0,229,255,0.8)]">
+                  <polygon points="120,160 145,55 185,130" fill="#f97316"/>
+                  <polygon points="280,160 255,55 215,130" fill="#f97316"/>
+                  <polygon points="120,160 150,225 185,220 185,150" fill="#ea580c"/>
+                  <polygon points="280,160 250,225 215,220 215,150" fill="#c2410c"/>
+                  <polygon points="150,150 200,120 250,150 200,215" fill="#f97316"/>
+                  <polygon points="158,185 184,185 174,195 155,193" fill="#00e5ff"/>
+                  <polygon points="242,185 216,185 226,195 245,193" fill="#00e5ff"/>
+                </svg>
+              </div>
+              <span class="font-bold text-white text-[11px]">Guará</span>
+              <span class="w-2 h-2 rounded-full bg-emerald-400" title="Microfone capturando nó PipeWire"></span>
+            </div>
+          </div>
+
+          <p class="text-xs text-slate-400 leading-relaxed">
+            Consumo ultra-baixo (&lt; 120 MB RAM / 0% GPU). O detector <span class="text-slate-300 font-mono">openWakeWord</span> avalia buffers de 80ms em CPU aguardando a palavra de ativação <span class="text-cyan-neon font-mono">“Ei, Guará”</span>.
+          </p>
+        </div>
+
+        <!-- 2. ESTADO: PENSANDO (THINKING / INFERÊNCIA LLM) -->
+        <div class="glass-panel rounded-2xl p-4 border border-violet-neon/30 hover:border-violet-neon transition-all relative overflow-hidden group">
+          <div class="flex items-center justify-between pb-3 border-b border-white/10">
+            <div class="flex items-center space-x-2">
+              <span class="w-2.5 h-2.5 rounded-full bg-violet-neon animate-pulse"></span>
+              <h4 class="font-bold text-white text-sm">02. Pensando (Inferência)</h4>
+            </div>
+            <span class="text-[10px] font-mono px-2 py-0.5 rounded bg-violet-neon/20 text-violet-neon font-semibold">QWEN3 8B ATIVO</span>
+          </div>
+
+          <!-- Preview da Barra do Plasmoid -->
+          <div class="my-3.5 bg-surface-lowest p-2.5 rounded-xl border border-white/5 flex items-center justify-between">
+            <span class="text-[10px] font-mono text-slate-500">Widget na Barra:</span>
+            <!-- Componente Plasmoid -->
+            <div class="flex items-center space-x-2 bg-surface-low px-3 py-1 rounded-full border border-violet-neon/50 shadow-[0_0_10px_rgba(139,92,246,0.3)]">
+              <div class="w-5 h-5 flex items-center justify-center">
+                <!-- Mini Mascote Pensando -->
+                <img src="https://lh3.googleusercontent.com/aida/ALJJyrAgbMbpV-Z5W-TjW_lN_FYpU37IWD0CUZKpvBPJrSUPzfUtKN5RK68EcRn2wwF2kMuTcC2XDplidT8gW_ZrTHldCI_SZTNMiQibWcEmMwiBJk-EbpA4HDFJPy2DC-d0vBs2K_eK7KLJxkb3rEWpDcRUcpiTWbf_O22pr2h2Mz65fet7J1jZN2s8VSwUAp6KMsUel3_EuM2sEk1KL9Y10BbagmiEjygllJXqwTl-5bdCuA" alt="Guará Pensando" class="w-full h-full object-contain filter drop-shadow-[0_0_4px_rgba(139,92,246,0.8)]">
+              </div>
+              <span class="font-bold text-white text-[11px]">Guará</span>
+              <span class="text-[9px] font-mono text-violet-neon animate-pulse">PENSANDO...</span>
+            </div>
+          </div>
+
+          <p class="text-xs text-slate-400 leading-relaxed">
+            Auréola orbital violeta neon e centelha <span class="text-violet-neon font-mono">&lt; • • • &gt;</span>. O Ollama processa o roteamento da intenção e a geração da resposta via modelo local.
+          </p>
+        </div>
+
+        <!-- 3. ESTADO: FALANDO (SPEAKING / PIPER TTS) -->
+        <div class="glass-panel rounded-2xl p-4 border border-cyan-neon/30 hover:border-cyan-neon transition-all relative overflow-hidden group">
+          <div class="flex items-center justify-between pb-3 border-b border-white/10">
+            <div class="flex items-center space-x-2">
+              <span class="w-2.5 h-2.5 rounded-full bg-cyan-neon"></span>
+              <h4 class="font-bold text-white text-sm">03. Falando (Síntese TTS)</h4>
+            </div>
+            <span class="text-[10px] font-mono px-2 py-0.5 rounded bg-cyan-neon/20 text-cyan-neon font-semibold">PIPER TTS · 60 FPS</span>
+          </div>
+
+          <!-- Preview da Barra do Plasmoid -->
+          <div class="my-3.5 bg-surface-lowest p-2.5 rounded-xl border border-white/5 flex items-center justify-between">
+            <span class="text-[10px] font-mono text-slate-500">Widget na Barra:</span>
+            <!-- Componente Plasmoid -->
+            <div class="flex items-center space-x-2 bg-surface-low px-3 py-1 rounded-full border border-cyan-neon/60 shadow-[0_0_12px_rgba(0,229,255,0.35)]">
+              <div class="w-5 h-5 flex items-center justify-center">
+                <img src="https://lh3.googleusercontent.com/aida/ALJJyrBMDt6oa65yO_Od3eXDKTWtOwJvXjq_7gBUvp78Ri_qR8xXbJjne8nxdCYR7RdCgjFYXCAzpvRXrQJN7s6woRdyvYHjMSrnxhx4PM_QTSIkrusOeq3CUVWs-mhWXpnt8NY5B0DcrOIO1M9uRWbmPOkJxyjfdkre93sTO9uJcVd7BrFjS5wvgfg6slaEOjtTnyAC7NZTGMyWgJZ6L6AZLU47e9wTDctD9ZphgRR886IRzw" alt="Guará Falando" class="w-full h-full object-contain filter drop-shadow-[0_0_5px_rgba(0,229,255,0.9)]">
+              </div>
+              <span class="font-bold text-white text-[11px]">Guará</span>
+              <!-- Mini equalizador ao vivo -->
+              <div class="flex items-center space-x-0.5 h-3">
+                <span class="w-0.5 bg-cyan-neon h-2 animate-waveform"></span>
+                <span class="w-0.5 bg-cyan-neon h-3 animate-waveform" style="animation-delay: 0.2s"></span>
+                <span class="w-0.5 bg-cyan-neon h-1.5 animate-waveform" style="animation-delay: 0.4s"></span>
+              </div>
+            </div>
+          </div>
+
+          <p class="text-xs text-slate-400 leading-relaxed">
+            Visemes dinâmicos sincronizados com <span class="text-slate-300 font-mono">VisemeEvent[]</span> do Piper. Abertura labial iluminada e ondas acústicas de áudio emitidas lateralmente.
+          </p>
+        </div>
+
+        <!-- 4. ESTADO: ERRO / ALERTA DE POLÍTICA (ERROR / FAULT) -->
+        <div class="glass-panel rounded-2xl p-4 border border-rose-500/40 hover:border-rose-500 transition-all relative overflow-hidden group">
+          <div class="flex items-center justify-between pb-3 border-b border-white/10">
+            <div class="flex items-center space-x-2">
+              <span class="w-2.5 h-2.5 rounded-full bg-rose-500 animate-ping"></span>
+              <h4 class="font-bold text-white text-sm">04. Erro / Bloqueio Polkit</h4>
+            </div>
+            <span class="text-[10px] font-mono px-2 py-0.5 rounded bg-rose-500/20 text-rose-400 font-semibold">POLICY ENGINE</span>
+          </div>
+
+          <!-- Preview da Barra do Plasmoid -->
+          <div class="my-3.5 bg-surface-lowest p-2.5 rounded-xl border border-white/5 flex items-center justify-between">
+            <span class="text-[10px] font-mono text-slate-500">Widget na Barra:</span>
+            <!-- Componente Plasmoid -->
+            <div class="flex items-center space-x-2 bg-surface-low px-3 py-1 rounded-full border border-rose-500/60 shadow-[0_0_12px_rgba(225,29,72,0.35)]">
+              <div class="w-5 h-5 flex items-center justify-center">
+                <img src="https://lh3.googleusercontent.com/aida/ALJJyrDGDhcY8MiQQxpLxgBILqF2R_039t1kMKK98a2yEmFSt8ChTO56750Ue3b1bg5Px95-rE2QLsGCuGnDF_GFjZtdMWwKDjnEZiFTrf3DHa3hqKh7tcZquaHwWQFXUp9h5wjcJWetCIWqpoOFVfP3y2VNTzLY1MnDcoWLelJWv4Xdr775ZAKUxpJSL6FJyHZDx-Uwq2bCdkwH3aD7nPUgOoBlrzIBaMy3iTyt0MKKMtXSaQ" alt="Guará Erro" class="w-full h-full object-contain filter drop-shadow-[0_0_5px_rgba(225,29,72,0.9)]">
+              </div>
+              <span class="font-bold text-white text-[11px]">Guará</span>
+              <span class="text-[9px] font-mono text-rose-400 font-semibold">BLOQUEADO</span>
+            </div>
+          </div>
+
+          <p class="text-xs text-slate-400 leading-relaxed">
+            Alerta neon carmim (<span class="text-rose-400 font-mono">#E11D48</span>), ícones de glitch em ‘X’ e glifo <span class="text-rose-400 font-mono">&lt; ! &gt;</span>. Disparado quando um comando de tier bloqueado é recusado ou ocorre falha de runtime.
+          </p>
+        </div>
+
+      </div>
+
+      <!-- 5. PAINEL DE INTEGRAÇÃO COM KDE FRAMEWORKS 6 & D-BUS -->
+      <div class="glass-panel rounded-2xl p-5 border border-white/10 text-slate-300">
+        <h4 class="font-bold text-white text-sm tracking-wide flex items-center space-x-2 mb-3">
+          <svg class="w-4 h-4 text-cyan-neon" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4"/></svg>
+          <span>Especificação de Engenharia do Plasmoid (D-Bus & PipeWire Integration)</span>
+        </h4>
+
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-4 text-xs font-mono">
+          <div class="bg-surface-lowest p-3 rounded-xl border border-white/5">
+            <span class="text-cyan-neon text-[11px] block font-semibold mb-1">D-Bus Daemon API</span>
+            <p class="text-slate-400 text-[11px] leading-relaxed">
+              Expõe o serviço <code class="text-white">org.forjaos.Hero</code> com os métodos <code class="text-slate-300">TriggerWake()</code>, <code class="text-slate-300">SetMute(bool)</code> e sinal <code class="text-slate-300">StateChanged(uint)</code>.
+            </p>
+          </div>
+
+          <div class="bg-surface-lowest p-3 rounded-xl border border-white/5">
+            <span class="text-violet-neon text-[11px] block font-semibold mb-1">Renderização QML 60 FPS</span>
+            <p class="text-slate-400 text-[11px] leading-relaxed">
+              SVG com camadas poligonais nomeadas (<code class="text-white">fur</code>, <code class="text-white">eyes</code>, <code class="text-white">spark</code>, <code class="text-white">mouth</code>) transformadas via Kirigami ShaderEffect sem perda de frames.
+            </p>
+          </div>
+
+          <div class="bg-surface-lowest p-3 rounded-xl border border-white/5">
+            <span class="text-emerald-400 text-[11px] block font-semibold mb-1">Privacidade & Áudio</span>
+            <p class="text-slate-400 text-[11px] leading-relaxed">
+              Consumidor estrito de nó PipeWire (<code class="text-white">pipewire-rs</code>). Zero buffer gravado em disco (<code class="text-slate-300">NFR-030</code>); liberação imediata pós-STT.
+            </p>
+          </div>
+        </div>
+
+      </div>
+
+    </section>
+
+  </main>
+
+  <!-- ========================================================= -->
+  <!-- 3. RODAPÉ DE METADADOS E ATALHOS GLOBAIS                   -->
+  <!-- ========================================================= -->
+  <footer class="w-full bg-[#0a0e18]/90 border-t border-white/10 px-6 py-3 flex flex-col sm:flex-row items-center justify-between text-xs text-slate-500 font-mono">
+    <div class="flex items-center space-x-4">
+      <span class="text-slate-400">ForjaOS Plasma 6 Environment</span>
+      <span>·</span>
+      <span>KWin Wayland</span>
+      <span>·</span>
+      <span class="text-cyan-neon">herod daemon v1.0</span>
+    </div>
+    <div class="flex items-center space-x-4 mt-2 sm:mt-0">
+      <span>Super + Espaço: <strong class="text-slate-300">HERO Overlay</strong></span>
+      <span>Super + M: <strong class="text-slate-300">Mute Mic</strong></span>
+      <span>Super + G: <strong class="text-slate-300">Modo Jogo</strong></span>
+    </div>
+  </footer>
+
+</body>
+</html>

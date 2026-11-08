@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ForjaOS - Splash Plymouth</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500;600&family=Plus+Jakarta+Sans:wght@300;400;600;700&display=swap" rel="stylesheet">
+  <style>
+    body {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      background-color: #06090F;
+    }
+    .font-mono {
+      font-family: 'Fira Code', monospace;
+    }
+
+    /* Animação de pulso e glow sutil para a Bigorna */
+    @keyframes forgePulse {
+      0%, 100% {
+        filter: drop-shadow(0 0 15px rgba(0, 229, 255, 0.35)) drop-shadow(0 0 35px rgba(139, 92, 246, 0.2));
+        transform: scale(1);
+      }
+      50% {
+        filter: drop-shadow(0 0 30px rgba(0, 229, 255, 0.65)) drop-shadow(0 0 60px rgba(139, 92, 246, 0.45));
+        transform: scale(1.02);
+      }
+    }
+
+    @keyframes sparkFlicker {
+      0%, 100% { opacity: 0.9; transform: scale(1); }
+      50% { opacity: 1; transform: scale(1.08); filter: drop-shadow(0 0 12px #FF9F43); }
+    }
+
+    @keyframes barSlide {
+      0% { width: 0%; }
+      50% { width: 68%; }
+      100% { width: 94%; }
+    }
+
+    .pulse-forge {
+      animation: forgePulse 3.2s ease-in-out infinite;
+    }
+
+    .spark-flicker {
+      animation: sparkFlicker 1.8s ease-in-out infinite;
+    }
+
+    .progress-bar-anim {
+      animation: barSlide 2.6s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+    }
+  </style>
+</head>
+<body class="min-h-screen text-slate-300 relative flex flex-col items-center justify-center overflow-hidden select-none">
+  
+  <!-- Fundo sutil com wallpaper da forja em baixa opacidade -->
+  <div class="absolute inset-0 z-0 opacity-25 filter blur-2xl scale-110 pointer-events-none" style="background-image: url('https://lh3.googleusercontent.com/aida/ALJJyrBJR3Ib_O5WYry9vIkBuQ1okK6NXhHnO6Td4grENMqbwgNxUCYWKugDj1T6e_Aj-qB3VV_EffBJV_hUHxyMy-fktkfwZnxv3YOtQbQswcpyqoGUQ9XUd0lIGhcFJAZVlXur3biRBe7O75_gxttvwKhBpH0_UUxflfiLSK3wjtfwAtaasaL4-WW3NvhP4M5jeB-M8aNpUbvO6xFhTaFjkdOTKxphezHaUVXu5lTraX9A'); background-size: cover; background-position: center;"></div>
+  
+  <!-- Grade de malha sutil para sensação de boot de engenharia/dev -->
+  <div class="absolute inset-0 z-0 opacity-10 pointer-events-none bg-[radial-gradient(#00E5FF_1px,transparent_1px)] [background-size:32px_32px]"></div>
+
+  <main class="relative z-10 flex flex-col items-center text-center px-4 max-w-lg w-full">
+    
+    <!-- Logo Bigorna ForjaOS com Animação Glow -->
+    <div class="relative w-44 h-44 mb-8 flex items-center justify-center">
+      <!-- Glow circular ao fundo -->
+      <div class="absolute inset-0 rounded-full bg-gradient-to-tr from-cyan-500/20 via-indigo-600/20 to-violet-500/10 blur-2xl"></div>
+      
+      <!-- SVG Oficial da Bigorna com Brilho Dinâmico -->
+      <div class="pulse-forge w-36 h-36 flex items-center justify-center">
+        <img src="https://lh3.googleusercontent.com/aida/ALJJyrDlPs-k51C-0TPJse4gs3TQQWlxL3mprtcMOAkHKrNBzkC10ffpBvCNL0U9nkJLILa9g3qTlCRyKbfea8FBZgujCbcIwEBv7i4pf5kbhLW9NBeoEQkbOWQlPTRqtL89GkCJL2cH3WwF3pWjohSoTe9ZNS1LtCArenRDWtlMdfwEs8YLwLt3LakMbMFrnt7OzbokAZR6zrVIEvIlxGt6q3ZiEVQR0kqGdA52NNmqylcqdw" alt="ForjaOS Bigorna Logo" class="w-full h-full object-contain">
+      </div>
+    </div>
+
+    <!-- Wordmark limpo sem poluição (conforme especificação FR-056: logo + barra fina, sem poluição de texto) -->
+    <div class="flex items-center gap-2 mb-10">
+      <span class="text-2xl font-extrabold tracking-wider text-white">FORJA<span class="text-[#00E5FF]">OS</span></span>
+      <span class="text-xs text-slate-500 font-mono tracking-widest uppercase">The DevOS</span>
+    </div>
+
+    <!-- Barra ultrafina de progresso Plymouth (FR-056: barra fina fluida) -->
+    <div class="w-64 h-1 bg-slate-900/90 rounded-full overflow-hidden border border-slate-800/80 mb-4 p-[1px] shadow-inner">
+      <div class="h-full bg-gradient-to-r from-[#00E5FF] via-[#6366F1] to-[#8B5CF6] rounded-full progress-bar-anim shadow-[0_0_12px_#00E5FF]"></div>
+    </div>
+
+    <!-- Subtítulo de estágio do boot em fonte mono discreta -->
+    <div class="flex items-center gap-2 font-mono text-[11px] text-slate-400 mt-2">
+      <span class="inline-block w-1.5 h-1.5 rounded-full bg-[#00E5FF] animate-ping"></span>
+      <span class="text-slate-400">Iniciando módulos do kernel & daemon <span class="text-cyan-400">herod</span>...</span>
+    </div>
+
+  </main>
+
+  <!-- Rodapé discreto Plymouth -->
+  <footer class="absolute bottom-8 z-10 font-mono text-[10px] text-slate-600 flex items-center gap-4">
+    <span>SELinux: enforcing</span>
+    <span>•</span>
+    <span>PipeWire Core OK</span>
+    <span>•</span>
+    <span>Pressione <kbd class="px-1.5 py-0.5 bg-slate-900 border border-slate-800 rounded text-slate-400">Esc</kbd> para logs de boot</span>
+  </footer>
+
+</body>
+</html>

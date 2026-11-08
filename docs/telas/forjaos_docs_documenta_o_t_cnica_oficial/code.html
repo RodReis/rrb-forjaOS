@@ -1,0 +1,672 @@
+<!DOCTYPE html>
+
+<html lang="pt-BR"><head><meta charset="utf-8"/><meta content="width=device-width, initial-scale=1.0" name="viewport"/><meta content="web_dashboard" name="shell-type"/><link href="https://fonts.googleapis.com" rel="preconnect"/><link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/><link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/><link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/><style>@layer base{html,body{margin:0;padding:0;}body{overscroll-behavior:none;}main>:first-child{margin-top:0!important;}main>:last-child{margin-bottom:0!important;}}::-webkit-scrollbar{display:none;}</style><script src="https://cdn.tailwindcss.com"></script><script id="tailwind-config">tailwind.config = { darkMode: "class", theme: { extend: { "colors": { "surface-container-lowest": "#ffffff", "primary-fixed-dim": "#93ccff", "surface-container-highest": "#dae2fd", "tertiary-container": "#cc4900", "on-secondary-fixed-variant": "#3323cc", "tertiary-fixed": "#ffdbce", "on-secondary": "#ffffff", "on-secondary-container": "#fffbff", "inverse-surface": "#283044", "surface-container-low": "#f2f3ff", "on-error-container": "#93000a", "outline": "#707881", "on-tertiary": "#ffffff", "surface-dim": "#d2d9f4", "surface-variant": "#dae2fd", "on-primary-fixed": "#001d31", "secondary-fixed-dim": "#c3c0ff", "surface-container": "#eaedff", "on-primary-container": "#fdfcff", "surface-bright": "#faf8ff", "on-error": "#ffffff", "secondary-fixed": "#e2dfff", "background": "#faf8ff", "on-surface": "#131b2e", "tertiary-fixed-dim": "#ffb599", "secondary": "#4b41e1", "primary-container": "#007bb9", "on-background": "#131b2e", "on-primary-fixed-variant": "#004b73", "surface": "#faf8ff", "tertiary": "#a33900", "outline-variant": "#bfc7d2", "inverse-on-surface": "#eef0ff", "on-surface-variant": "#3f4850", "error-container": "#ffdad6", "on-tertiary-fixed": "#370e00", "on-primary": "#ffffff", "error": "#ba1a1a", "inverse-primary": "#93ccff", "surface-tint": "#006398", "on-tertiary-container": "#fffbff", "primary": "#006194", "primary-fixed": "#cce5ff", "on-tertiary-fixed-variant": "#7f2b00", "secondary-container": "#645efb", "on-secondary-fixed": "#0f0069", "surface-container-high": "#e2e7ff" }, "borderRadius": { "DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px" }, "spacing": { "space-xl": "2rem", "space-xs": "0.25rem", "gutter": "1rem", "space-lg": "1.5rem", "space-sm": "0.5rem", "margin": "1.5rem", "space-md": "1rem" }, "fontFamily": { "label-sm": ["Plus Jakarta Sans"], "headline-sm": ["Plus Jakarta Sans"], "code-inline": ["Plus Jakarta Sans"], "body-md": ["Plus Jakarta Sans"], "label-md": ["Plus Jakarta Sans"], "body-lg": ["Plus Jakarta Sans"], "body-sm": ["Plus Jakarta Sans"], "headline-lg": ["Plus Jakarta Sans"], "display-sm": ["Plus Jakarta Sans"], "headline-md": ["Plus Jakarta Sans"], "display-lg": ["Plus Jakarta Sans"] }, "fontSize": { "label-sm": ["11px", { "lineHeight": "16px", "letterSpacing": "0.04em", "fontWeight": "600" }], "headline-sm": ["16px", { "lineHeight": "24px", "letterSpacing": "-0.01em", "fontWeight": "600" }], "code-inline": ["13px", { "lineHeight": "20px", "letterSpacing": "0em", "fontWeight": "500" }], "body-md": ["14px", { "lineHeight": "22px", "letterSpacing": "0em", "fontWeight": "400" }], "label-md": ["13px", { "lineHeight": "18px", "letterSpacing": "0.01em", "fontWeight": "600" }], "body-lg": ["16px", { "lineHeight": "26px", "letterSpacing": "0em", "fontWeight": "400" }], "body-sm": ["12px", { "lineHeight": "18px", "letterSpacing": "0.01em", "fontWeight": "400" }], "headline-lg": ["24px", { "lineHeight": "32px", "letterSpacing": "-0.02em", "fontWeight": "600" }], "display-sm": ["32px", { "lineHeight": "40px", "letterSpacing": "-0.025em", "fontWeight": "700" }], "headline-md": ["20px", { "lineHeight": "28px", "letterSpacing": "-0.015em", "fontWeight": "600" }], "display-lg": ["40px", { "lineHeight": "48px", "letterSpacing": "-0.03em", "fontWeight": "700" }] } } } };</script></head><body class="bg-background font-body-md text-body-md text-on-surface antialiased"><header class="fixed top-0 left-0 right-0 h-16 bg-surface-container-lowest/85 backdrop-blur-xl shadow-[0_1px_8px_rgba(0,0,0,0.04)] z-50"><div class="h-16 w-full px-margin flex items-center justify-between gap-space-md"><div class="flex items-center gap-space-md shrink-0"><a class="flex items-center gap-space-sm" data-path="overview" href="#"><img alt="Versão horizontal completa do logotipo oficial ForjaOS: bigorna futurista geométrica com centelha dev em colchetes angulares &lt;&gt;, combinada à tipografia 'ForjaOS' com acento ciano cirúrgico e o descritor oficial 'the DevOS — onde você constrói', com badges 24.04 LTS e estilo minimalista de alto contraste para documentação técnica e website." class="h-8 w-auto object-contain" src="https://lh3.googleusercontent.com/aida/ALJJyrD6TDN15UTRTuxtXeoKaMmWfOlbYQyXARMWq67Ekj9DpwXB1dod0jxikWY6DG_06ZYJMKBjZZxYn5gcAsQhox4uPCIvXWST2OgvL0IJ4Ymq_wl4I3IJvrGqES6bhS6nJlUBhNN8mxGLIU4hVc3zsVq4Issc0InCx4nhp9Aoesp_yx541Ag9U9pNaU0P2vj_n9hdrgr9Yu0uGzj1j-twKqRfeEAMk-npEQejDvJj2G7cVQ"/><span class="font-headline-sm text-headline-sm text-on-surface tracking-tight hidden sm:inline">ForjaOS</span></a><span class="px-space-xs py-0.5 rounded bg-primary-fixed text-on-primary-fixed font-label-sm text-label-sm uppercase tracking-wide">24.04 LTS</span></div><div class="flex-1 max-w-md mx-space-sm hidden md:block"><button class="w-full flex items-center justify-between px-space-md py-space-xs rounded-lg bg-surface-container-low text-on-surface-variant hover:text-on-surface hover:bg-surface-container transition-colors" type="button"><div class="flex items-center gap-space-sm"><span class="material-symbols-outlined text-[18px]">search</span><span class="font-body-sm text-body-sm">Pesquisar documentação...</span></div><kbd class="px-1.5 py-0.5 rounded bg-surface-container-highest text-on-surface-variant font-code-inline text-label-sm">Cmd+K</kbd></button></div><div class="flex items-center gap-space-md"><nav class="hidden xl:flex items-center gap-space-xs" data-active-classes="bg-primary-container text-on-primary-container font-label-md rounded-lg"><a aria-current="page" class="px-space-sm py-1.5 transition-colors bg-primary-container text-on-primary-container font-label-md rounded-lg" data-path="overview" href="#">Visão Geral</a><a class="px-space-sm py-1.5 rounded-lg font-label-md text-label-md text-on-surface-variant hover:text-on-surface hover:bg-surface-container-high transition-colors" data-path="cli-tools" href="#">CLI &amp; Tools</a><a class="px-space-sm py-1.5 rounded-lg font-label-md text-label-md text-on-surface-variant hover:text-on-surface hover:bg-surface-container-high transition-colors" data-path="architecture" href="#">Arquitetura</a><a class="px-space-sm py-1.5 rounded-lg font-label-md text-label-md text-on-surface-variant hover:text-on-surface hover:bg-surface-container-high transition-colors" data-path="hero-ai" href="#">HERO AI</a><a class="px-space-sm py-1.5 rounded-lg font-label-md text-label-md text-on-surface-variant hover:text-on-surface hover:bg-surface-container-high transition-colors flex items-center gap-1" data-path="github" href="#">GitHub <span class="px-1.5 py-0.2 rounded-full bg-surface-container-highest text-on-surface font-label-sm text-label-sm">4.8k</span></a></nav><div class="flex items-center gap-space-sm shrink-0 pl-space-xs"><button aria-label="Alternar Tema" class="p-1.5 rounded-lg text-on-surface-variant hover:text-on-surface hover:bg-surface-container-high transition-colors" type="button"><span class="material-symbols-outlined text-[20px]">light_mode</span></button><div class="w-8 h-8 rounded-full bg-primary flex items-center justify-center shrink-0"><span class="material-symbols-outlined text-on-primary text-[18px]">person</span></div></div></div></div></header><aside class="fixed left-0 top-16 bottom-0 w-72 bg-surface-container-lowest shadow-[0_1px_8px_rgba(0,0,0,0.04)] z-40 overflow-y-auto px-space-md py-space-lg"><nav class="flex flex-col gap-space-lg" data-active-classes="bg-primary-container text-on-primary-container font-label-md rounded-lg"><div class="flex flex-col gap-space-xs"><div class="px-space-sm py-1 font-label-sm text-label-sm uppercase tracking-wider text-outline">Começando</div><div class="flex flex-col gap-0.5"><a class="px-space-sm py-1.5 rounded-lg font-body-sm text-body-sm text-on-surface-variant hover:text-on-surface hover:bg-surface-container-high transition-all" data-path="installation" href="#">Instalação</a><a class="px-space-sm py-1.5 rounded-lg font-body-sm text-body-sm text-on-surface-variant hover:text-on-surface hover:bg-surface-container-high transition-all" data-path="first-boot" href="#">Primeiro Boot</a><a class="px-space-sm py-1.5 rounded-lg font-body-sm text-body-sm text-on-surface-variant hover:text-on-surface hover:bg-surface-container-high transition-all" data-path="supported-hardware" href="#">Hardware Suportado</a></div></div><div class="flex flex-col gap-space-xs"><div class="px-space-sm py-1 font-label-sm text-label-sm uppercase tracking-wider text-outline">CLI &amp; Comandos</div><div class="flex flex-col gap-0.5"><a class="px-space-sm py-1.5 rounded-lg font-body-sm text-body-sm text-on-surface-variant hover:text-on-surface hover:bg-surface-container-high transition-all" data-path="forja-doctor" href="#">forja doctor</a><a class="px-space-sm py-1.5 rounded-lg font-body-sm text-body-sm text-on-surface-variant hover:text-on-surface hover:bg-surface-container-high transition-all" data-path="forja-setup" href="#">forja setup</a><a class="px-space-sm py-1.5 rounded-lg font-body-sm text-body-sm text-on-surface-variant hover:text-on-surface hover:bg-surface-container-high transition-all" data-path="forja-ai" href="#">forja ai</a><a class="px-space-sm py-1.5 rounded-lg font-body-sm text-body-sm text-on-surface-variant hover:text-on-surface hover:bg-surface-container-high transition-all" data-path="forja-memory" href="#">forja memory</a></div></div><div class="flex flex-col gap-space-xs"><div class="px-space-sm py-1 font-label-sm text-label-sm uppercase tracking-wider text-outline">HERO &amp; Mascote</div><div class="flex flex-col gap-0.5"><a class="px-space-sm py-1.5 rounded-lg font-body-sm text-body-sm text-on-surface-variant hover:text-on-surface hover:bg-surface-container-high transition-all" data-path="herod-architecture" href="#">Arquitetura Herod</a><a class="px-space-sm py-1.5 rounded-lg font-body-sm text-body-sm text-on-surface-variant hover:text-on-surface hover:bg-surface-container-high transition-all" data-path="wake-word-stt" href="#">Wake Word &amp; STT</a><a class="px-space-sm py-1.5 rounded-lg font-body-sm text-body-sm text-on-surface-variant hover:text-on-surface hover:bg-surface-container-high transition-all" data-path="policy-engine" href="#">Policy Engine</a><a class="px-space-sm py-1.5 rounded-lg font-body-sm text-body-sm text-on-surface-variant hover:text-on-surface hover:bg-surface-container-high transition-all" data-path="mcp-servers" href="#">MCP Servers</a></div></div><div class="flex flex-col gap-space-xs"><div class="px-space-sm py-1 font-label-sm text-label-sm uppercase tracking-wider text-outline">Memória do Sistema</div><div class="flex flex-col gap-0.5"><a class="px-space-sm py-1.5 rounded-lg font-body-sm text-body-sm text-on-surface-variant hover:text-on-surface hover:bg-surface-container-high transition-all" data-path="vault-markdown" href="#">Vault Markdown</a><a class="px-space-sm py-1.5 rounded-lg font-body-sm text-body-sm text-on-surface-variant hover:text-on-surface hover:bg-surface-container-high transition-all" data-path="graph-sqlite-vec" href="#">Grafo &amp; SQLite-vec</a><a class="px-space-sm py-1.5 rounded-lg font-body-sm text-body-sm text-on-surface-variant hover:text-on-surface hover:bg-surface-container-high transition-all" data-path="collectors" href="#">Coletores</a></div></div><div class="flex flex-col gap-space-xs"><div class="px-space-sm py-1 font-label-sm text-label-sm uppercase tracking-wider text-outline">Stack Dev &amp; Jogos</div><div class="flex flex-col gap-0.5"><a class="px-space-sm py-1.5 rounded-lg font-body-sm text-body-sm text-on-surface-variant hover:text-on-surface hover:bg-surface-container-high transition-all" data-path="containers" href="#">Docker/Podman</a><a class="px-space-sm py-1.5 rounded-lg font-body-sm text-body-sm text-on-surface-variant hover:text-on-surface hover:bg-surface-container-high transition-all" data-path="game-engines" href="#">Godot &amp; Unity</a><a class="px-space-sm py-1.5 rounded-lg font-body-sm text-body-sm text-on-surface-variant hover:text-on-surface hover:bg-surface-container-high transition-all" data-path="ebpf-scheduler" href="#">Escalonador eBPF scx_lavd</a></div></div><div class="flex flex-col gap-space-xs"><div class="px-space-sm py-1 font-label-sm text-label-sm uppercase tracking-wider text-outline">Segurança &amp; Auditoria</div><div class="flex flex-col gap-0.5"><a class="px-space-sm py-1.5 rounded-lg font-body-sm text-body-sm text-on-surface-variant hover:text-on-surface hover:bg-surface-container-high transition-all" data-path="selinux" href="#">SELinux</a><a class="px-space-sm py-1.5 rounded-lg font-body-sm text-body-sm text-on-surface-variant hover:text-on-surface hover:bg-surface-container-high transition-all" data-path="shield-crowdsec" href="#">Escudo CrowdSec/Suricata</a></div></div></nav></aside><div class="pl-72"><main class="w-full pt-16 min-h-screen bg-background"><div class="flex flex-col w-full">
+<!-- Interactive Toast Notification Element -->
+<div class="fixed bottom-6 right-6 z-50 transform translate-y-16 opacity-0 transition-all duration-200 pointer-events-none flex items-center gap-space-sm px-space-md py-space-sm rounded-lg bg-inverse-surface text-inverse-on-surface shadow-xl" id="copy-toast">
+<span class="material-symbols-outlined text-[18px] text-primary-fixed-dim">check_circle</span>
+<span class="font-label-md text-label-md">Copiado para a área de transferência</span>
+</div>
+<div class="w-full max-w-[1520px] mx-auto px-margin py-space-lg">
+<!-- Breadcrumb Hierarchy -->
+<nav aria-label="Breadcrumb" class="flex items-center gap-space-xs font-label-md text-label-md text-on-surface-variant mb-space-md">
+<a class="hover:text-primary transition-colors flex items-center gap-1" href="#">
+<span class="material-symbols-outlined text-[16px]">folder</span>
+        Docs
+      </a>
+<span class="material-symbols-outlined text-[14px] text-outline-variant">chevron_right</span>
+<span class="text-on-surface-variant">Começando</span>
+<span class="material-symbols-outlined text-[14px] text-outline-variant">chevron_right</span>
+<span class="text-on-surface font-semibold bg-surface-container px-space-xs py-0.5 rounded">Visão Geral &amp; Arquitetura</span>
+</nav>
+<!-- Top Technical Banner (Ceramic Alabaster with Hairline Depth) -->
+<section class="relative overflow-hidden rounded-xl bg-surface-container-lowest p-space-xl shadow-sm mb-space-xl">
+<div class="absolute -top-24 -right-24 w-96 h-96 bg-primary/5 rounded-full blur-3xl pointer-events-none"></div>
+<div class="absolute -bottom-20 left-1/3 w-80 h-80 bg-secondary/5 rounded-full blur-3xl pointer-events-none"></div>
+<div class="relative z-10 flex flex-col xl:flex-row xl:items-start justify-between gap-space-lg">
+<div class="space-y-space-sm max-w-4xl">
+<div class="flex flex-wrap items-center gap-space-xs mb-space-xs">
+<span class="px-space-xs py-0.5 rounded bg-primary-fixed text-on-primary-fixed font-label-sm text-label-sm tracking-wide uppercase">PRD 1.0 Alinhado</span>
+<span class="px-space-xs py-0.5 rounded bg-surface-container-high text-on-surface-variant font-label-sm text-label-sm">Kernel 6.12.x-bazzite</span>
+<span class="px-space-xs py-0.5 rounded bg-secondary-fixed text-on-secondary-fixed font-label-sm text-label-sm">Licença Apache-2.0</span>
+<span class="px-space-xs py-0.5 rounded bg-tertiary-fixed text-on-tertiary-fixed font-label-sm text-label-sm">24.04 LTS</span>
+<span class="inline-flex items-center gap-1 px-space-xs py-0.5 rounded bg-primary-fixed-dim/30 text-primary font-label-sm text-label-sm">
+<span class="w-1.5 h-1.5 rounded-full bg-primary animate-pulse"></span>
+              OCI Container Boot Nativo
+            </span>
+</div>
+<h1 class="font-display-lg text-display-lg text-on-surface tracking-tight">
+            Documentação Técnica Oficial do <span class="text-primary">ForjaOS</span>
+</h1>
+<p class="font-body-lg text-body-lg text-on-surface-variant max-w-3xl">
+            A distribuição workstation local-first imutável projetada para engenheiros de sistemas, desenvolvedores de jogos e IA generativa embarcada. Totalmente auditável, baseada em nós declarativos <code class="font-code-inline text-code-inline bg-surface-container px-1 py-0.5 rounded text-primary">bootc</code> e equipada com o assistente do sistema <code class="font-code-inline text-code-inline bg-surface-container px-1 py-0.5 rounded text-tertiary">herod</code>.
+          </p>
+</div>
+<!-- System Quick Specs Card -->
+<div class="xl:w-80 shrink-0 p-space-md rounded-xl bg-surface-container-low shadow-sm space-y-space-xs">
+<div class="flex items-center justify-between pb-space-xs">
+<span class="font-label-sm text-label-sm uppercase tracking-wider text-outline">Target Workstation</span>
+<span class="font-label-sm text-label-sm text-primary font-semibold">x86_64 / arm64</span>
+</div>
+<div class="space-y-1 font-body-sm text-body-sm text-on-surface">
+<div class="flex justify-between py-1">
+<span class="text-on-surface-variant">Áudio Subsystem:</span>
+<span class="font-semibold text-right">PipeWire (Zero-disk)</span>
+</div>
+<div class="flex justify-between py-1">
+<span class="text-on-surface-variant">Default LLM:</span>
+<span class="font-semibold text-right">Qwen3 8B / 4B (Ollama)</span>
+</div>
+<div class="flex justify-between py-1">
+<span class="text-on-surface-variant">Imutabilidade:</span>
+<span class="font-semibold text-right">OSTree / OCI bootc</span>
+</div>
+<div class="flex justify-between py-1">
+<span class="text-on-surface-variant">Segurança:</span>
+<span class="font-semibold text-right">SELinux Enforcing</span>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Main Docs Grid Layout (Content + Sticky Right TOC) -->
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-space-xl items-start">
+<!-- Primary Technical Body -->
+<div class="lg:col-span-9 space-y-space-xl">
+<!-- SECTION 1: QUICK START 3-STEP -->
+<section class="space-y-space-md" id="quick-start">
+<div class="flex items-center gap-space-xs">
+<span class="w-2.5 h-2.5 rounded-sm bg-primary"></span>
+<span class="font-label-sm text-label-sm uppercase tracking-wider text-primary">Início Rápido</span>
+</div>
+<h2 class="font-display-sm text-display-sm text-on-surface tracking-tight">Começando em 3 Passos</h2>
+<p class="font-body-md text-body-md text-on-surface-variant">
+            Do provisionamento atômico à validação com inteligência contextual local sem telemetria externa.
+          </p>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-space-md mt-space-md">
+<!-- Step 1 -->
+<div class="group relative rounded-xl bg-surface-container-lowest p-space-lg shadow-sm hover:shadow-md transition-all flex flex-col justify-between">
+<div class="space-y-space-sm">
+<div class="w-10 h-10 rounded-lg bg-primary-fixed flex items-center justify-center text-on-primary-fixed font-headline-sm text-headline-sm">
+                  1
+                </div>
+<h3 class="font-headline-sm text-headline-sm text-on-surface">Instalação &amp; Boot</h3>
+<p class="font-body-sm text-body-sm text-on-surface-variant">
+                  Instale a ISO assinada oficial ou faça o rebase dinâmico de qualquer sistema Fedora Silverblue/Bazzite existente via <code class="font-code-inline text-code-inline bg-surface-container px-1 rounded">bootc</code>.
+                </p>
+</div>
+<div class="mt-space-md pt-space-sm bg-surface-container-low rounded-lg p-space-xs">
+<div class="flex items-center justify-between text-on-surface-variant font-label-sm text-label-sm px-1 mb-1">
+<span>Rebase OCI</span>
+<button class="hover:text-primary transition-colors" onclick="copySnippet('snippet-step1')" title="Copiar comando" type="button">
+<span class="material-symbols-outlined text-[16px]">content_copy</span>
+</button>
+</div>
+<code class="font-code-inline text-code-inline block text-primary overflow-x-auto whitespace-pre p-1" id="snippet-step1">sudo bootc switch ghcr.io/forjaos/forjaos-nvidia:24.04</code>
+</div>
+</div>
+<!-- Step 2 -->
+<div class="group relative rounded-xl bg-surface-container-lowest p-space-lg shadow-sm hover:shadow-md transition-all flex flex-col justify-between">
+<div class="space-y-space-sm">
+<div class="w-10 h-10 rounded-lg bg-surface-container-highest flex items-center justify-center text-on-surface font-headline-sm text-headline-sm">
+                  2
+                </div>
+<h3 class="font-headline-sm text-headline-sm text-on-surface">Diagnóstico Imediato</h3>
+<p class="font-body-sm text-body-sm text-on-surface-variant">
+                  Valide drivers proprietários NVIDIA/AMD, subsistema Docker rootless, modelos Ollama e chaves de API com o utilitário médico central.
+                </p>
+</div>
+<div class="mt-space-md pt-space-sm bg-surface-container-low rounded-lg p-space-xs">
+<div class="flex items-center justify-between text-on-surface-variant font-label-sm text-label-sm px-1 mb-1">
+<span>Validação</span>
+<button class="hover:text-primary transition-colors" onclick="copySnippet('snippet-step2')" title="Copiar comando" type="button">
+<span class="material-symbols-outlined text-[16px]">content_copy</span>
+</button>
+</div>
+<code class="font-code-inline text-code-inline block text-primary overflow-x-auto whitespace-pre p-1" id="snippet-step2">forja doctor --strict</code>
+</div>
+</div>
+<!-- Step 3 -->
+<div class="group relative rounded-xl bg-surface-container-lowest p-space-lg shadow-sm hover:shadow-md transition-all flex flex-col justify-between">
+<div class="space-y-space-sm">
+<div class="w-10 h-10 rounded-lg bg-tertiary-fixed flex items-center justify-center text-on-tertiary-fixed font-headline-sm text-headline-sm">
+                  3
+                </div>
+<h3 class="font-headline-sm text-headline-sm text-on-surface">Primeiro Boot &amp; HERO</h3>
+<p class="font-body-sm text-body-sm text-on-surface-variant">
+                  Ative o assistente Guará chamando <span class="font-semibold text-tertiary">"Ei, Guará"</span> ou pressionando <kbd class="px-1.5 py-0.5 rounded bg-surface-container-highest text-on-surface font-code-inline text-label-sm">Super + Espaço</kbd>.
+                </p>
+</div>
+<div class="mt-space-md pt-space-sm bg-surface-container-low rounded-lg p-space-xs">
+<div class="flex items-center justify-between text-on-surface-variant font-label-sm text-label-sm px-1 mb-1">
+<span>Daemon status</span>
+<button class="hover:text-primary transition-colors" onclick="copySnippet('snippet-step3')" title="Copiar comando" type="button">
+<span class="material-symbols-outlined text-[16px]">content_copy</span>
+</button>
+</div>
+<code class="font-code-inline text-code-inline block text-tertiary overflow-x-auto whitespace-pre p-1" id="snippet-step3">systemctl --user status herod</code>
+</div>
+</div>
+</div>
+</section>
+<!-- CALLOUT: Dual-boot & Secure Boot MOK -->
+<div class="rounded-xl bg-surface-container-low p-space-lg shadow-sm flex items-start gap-space-md">
+<div class="p-2 rounded-lg bg-tertiary-fixed text-on-tertiary-fixed shrink-0">
+<span class="material-symbols-outlined text-[24px]">shield</span>
+</div>
+<div class="space-y-1 text-on-surface">
+<h4 class="font-headline-sm text-headline-sm">Atenção Crítica: Dual-Boot com Windows BitLocker &amp; MOK</h4>
+<p class="font-body-sm text-body-sm text-on-surface-variant">
+              Em sistemas com dual-boot OEM, <strong>nunca particione sem backup prévio da chave de recuperação BitLocker de 48 dígitos</strong>. Ao carregar módulos proprietários kmod da NVIDIA no primeiro boot com Secure Boot ativado, o prompt do <em>Shim UEFI MOK (Machine Owner Key)</em> solicitará cadastro da senha transitória gerada pelo instalador do ForjaOS.
+            </p>
+</div>
+</div>
+<!-- SECTION 2: PILAR 1 - BASE ATOMICA & BOOTC -->
+<section class="space-y-space-md pt-space-md" id="atomic-base">
+<div class="flex items-center gap-space-xs">
+<span class="w-2.5 h-2.5 rounded-sm bg-secondary"></span>
+<span class="font-label-sm text-label-sm uppercase tracking-wider text-secondary">Arquitetura de Base</span>
+</div>
+<h2 class="font-headline-lg text-headline-lg text-on-surface">Base Atômica &amp; Universal Blue</h2>
+<p class="font-body-md text-body-md text-on-surface-variant">
+            O ForjaOS abandona os ciclos frágeis de gerenciamento de pacotes convencionais baseados em scripts pós-instalação imperativos. A raiz do sistema operacional (<code class="font-code-inline text-code-inline bg-surface-container px-1 rounded">/usr</code>) é completamente read-only, montada como uma imagem OCI imutável gerenciada nativamente por <strong>bootc</strong> e <strong>rpm-ostree</strong>.
+          </p>
+<!-- Interactive Atomic Features Grid -->
+<div class="grid grid-cols-1 md:grid-cols-2 gap-space-md">
+<div class="p-space-md rounded-xl bg-surface-container-lowest shadow-sm space-y-space-xs">
+<div class="flex items-center gap-space-sm text-primary">
+<span class="material-symbols-outlined text-[22px]">history</span>
+<h4 class="font-headline-sm text-headline-sm text-on-surface">Rollback Instantâneo Determinístico</h4>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant">
+                Se uma atualização quebrar seu pipeline de renderização Godot ou compilador Rust, reinicie e selecione o deployment anterior no GRUB, ou reverta instantaneamente pelo terminal sem perder dados de <code class="font-code-inline text-code-inline bg-surface-container px-1 rounded">/var</code> ou <code class="font-code-inline text-code-inline bg-surface-container px-1 rounded">/home</code>.
+              </p>
+<div class="pt-2">
+<code class="font-code-inline text-code-inline text-primary bg-surface-container-low px-2 py-1 rounded block">sudo bootc rollback</code>
+</div>
+</div>
+<div class="p-space-md rounded-xl bg-surface-container-lowest shadow-sm space-y-space-xs">
+<div class="flex items-center gap-space-sm text-secondary">
+<span class="material-symbols-outlined text-[22px]">sync</span>
+<h4 class="font-headline-sm text-headline-sm text-on-surface">Staging em Background</h4>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant">
+                Atualizações de sistema são descompactadas em segundo plano de forma passiva através do temporizador <code class="font-code-inline text-code-inline bg-surface-container px-1 rounded">bootc-timer</code>. Nenhuma biblioteca em uso é sobrescrita em runtime. A ativação ocorre unicamente via reboot atômico.
+              </p>
+<div class="pt-2">
+<code class="font-code-inline text-code-inline text-secondary bg-surface-container-low px-2 py-1 rounded block">systemctl status bootc-update.timer</code>
+</div>
+</div>
+</div>
+<!-- Code Block: bootc switch manifest -->
+<div class="rounded-xl overflow-hidden bg-surface-container-lowest shadow-sm">
+<div class="flex items-center justify-between px-space-md py-space-sm bg-surface-container-low text-on-surface-variant">
+<div class="flex items-center gap-space-xs font-code-inline text-code-inline">
+<span class="w-3 h-3 rounded-full bg-error/70 inline-block"></span>
+<span class="w-3 h-3 rounded-full bg-tertiary/70 inline-block"></span>
+<span class="w-3 h-3 rounded-full bg-primary/70 inline-block"></span>
+<span class="ml-2 font-semibold text-on-surface">terminal — bash (Transição para variante CUDA)</span>
+</div>
+<button class="flex items-center gap-1 font-label-sm text-label-sm hover:text-primary transition-colors" onclick="copySnippet('atomic-bash-demo')" type="button">
+<span class="material-symbols-outlined text-[16px]">content_copy</span>
+                Copiar
+              </button>
+</div>
+<pre class="p-space-md font-code-inline text-code-inline text-on-surface overflow-x-auto bg-surface-container-lowest"><code id="atomic-bash-demo"><span class="text-outline"># 1. Verificar deployment ativo e status da imagem base</span>
+$ bootc status
+
+<span class="text-outline"># 2. Migrar da variante base Intel/AMD para a variante proprietária NVIDIA</span>
+$ sudo bootc switch ghcr.io/forjaos/forjaos-nvidia:24.04 \
+    --enforce-container-sigpolicy
+
+<span class="text-outline"># Saída de Staging:</span>
+<span class="text-primary">Pulling image layer sha256:7a41... [OK]</span>
+<span class="text-primary">Writing new deployment ostree/deploy/forjaos/deploy/9a8c... [OK]</span>
+<span class="text-primary">Staged deployment queued for next boot.</span>
+
+<span class="text-outline"># 3. Reinicialização limpa para a nova imagem montada</span>
+$ systemctl reboot</code></pre>
+</div>
+</section>
+<!-- SECTION 3: HERO DAEMON & ZERO-DISK PIPELINE -->
+<section class="space-y-space-md pt-space-md" id="herod-architecture">
+<div class="flex items-center gap-space-xs">
+<span class="w-2.5 h-2.5 rounded-sm bg-tertiary"></span>
+<span class="font-label-sm text-label-sm uppercase tracking-wider text-tertiary">Mascote &amp; Assistente de IA</span>
+</div>
+<h2 class="font-headline-lg text-headline-lg text-on-surface">HERO Daemon (<code class="font-code-inline text-inherit font-bold">herod</code> em Rust)</h2>
+<p class="font-body-md text-body-md text-on-surface-variant">
+            Construído em Rust com segurança de memória e latência mínima, o daemon residente de espaço do usuário <code class="font-code-inline text-code-inline bg-surface-container px-1 rounded text-primary">herod</code> orquestra pipelines sensoriais de áudio, geração de voz e raciocínio de contexto sem tocar em servidores remotos.
+          </p>
+<!-- Zero-Disk Callout Box -->
+<div class="p-space-lg rounded-xl bg-surface-container-lowest shadow-sm space-y-space-sm">
+<div class="flex items-center gap-space-sm text-primary">
+<span class="material-symbols-outlined text-[24px]">security</span>
+<h4 class="font-headline-sm text-headline-sm text-on-surface">Garantia NFR-030: Áudio Efetivo Zero-Disk</h4>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant">
+              O pipeline do HERO conecta-se ao servidor de som via nó virtual <strong>PipeWire</strong> com buffer em anel puramente em memória RAM. O áudio capturado pela Wake Word (<em>openWakeWord</em> calibrado para "Ei, Guará") e a transcrição via <em>faster-whisper small pt-BR</em> são processados e descartados imediatamente. <strong>Nenhum arquivo WAV/FLAC é gravado no disco físico.</strong>
+</p>
+</div>
+<!-- Rust Architecture Flow (Inline SVG Diagram) -->
+<div class="p-space-lg rounded-xl bg-surface-container-lowest shadow-sm space-y-space-md">
+<span class="font-label-sm text-label-sm uppercase tracking-wider text-outline">Pipeline Sensorial &amp; LLM Local</span>
+<div class="w-full overflow-x-auto">
+<div class="min-w-[680px] p-space-sm">
+<svg class="w-full h-auto text-on-surface" fill="none" viewbox="0 0 760 140">
+<!-- Pipewire Box -->
+<rect class="fill-surface-container stroke-outline-variant" height="70" rx="8" stroke-width="1.5" width="120" x="10" y="30"></rect>
+<text class="font-headline-sm text-[12px] fill-on-surface font-bold" text-anchor="middle" x="70" y="65">PipeWire Node</text>
+<text class="font-body-sm text-[10px] fill-on-surface-variant" text-anchor="middle" x="70" y="82">Ring Buffer RAM</text>
+<!-- Arrow 1 -->
+<path d="M130 65 L 170 65" marker-end="url(#arrow)" stroke="#006194" stroke-width="2"></path>
+<!-- openWakeWord Box -->
+<rect class="fill-surface-container stroke-outline-variant" height="70" rx="8" stroke-width="1.5" width="130" x="170" y="30"></rect>
+<text class="font-headline-sm text-[12px] fill-on-surface font-bold" text-anchor="middle" x="235" y="65">Wake Engine</text>
+<text class="font-body-sm text-[10px] fill-tertiary" text-anchor="middle" x="235" y="82">"Ei, Guará" (&lt;100ms)</text>
+<!-- Arrow 2 -->
+<path d="M300 65 L 340 65" stroke="#006194" stroke-width="2"></path>
+<!-- faster-whisper -->
+<rect class="fill-surface-container stroke-outline-variant" height="70" rx="8" stroke-width="1.5" width="130" x="340" y="30"></rect>
+<text class="font-headline-sm text-[12px] fill-on-surface font-bold" text-anchor="middle" x="405" y="65">faster-whisper</text>
+<text class="font-body-sm text-[10px] fill-on-surface-variant" text-anchor="middle" x="405" y="82">small pt-BR (CTranslate2)</text>
+<!-- Arrow 3 -->
+<path d="M470 65 L 510 65" stroke="#006194" stroke-width="2"></path>
+<!-- Ollama LLM Box -->
+<rect class="fill-surface-container-high stroke-primary" height="90" rx="8" stroke-width="1.5" width="120" x="510" y="20"></rect>
+<text class="font-headline-sm text-[12px] fill-primary font-bold" text-anchor="middle" x="570" y="55">Ollama Engine</text>
+<text class="font-body-sm text-[10px] fill-on-surface" text-anchor="middle" x="570" y="72">Qwen3 8B / 4B</text>
+<text class="font-label-sm text-[9px] fill-on-surface-variant" text-anchor="middle" x="570" y="88">VRAM Adaptativa</text>
+<!-- Arrow 4 -->
+<path d="M630 65 L 670 65" stroke="#006194" stroke-width="2"></path>
+<!-- Piper TTS -->
+<rect class="fill-surface-container stroke-outline-variant" height="70" rx="8" stroke-width="1.5" width="80" x="670" y="30"></rect>
+<text class="font-headline-sm text-[12px] fill-on-surface font-bold" text-anchor="middle" x="710" y="65">Piper</text>
+<text class="font-body-sm text-[10px] fill-on-surface-variant" text-anchor="middle" x="710" y="82">TTS pt-BR</text>
+</svg>
+</div>
+</div>
+</div>
+<!-- Configuration TOML Box -->
+<div class="rounded-xl overflow-hidden bg-surface-container-lowest shadow-sm">
+<div class="flex items-center justify-between px-space-md py-space-sm bg-surface-container-low text-on-surface-variant">
+<span class="font-code-inline text-code-inline font-semibold text-on-surface">~/.config/hero/persona.toml</span>
+<button class="flex items-center gap-1 font-label-sm text-label-sm hover:text-primary transition-colors" onclick="copySnippet('toml-persona')" type="button">
+<span class="material-symbols-outlined text-[16px]">content_copy</span>
+                Copiar
+              </button>
+</div>
+<pre class="p-space-md font-code-inline text-code-inline text-on-surface overflow-x-auto bg-surface-container-lowest"><code id="toml-persona"><span class="text-tertiary">[mascote]</span>
+name = <span class="text-primary">"Guará"</span>
+species = <span class="text-primary">"lobo-guará"</span>
+personality = <span class="text-primary">"assertivo, técnico, conciso, focado em engenharia"</span>
+language = <span class="text-primary">"pt-BR"</span>
+
+<span class="text-tertiary">[speech]</span>
+wake_word = <span class="text-primary">"ei_guara"</span>
+hotkey = <span class="text-primary">"Super+Space"</span>
+whisper_model = <span class="text-primary">"small-ptbr-fp16"</span>
+tts_engine = <span class="text-primary">"piper"</span>
+tts_voice = <span class="text-primary">"pt_BR-faber-medium"</span>
+
+<span class="text-tertiary">[runtime]</span>
+ollama_endpoint = <span class="text-primary">"http://127.0.0.1:11434"</span>
+default_model = <span class="text-primary">"qwen3:8b-instruct-q4_K_M"</span>
+fallback_model = <span class="text-primary">"qwen3:4b-instruct-q8_0"</span>
+max_vram_limit_mb = <span class="text-secondary">7200</span>
+policy_level = <span class="text-primary">"audit"</span></code></pre>
+</div>
+</section>
+<!-- SECTION 4: POLICY ENGINE & EXECUTION TIERS -->
+<section class="space-y-space-md pt-space-md" id="policy-engine">
+<div class="flex items-center gap-space-xs">
+<span class="w-2.5 h-2.5 rounded-sm bg-error"></span>
+<span class="font-label-sm text-label-sm uppercase tracking-wider text-error">Segurança Operacional</span>
+</div>
+<h2 class="font-headline-lg text-headline-lg text-on-surface">Policy Engine &amp; Tiers de Execução</h2>
+<p class="font-body-md text-body-md text-on-surface-variant">
+            O assistente do sistema nunca possui permissões cegas de superusuário. Cada MCP tool call interceptada pelo daemon passa pelo <em>Policy Engine</em> formal antes de chegar à syscall do Linux.
+          </p>
+<!-- Interactive Policy Tiers Table -->
+<div class="rounded-xl overflow-hidden bg-surface-container-lowest shadow-sm">
+<div class="overflow-x-auto">
+<table class="w-full text-left font-body-sm text-body-sm">
+<thead>
+<tr class="bg-surface-container-high text-on-surface">
+<th class="p-space-md font-headline-sm text-headline-sm">Tier</th>
+<th class="p-space-md font-headline-sm text-headline-sm">Classificação</th>
+<th class="p-space-md font-headline-sm text-headline-sm">Regra de Prompt</th>
+<th class="p-space-md font-headline-sm text-headline-sm">Exemplos de Operações</th>
+<th class="p-space-md font-headline-sm text-headline-sm">Trilha de Auditoria</th>
+</tr>
+</thead>
+<tbody class="divide-y divide-surface-container">
+<tr class="hover:bg-surface-container-low transition-colors">
+<td class="p-space-md">
+<span class="inline-flex items-center px-2 py-0.5 rounded font-label-sm text-label-sm bg-primary-fixed text-on-primary-fixed uppercase font-bold">
+                        Livre
+                      </span>
+</td>
+<td class="p-space-md font-semibold text-on-surface">Leitura e Diagnóstico</td>
+<td class="p-space-md text-on-surface-variant">Execução instantânea silenciosa</td>
+<td class="p-space-md">
+<code class="font-code-inline text-code-inline text-primary">git status</code>,
+                      <code class="font-code-inline text-code-inline text-primary">podman ps</code>,
+                      <code class="font-code-inline text-code-inline text-primary">cat log</code>
+</td>
+<td class="p-space-md text-outline">syslog level: INFO</td>
+</tr>
+<tr class="hover:bg-surface-container-low transition-colors bg-tertiary-fixed/10">
+<td class="p-space-md">
+<span class="inline-flex items-center px-2 py-0.5 rounded font-label-sm text-label-sm bg-tertiary-fixed text-on-tertiary-fixed uppercase font-bold">
+                        Alterar
+                      </span>
+</td>
+<td class="p-space-md font-semibold text-on-surface">Modificação de Estado</td>
+<td class="p-space-md text-on-surface">
+                      Exige confirmação interativa explícita: <strong class="text-tertiary">[s/N]</strong> via diálogo de voz ou clique no toast.
+                    </td>
+<td class="p-space-md">
+<code class="font-code-inline text-code-inline text-tertiary">mkdir</code>,
+                      <code class="font-code-inline text-code-inline text-tertiary">npm install</code>,
+                      <code class="font-code-inline text-code-inline text-tertiary">systemctl restart</code>
+</td>
+<td class="p-space-md text-on-surface">journald + AuditEvent gravado</td>
+</tr>
+<tr class="hover:bg-surface-container-low transition-colors bg-error-container/20">
+<td class="p-space-md">
+<span class="inline-flex items-center px-2 py-0.5 rounded font-label-sm text-label-sm bg-error text-on-error uppercase font-bold">
+                        Bloqueado
+                      </span>
+</td>
+<td class="p-space-md font-semibold text-error">Ação Destrutiva / Perigosa</td>
+<td class="p-space-md text-error font-medium">
+                      Interceptação imediata. Rejeição incondicional sem override do LLM.
+                    </td>
+<td class="p-space-md font-code-inline text-code-inline text-error">
+<code>rm -rf /</code>,
+                      <code>dd if=/dev/zero of=/dev/sd*</code>,
+                      <code>mkfs.*</code>
+</td>
+<td class="p-space-md text-error font-semibold">Alerta de Segurança + Selinux AVC</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</section>
+<!-- SECTION 5: MEMORIA DO SISTEMA -->
+<section class="space-y-space-md pt-space-md" id="system-memory">
+<div class="flex items-center gap-space-xs">
+<span class="w-2.5 h-2.5 rounded-sm bg-primary"></span>
+<span class="font-label-sm text-label-sm uppercase tracking-wider text-primary">Contexto Perpétuo</span>
+</div>
+<h2 class="font-headline-lg text-headline-lg text-on-surface">Memória do Sistema &amp; Vault Markdown</h2>
+<p class="font-body-md text-body-md text-on-surface-variant">
+            Diferente de assistentes proprietários que trancam suas notas em bases vetoriais remotas opacas, o ForjaOS armazena toda a memória contextual em arquivos Markdown padrão em <code class="font-code-inline text-code-inline bg-surface-container px-1 rounded">~/ForjaOS/vault/</code>. Você possui total posse física, compatível com <strong>Obsidian</strong>, <strong>Logseq</strong> e Git.
+          </p>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-space-md">
+<div class="p-space-md rounded-xl bg-surface-container-lowest shadow-sm space-y-space-xs">
+<span class="material-symbols-outlined text-primary text-[28px]">description</span>
+<h4 class="font-headline-sm text-headline-sm text-on-surface">Plain Markdown Vault</h4>
+<p class="font-body-sm text-body-sm text-on-surface-variant">
+                Links bidirecionais <code class="font-code-inline text-code-inline bg-surface-container px-1 rounded">[[wikilinks]]</code>, metadados YAML frontmatter e organização hierárquica por pastas de projetos.
+              </p>
+</div>
+<div class="p-space-md rounded-xl bg-surface-container-lowest shadow-sm space-y-space-xs">
+<span class="material-symbols-outlined text-secondary text-[28px]">search_insights</span>
+<h4 class="font-headline-sm text-headline-sm text-on-surface">SQLite-vec + FTS5</h4>
+<p class="font-body-sm text-body-sm text-on-surface-variant">
+                Indexação híbrida local: busca vetorial semântica combinada à busca léxica exata em milissegundos através da extensão embedded SQLite.
+              </p>
+</div>
+<div class="p-space-md rounded-xl bg-surface-container-lowest shadow-sm space-y-space-xs">
+<span class="material-symbols-outlined text-tertiary text-[28px]">hub</span>
+<h4 class="font-headline-sm text-headline-sm text-on-surface">Grafo graph.json</h4>
+<p class="font-body-sm text-body-sm text-on-surface-variant">
+                Exportação programática do grafo de conhecimento contextual sincronizado para renderização via <em>graphify</em> ou análise em lote.
+              </p>
+</div>
+</div>
+</section>
+<!-- SECTION 6: CLI FORJA REFERENCE -->
+<section class="space-y-space-md pt-space-md" id="cli-reference">
+<div class="flex items-center gap-space-xs">
+<span class="w-2.5 h-2.5 rounded-sm bg-primary"></span>
+<span class="font-label-sm text-label-sm uppercase tracking-wider text-primary">Interface de Linha de Comando</span>
+</div>
+<h2 class="font-headline-lg text-headline-lg text-on-surface">CLI <code class="font-code-inline text-inherit font-bold">forja</code>: Subcomandos &amp; Uso</h2>
+<p class="font-body-md text-body-md text-on-surface-variant">
+            O utilitário unificado <code class="font-code-inline text-code-inline bg-surface-container px-1 rounded font-semibold text-primary">forja</code> centraliza todas as ações de manutenção, orquestração de containers de desenvolvimento, injeção de segredos e invocação rápida de modelos de IA.
+          </p>
+<!-- Interactive CLI Command Explorer -->
+<div class="rounded-xl overflow-hidden bg-surface-container-lowest shadow-sm">
+<div class="p-space-md bg-surface-container-low flex flex-col sm:flex-row sm:items-center justify-between gap-space-sm">
+<span class="font-headline-sm text-headline-sm text-on-surface">Referência de Comandos Primários</span>
+<span class="font-label-sm text-label-sm text-on-surface-variant">Clique para copiar o comando</span>
+</div>
+<div class="divide-y divide-surface-container">
+<!-- doctor -->
+<div class="p-space-md flex flex-col md:flex-row md:items-center justify-between gap-space-sm hover:bg-surface-container-low/50 transition-colors">
+<div class="space-y-1">
+<div class="flex items-center gap-space-sm">
+<span class="font-code-inline text-code-inline font-bold text-primary">forja doctor</span>
+<span class="px-1.5 py-0.5 rounded bg-surface-container-high font-label-sm text-label-sm text-on-surface">Diagnóstico</span>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Varre GPU (VRAM/driver), daemon herod, Docker/Podman rootless e integridade do SELinux.</p>
+</div>
+<button class="shrink-0 flex items-center gap-1 px-space-sm py-1 rounded bg-surface-container hover:bg-primary-fixed hover:text-on-primary-fixed text-on-surface font-code-inline text-code-inline transition-colors" onclick="copySnippet('cmd-doctor')" type="button">
+<code id="cmd-doctor">forja doctor --check-all</code>
+<span class="material-symbols-outlined text-[16px]">content_copy</span>
+</button>
+</div>
+<!-- setup -->
+<div class="p-space-md flex flex-col md:flex-row md:items-center justify-between gap-space-sm hover:bg-surface-container-low/50 transition-colors">
+<div class="space-y-1">
+<div class="flex items-center gap-space-sm">
+<span class="font-code-inline text-code-inline font-bold text-primary">forja setup &lt;target&gt;</span>
+<span class="px-1.5 py-0.5 rounded bg-surface-container-high font-label-sm text-label-sm text-on-surface">Provisioning</span>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Configura SDKs em containers isolados distrobox (rust, python, node, gamedev-godot).</p>
+</div>
+<button class="shrink-0 flex items-center gap-1 px-space-sm py-1 rounded bg-surface-container hover:bg-primary-fixed hover:text-on-primary-fixed text-on-surface font-code-inline text-code-inline transition-colors" onclick="copySnippet('cmd-setup')" type="button">
+<code id="cmd-setup">forja setup --stack rust,godot4</code>
+<span class="material-symbols-outlined text-[16px]">content_copy</span>
+</button>
+</div>
+<!-- ai -->
+<div class="p-space-md flex flex-col md:flex-row md:items-center justify-between gap-space-sm hover:bg-surface-container-low/50 transition-colors">
+<div class="space-y-1">
+<div class="flex items-center gap-space-sm">
+<span class="font-code-inline text-code-inline font-bold text-primary">forja ai "&lt;prompt&gt;"</span>
+<span class="px-1.5 py-0.5 rounded bg-surface-container-high font-label-sm text-label-sm text-on-surface">LLM Direct</span>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Envia prompt direto para a instância local do Ollama, injetando o contexto do git atual.</p>
+</div>
+<button class="shrink-0 flex items-center gap-1 px-space-sm py-1 rounded bg-surface-container hover:bg-primary-fixed hover:text-on-primary-fixed text-on-surface font-code-inline text-code-inline transition-colors" onclick="copySnippet('cmd-ai')" type="button">
+<code id="cmd-ai">forja ai "explique este commit"</code>
+<span class="material-symbols-outlined text-[16px]">content_copy</span>
+</button>
+</div>
+<!-- memory -->
+<div class="p-space-md flex flex-col md:flex-row md:items-center justify-between gap-space-sm hover:bg-surface-container-low/50 transition-colors">
+<div class="space-y-1">
+<div class="flex items-center gap-space-sm">
+<span class="font-code-inline text-code-inline font-bold text-primary">forja memory</span>
+<span class="px-1.5 py-0.5 rounded bg-surface-container-high font-label-sm text-label-sm text-on-surface">Knowledge Graph</span>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Consulta o vault Markdown, reconstrói o índice SQLite e gera o mapa semântico graph.json.</p>
+</div>
+<button class="shrink-0 flex items-center gap-1 px-space-sm py-1 rounded bg-surface-container hover:bg-primary-fixed hover:text-on-primary-fixed text-on-surface font-code-inline text-code-inline transition-colors" onclick="copySnippet('cmd-mem')" type="button">
+<code id="cmd-mem">forja memory sync --reindex</code>
+<span class="material-symbols-outlined text-[16px]">content_copy</span>
+</button>
+</div>
+<!-- game-mode -->
+<div class="p-space-md flex flex-col md:flex-row md:items-center justify-between gap-space-sm hover:bg-surface-container-low/50 transition-colors">
+<div class="space-y-1">
+<div class="flex items-center gap-space-sm">
+<span class="font-code-inline text-code-inline font-bold text-secondary">forja game-mode</span>
+<span class="px-1.5 py-0.5 rounded bg-surface-container-high font-label-sm text-label-sm text-on-surface">Performance</span>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Altera escalonador de CPU para <code class="font-code-inline text-code-inline bg-surface-container px-1 rounded">scx_lavd</code> e suspende daemons de IA para liberar VRAM.</p>
+</div>
+<button class="shrink-0 flex items-center gap-1 px-space-sm py-1 rounded bg-surface-container hover:bg-primary-fixed hover:text-on-primary-fixed text-on-surface font-code-inline text-code-inline transition-colors" onclick="copySnippet('cmd-game')" type="button">
+<code id="cmd-game">forja game-mode on --free-vram</code>
+<span class="material-symbols-outlined text-[16px]">content_copy</span>
+</button>
+</div>
+</div>
+</div>
+</section>
+<!-- SECTION 7: RUST MCP SERVER EXTENSIONS -->
+<section class="space-y-space-md pt-space-md" id="mcp-servers">
+<div class="flex items-center gap-space-xs">
+<span class="w-2.5 h-2.5 rounded-sm bg-primary-container"></span>
+<span class="font-label-sm text-label-sm uppercase tracking-wider text-primary-container">Extensibilidade</span>
+</div>
+<h2 class="font-headline-lg text-headline-lg text-on-surface">Servidores MCP (Model Context Protocol)</h2>
+<p class="font-body-md text-body-md text-on-surface-variant">
+            O ForjaOS expande a inteligência do sistema através de servidores MCP locais rodando em processos unix-domain-socket. Abaixo está o manifesto base para criação de um plugin de telemetria em Rust:
+          </p>
+<!-- Code Snippet: Rust MCP Manifest -->
+<div class="rounded-xl overflow-hidden bg-surface-container-lowest shadow-sm">
+<div class="flex items-center justify-between px-space-md py-space-sm bg-surface-container-low text-on-surface-variant">
+<span class="font-code-inline text-code-inline font-semibold text-on-surface">~/.config/hero/mcp/system-telemetry.rs</span>
+<button class="flex items-center gap-1 font-label-sm text-label-sm hover:text-primary transition-colors" onclick="copySnippet('rust-mcp-code')" type="button">
+<span class="material-symbols-outlined text-[16px]">content_copy</span>
+                Copiar
+              </button>
+</div>
+<pre class="p-space-md font-code-inline text-code-inline text-on-surface overflow-x-auto bg-surface-container-lowest"><code id="rust-mcp-code"><span class="text-secondary">use</span> mcp_sdk::prelude::*;
+<span class="text-secondary">use</span> forja_policy::{PolicyTier, RequiresApproval};
+
+<span class="text-tertiary">#[mcp_tool(
+    name = "get_gpu_thermal_state",
+    description = "Obtém temperatura e consumo atual de VRAM da GPU dedicada",
+    tier = PolicyTier::Livre
+)]</span>
+<span class="text-secondary">pub async fn</span> <span class="text-primary font-semibold">get_gpu_thermal</span>(_ctx: Context) -&gt; Result&lt;ToolResponse, ToolError&gt; {
+    <span class="text-secondary">let</span> nvml = nvml_wrapper::Nvml::init()?;
+    <span class="text-secondary">let</span> device = nvml.device_by_index(<span class="text-primary-container">0</span>)?;
+    <span class="text-secondary">let</span> temp = device.temperature(nvml_wrapper::enum_wrappers::device::TemperatureSensor::Gpu)?;
+    
+    <span class="text-secondary">Ok</span>(ToolResponse::json(serde_json::json!({
+        <span class="text-primary">"gpu_temp_celsius"</span>: temp,
+        <span class="text-primary">"status"</span>: <span class="text-primary">"nominal"</span>
+    })))
+}</code></pre>
+</div>
+</section>
+<!-- SECTION 8: HARDWARE & KERNEL TWEAKS -->
+<section class="space-y-space-md pt-space-md" id="hardware-tweaks">
+<div class="flex items-center gap-space-xs">
+<span class="w-2.5 h-2.5 rounded-sm bg-outline"></span>
+<span class="font-label-sm text-label-sm uppercase tracking-wider text-outline">Kernel &amp; Otimizações</span>
+</div>
+<h2 class="font-headline-lg text-headline-lg text-on-surface">Escalonador eBPF <code class="font-code-inline text-inherit font-bold">scx_lavd</code> &amp; Memória</h2>
+<p class="font-body-md text-body-md text-on-surface-variant">
+            O kernel <code class="font-code-inline text-code-inline bg-surface-container px-1 rounded">6.12.x-bazzite</code> é compilado com suporte nativo ao <strong>sched_ext</strong> (eBPF extensible scheduler). Isso permite que cargas de trabalho simultâneas de compilação C++/Rust ocorram sem congelar a taxa de quadros (frametimes) do compositor Wayland do desktop ou de motores gráficos como o Godot Engine.
+          </p>
+<div class="p-space-lg rounded-xl bg-surface-container-low shadow-sm flex flex-col md:flex-row items-center justify-between gap-space-md">
+<div class="space-y-1">
+<span class="font-headline-sm text-headline-sm text-on-surface">Status do Escalonador eBPF em Tempo Real</span>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Modo interativo LAVD (Latency-critical Aware Virtual Deadline) ativo por padrão.</p>
+</div>
+<div class="flex items-center gap-space-xs shrink-0">
+<span class="w-2 h-2 rounded-full bg-primary animate-ping"></span>
+<span class="font-code-inline text-code-inline bg-surface-container-lowest px-3 py-1.5 rounded-lg text-primary font-bold shadow-sm">
+                scx_lavd: ACTIVE (PID 841)
+              </span>
+</div>
+</div>
+</section>
+<!-- BOTTOM NAVIGATION FOOTER -->
+<div class="pt-space-xl border-t border-surface-container flex flex-col sm:flex-row items-center justify-between gap-space-md">
+<a class="w-full sm:w-auto flex items-center gap-space-sm p-space-md rounded-xl bg-surface-container-lowest hover:bg-surface-container-high transition-all text-on-surface-variant hover:text-on-surface shadow-sm" href="#">
+<span class="material-symbols-outlined text-[20px]">arrow_back</span>
+<div class="text-left">
+<div class="font-label-sm text-label-sm text-outline">Anterior</div>
+<div class="font-headline-sm text-headline-sm">Notas de Lançamento 24.04</div>
+</div>
+</a>
+<a class="w-full sm:w-auto flex items-center justify-between sm:justify-end gap-space-sm p-space-md rounded-xl bg-primary text-on-primary hover:bg-primary-container transition-all shadow-md" href="#">
+<div class="text-right">
+<div class="font-label-sm text-label-sm text-primary-fixed-dim">Próximo Passo</div>
+<div class="font-headline-sm text-headline-sm">Guia de Instalação e Dual Boot</div>
+</div>
+<span class="material-symbols-outlined text-[20px]">arrow_forward</span>
+</a>
+</div>
+</div>
+<!-- STICKY RIGHT COLUMN: TABLE OF CONTENTS (NESTA PÁGINA) -->
+<aside class="hidden lg:block lg:col-span-3 sticky top-20 space-y-space-md">
+<div class="p-space-md rounded-xl bg-surface-container-lowest shadow-sm space-y-space-sm">
+<div class="flex items-center gap-space-xs text-on-surface font-headline-sm text-headline-sm">
+<span class="material-symbols-outlined text-[18px] text-primary">menu_book</span>
+            Nesta Página
+          </div>
+<nav class="flex flex-col gap-1 text-on-surface-variant font-body-sm text-body-sm" id="toc-nav">
+<a class="px-space-xs py-1 rounded hover:bg-surface-container hover:text-primary transition-colors" href="#quick-start">1. Começando em 3 Passos</a>
+<a class="px-space-xs py-1 rounded hover:bg-surface-container hover:text-primary transition-colors" href="#atomic-base">2. Base Atômica &amp; bootc</a>
+<a class="px-space-xs py-1 rounded hover:bg-surface-container hover:text-primary transition-colors" href="#herod-architecture">3. HERO Daemon &amp; Zero-Disk</a>
+<a class="px-space-xs py-1 rounded hover:bg-surface-container hover:text-primary transition-colors" href="#policy-engine">4. Policy Engine &amp; Tiers</a>
+<a class="px-space-xs py-1 rounded hover:bg-surface-container hover:text-primary transition-colors" href="#system-memory">5. Memória do Sistema &amp; Vault</a>
+<a class="px-space-xs py-1 rounded hover:bg-surface-container hover:text-primary transition-colors" href="#cli-reference">6. CLI forja: Subcomandos</a>
+<a class="px-space-xs py-1 rounded hover:bg-surface-container hover:text-primary transition-colors" href="#mcp-servers">7. Servidores MCP em Rust</a>
+<a class="px-space-xs py-1 rounded hover:bg-surface-container hover:text-primary transition-colors" href="#hardware-tweaks">8. Escalonador eBPF scx_lavd</a>
+</nav>
+<div class="pt-space-sm border-t border-surface-container space-y-space-xs">
+<div class="font-label-sm text-label-sm uppercase tracking-wider text-outline">Recursos Oficiais</div>
+<a class="flex items-center justify-between text-body-sm text-on-surface hover:text-primary transition-colors" href="https://github.com/forjaos" rel="noreferrer" target="_blank">
+<span>Repositório GitHub</span>
+<span class="material-symbols-outlined text-[16px]">open_in_new</span>
+</a>
+<a class="flex items-center justify-between text-body-sm text-on-surface hover:text-primary transition-colors" href="#">
+<span>Especificação PRD 1.0</span>
+<span class="material-symbols-outlined text-[16px]">download</span>
+</a>
+<a class="flex items-center justify-between text-body-sm text-on-surface hover:text-primary transition-colors" href="#">
+<span>Imagens ISO Assinadas</span>
+<span class="material-symbols-outlined text-[16px]">verified</span>
+</a>
+</div>
+<div class="p-space-sm rounded-lg bg-surface-container-low text-on-surface space-y-1">
+<span class="font-label-sm text-label-sm font-bold text-tertiary">Comunidade Dev</span>
+<p class="font-body-sm text-body-sm text-on-surface-variant">
+              Encontrou um bug de renderização no Wayland ou erro de VRAM no Ollama?
+            </p>
+<a class="inline-block font-label-md text-label-md text-primary font-semibold hover:underline" href="#">
+              Abrir Issue no Tracker →
+            </a>
+</div>
+</div>
+</aside>
+</div>
+</div>
+<!-- Inline Micro-Interaction Script for Copying Snippets & Toast Feedback -->
+<script>
+    function copySnippet(elementId) {
+      const el = document.getElementById(elementId);
+      if (!el) return;
+      const text = el.innerText || el.textContent;
+      navigator.clipboard.writeText(text).then(() => {
+        showToast();
+      }).catch(err => {
+        console.error('Falha ao copiar:', err);
+      });
+    }
+
+    function showToast() {
+      const toast = document.getElementById('copy-toast');
+      if (!toast) return;
+      toast.classList.remove('opacity-0', 'translate-y-16');
+      toast.classList.add('opacity-100', 'translate-y-0');
+      
+      setTimeout(() => {
+        toast.classList.remove('opacity-100', 'translate-y-0');
+        toast.classList.add('opacity-0', 'translate-y-16');
+      }, 2200);
+    }
+  </script>
+</div></main></div></body></html>

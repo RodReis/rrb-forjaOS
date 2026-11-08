@@ -1,0 +1,630 @@
+<!DOCTYPE html>
+
+<html class="light" lang="pt-BR"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>ForjaOS 24.04 LTS (Alabaster Forge) - Desktop Workspace</title>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&amp;family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          colors: {
+            outline: "#707881",
+            "on-background": "#131b2e",
+            "tertiary-container": "#cc4900",
+            "secondary-fixed-dim": "#c3c0ff",
+            "inverse-surface": "#283044",
+            tertiary: "#a33900",
+            "on-surface": "#131b2e",
+            "primary-fixed": "#cce5ff",
+            "on-primary-fixed": "#001d31",
+            "primary-container": "#007bb9",
+            secondary: "#4b41e1",
+            "on-primary-fixed-variant": "#004b73",
+            "secondary-fixed": "#e2dfff",
+            "surface-container-lowest": "#ffffff",
+            "on-secondary-fixed": "#0f0069",
+            "on-tertiary-fixed": "#370e00",
+            "surface-dim": "#d2d9f4",
+            "on-secondary-container": "#fffbff",
+            "surface-container-high": "#e2e7ff",
+            "surface-container": "#eaedff",
+            "surface-container-low": "#f2f3ff",
+            primary: "#006194",
+            "on-secondary-fixed-variant": "#3323cc",
+            "on-secondary": "#ffffff",
+            "on-error-container": "#93000a",
+            "error-container": "#ffdad6",
+            "primary-fixed-dim": "#93ccff",
+            surface: "#faf8ff",
+            "surface-bright": "#faf8ff",
+            "on-tertiary": "#ffffff",
+            "tertiary-fixed-dim": "#ffb599",
+            "on-error": "#ffffff",
+            "inverse-primary": "#93ccff",
+            "surface-tint": "#006398",
+            background: "#faf8ff",
+            "on-primary-container": "#fdfcff",
+            "on-tertiary-container": "#fffbff",
+            "outline-variant": "#bfc7d2",
+            error: "#ba1a1a",
+            "on-tertiary-fixed-variant": "#7f2b00",
+            "on-primary": "#ffffff",
+            "secondary-container": "#645efb",
+            "surface-variant": "#dae2fd",
+            "inverse-on-surface": "#eef0ff",
+            "surface-container-highest": "#dae2fd",
+            "tertiary-fixed": "#ffdbce",
+            "on-surface-variant": "#3f4850"
+          },
+          fontFamily: {
+            sans: ["Plus Jakarta Sans", "sans-serif"],
+            mono: ["JetBrains Mono", "monospace"]
+          }
+        }
+      }
+    }
+  </script>
+<style>
+    .material-symbols-outlined {
+      font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+      display: inline-block;
+      vertical-align: middle;
+      line-height: 1;
+    }
+    .custom-scrollbar::-webkit-scrollbar {
+      width: 6px;
+      height: 6px;
+    }
+    .custom-scrollbar::-webkit-scrollbar-track {
+      background: rgba(241, 245, 249, 0.5);
+    }
+    .custom-scrollbar::-webkit-scrollbar-thumb {
+      background: #cbd5e1;
+      border-radius: 9999px;
+    }
+    .custom-scrollbar::-webkit-scrollbar-thumb:hover {
+      background: #94a3b8;
+    }
+    .glass-panel {
+      background: rgba(255, 255, 255, 0.82);
+      backdrop-filter: blur(18px) saturate(180%);
+      -webkit-backdrop-filter: blur(18px) saturate(180%);
+      border: 1px solid rgba(255, 255, 255, 0.9);
+      box-shadow: 0 20px 40px -15px rgba(15, 23, 42, 0.08), 0 0 1px 1px rgba(255, 255, 255, 0.8) inset;
+    }
+    .glass-topbar {
+      background: rgba(248, 251, 252, 0.85);
+      backdrop-filter: blur(20px) saturate(160%);
+      -webkit-backdrop-filter: blur(20px) saturate(160%);
+      border-bottom: 1px solid rgba(203, 213, 225, 0.65);
+    }
+    .glass-dock {
+      background: rgba(255, 255, 255, 0.88);
+      backdrop-filter: blur(24px) saturate(190%);
+      -webkit-backdrop-filter: blur(24px) saturate(190%);
+      border: 1px solid rgba(255, 255, 255, 0.95);
+      box-shadow: 0 18px 45px -8px rgba(0, 40, 80, 0.12), 0 0 0 1px rgba(226, 232, 240, 0.8);
+    }
+  </style>
+</head>
+<body class="h-screen w-screen overflow-hidden select-none font-sans text-on-surface bg-[#f4f7f9] flex flex-col justify-between relative">
+<!-- Desktop Full Wallpaper Backdrop -->
+<div class="absolute inset-0 z-0 bg-cover bg-center bg-no-repeat transition-transform duration-700" data-alt="A sublime, ultra-clean light mode minimalist desktop wallpaper depicting the Alabaster Forge architectural aesthetic. Luminous soft alabaster stone structures gently merge with crisp geometric reflections, light cyan gradients, brushed metallic textures, and ethereal sunbeams. Designed with pristine high-key cinematic lighting, vast negative space, soft ambient shadows, and an ultra-modern professional workstation atmosphere." style="background-image: url('{{DATA:IMAGE:IMAGE_43}}');">
+<!-- Atmospheric subtle ambient overlay -->
+<div class="absolute inset-0 bg-gradient-to-tr from-white/40 via-transparent to-primary-fixed/20 pointer-events-none"></div>
+</div>
+<!-- 1. Top Panel / Plasma 6 Header Panel -->
+<header class="relative z-30 h-11 w-full glass-topbar px-4 flex items-center justify-between text-xs font-medium text-[#0c171c]">
+<!-- Left Section: OS Badge & Workspaces -->
+<div class="flex items-center gap-4">
+<div class="flex items-center gap-2 pr-2 border-r border-[#cbd5e1]/60">
+<div class="size-6 rounded-md bg-primary-container text-white flex items-center justify-center shadow-sm shadow-primary/20">
+<svg class="size-3.5" fill="none" viewbox="0 0 48 48" xmlns="http://www.w3.org/2000/svg">
+<path clip-rule="evenodd" d="M24 0.757355L47.2426 24L24 47.2426L0.757355 24L24 0.757355ZM21 35.7574V12.2426L9.24264 24L21 35.7574Z" fill="currentColor" fill-rule="evenodd"></path>
+</svg>
+</div>
+<span class="font-bold text-sm tracking-tight text-[#0c171c]">Forja<span class="text-primary font-extrabold">OS</span></span>
+<span class="text-[10px] uppercase font-bold tracking-wider px-1.5 py-0.5 rounded bg-surface-container text-primary border border-primary/20">24.04 LTS</span>
+</div>
+<!-- Plasma Workspaces / Desktops -->
+<nav class="flex items-center gap-1">
+<button class="px-2.5 py-1 rounded-md text-xs font-semibold bg-white/90 text-primary shadow-xs border border-primary/20 flex items-center gap-1.5 transition-all">
+<span class="size-1.5 rounded-full bg-primary animate-pulse"></span>
+          1 · Dev
+        </button>
+<button class="px-2.5 py-1 rounded-md text-xs font-medium text-slate-600 hover:text-slate-900 hover:bg-white/50 transition-all">
+          2 · Web
+        </button>
+<button class="px-2.5 py-1 rounded-md text-xs font-medium text-slate-600 hover:text-slate-900 hover:bg-white/50 transition-all">
+          3 · GameEngine
+        </button>
+<button class="px-2 py-1 rounded-md text-xs font-medium text-slate-400 hover:text-slate-700 hover:bg-white/40 transition-all">
+<span class="material-symbols-outlined text-[15px]">add</span>
+</button>
+</nav>
+<!-- Active Window Title -->
+<div class="hidden lg:flex items-center gap-2 pl-3 text-slate-500 border-l border-slate-300/50">
+<span class="material-symbols-outlined text-[16px] text-primary">terminal</span>
+<span class="font-mono text-[11px] text-slate-700">~/proj/game-api (main)</span>
+<span class="px-1.5 py-0.2 text-[9px] font-bold rounded bg-emerald-100 text-emerald-800 border border-emerald-300">scx_lavd</span>
+</div>
+</div>
+<!-- Center Section: Quick Search & AI Trigger -->
+<div class="flex items-center gap-2">
+<div class="hidden md:flex items-center gap-2 px-3 py-1 bg-white/70 hover:bg-white rounded-lg border border-slate-200 shadow-xs cursor-pointer text-slate-500 text-xs w-64 justify-between transition-all">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-[16px] text-slate-400">search</span>
+<span class="text-slate-400 font-normal">Buscar apps, arquivos...</span>
+</div>
+<kbd class="font-mono text-[10px] px-1.5 py-0.5 bg-slate-100 rounded text-slate-600 border border-slate-200">Alt+Espaço</kbd>
+</div>
+<button class="flex items-center gap-1.5 px-3 py-1 rounded-lg bg-primary text-white text-xs font-semibold shadow-sm shadow-primary/25 hover:bg-primary/90 transition-all">
+<span class="material-symbols-outlined text-[15px]" style="font-variation-settings: 'FILL' 1;">auto_awesome</span>
+<span>Guará AI</span>
+<span class="hidden sm:inline-block text-[10px] font-normal opacity-85 ml-0.5">Super+Espaço</span>
+</button>
+</div>
+<!-- Right Section: System Tray & Status Indicators -->
+<div class="flex items-center gap-2">
+<div class="flex items-center gap-1 px-1.5 py-0.5 rounded-lg bg-white/60 border border-slate-200/60">
+<!-- Audio Pipewire -->
+<button class="p-1 rounded hover:bg-slate-200/60 text-slate-700" title="PipeWire Áudio: 68%">
+<span class="material-symbols-outlined text-[17px]">volume_up</span>
+</button>
+<!-- Wifi -->
+<button class="p-1 rounded hover:bg-slate-200/60 text-slate-700" title="Wi-Fi 6E (Forja-DevNet-5G)">
+<span class="material-symbols-outlined text-[17px]">wifi</span>
+</button>
+<!-- Battery / Power -->
+<button class="p-1 rounded hover:bg-slate-200/60 text-emerald-700 flex items-center" title="Alimentação AC · Bateria 100%">
+<span class="material-symbols-outlined text-[17px]" style="font-variation-settings: 'FILL' 1;">battery_charging_full</span>
+</button>
+<!-- Notifications -->
+<button class="p-1 rounded hover:bg-slate-200/60 text-slate-700 relative" title="Notificações">
+<span class="material-symbols-outlined text-[17px]">notifications</span>
+<span class="absolute top-1 right-1 size-1.5 bg-tertiary-container rounded-full ring-1 ring-white"></span>
+</button>
+</div>
+<!-- Keyboard Layout -->
+<span class="hidden sm:inline-flex px-2 py-0.5 text-[11px] font-bold rounded bg-slate-200/70 text-slate-800">
+        PT-BR
+      </span>
+<!-- Clock / Calendar -->
+<div class="text-right px-2 py-0.5 rounded-lg hover:bg-white/60 cursor-pointer transition-colors">
+<p class="font-bold text-xs leading-none text-[#0c171c]">15:42</p>
+<p class="text-[10px] text-slate-500 leading-tight">Ter, 23 Abr</p>
+</div>
+<!-- User Avatar -->
+<div class="relative size-7 rounded-full bg-slate-200 ring-2 ring-white overflow-hidden shadow-xs cursor-pointer">
+<img class="size-full object-cover" data-alt="Close up photographic avatar portrait of Rodrigo, a Brazilian software engineer with warm studio rim lighting, friendly expression, wearing glasses, soft light cyan and slate backdrop matching the Alabaster Forge UI style." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAmqsR5T9UkjcvXNiGX2Urk3Zo5L5Y9FSOYCAwR0utZcnCk0uCdSjLLBcaaT2wEkQbOTKVK2Szvey5kO21DOnBi249EDAmWcrPtrWb1hwPFoe_ygljA2yVj6_4r9G3Ti43JzYJKDDtdnv6BWYTbePEUcXYLfGCu3VJtvP_x9Y2Gi0oTvoEWxrLpIn3P7ieDrU3T8FoQcC7w0PUx7mo8m-B0lqgySQkVj2l1NF7jsIV2"/>
+</div>
+</div>
+</header>
+<!-- 2. Workspace Viewport / Main Desktop Body -->
+<main class="relative z-10 flex-1 p-6 md:p-8 flex items-start justify-between gap-6 overflow-hidden">
+<!-- Active Floating Window: KDE Plasma 6 Light Theme Dev Workspace -->
+<div class="w-full max-w-4xl glass-panel rounded-2xl shadow-2xl flex flex-col border border-white/80 overflow-hidden transform hover:-translate-y-0.5 transition-all duration-300">
+<!-- Window Titlebar with Plasma 6 Controls and Tabs -->
+<div class="h-11 px-4 bg-[#f8fafc]/90 border-b border-slate-200/80 flex items-center justify-between gap-4 select-none">
+<!-- Window Controls (Left) -->
+<div class="flex items-center gap-2">
+<div class="flex items-center gap-1.5 pr-3 border-r border-slate-200">
+<button class="size-3 rounded-full bg-[#ff5f56] hover:brightness-90 transition-all border border-[#e0443e]/40 shadow-xs" title="Fechar"></button>
+<button class="size-3 rounded-full bg-[#ffbd2e] hover:brightness-90 transition-all border border-[#dea123]/40 shadow-xs" title="Minimizar"></button>
+<button class="size-3 rounded-full bg-[#27c93f] hover:brightness-90 transition-all border border-[#1aab29]/40 shadow-xs" title="Maximizar"></button>
+</div>
+<!-- Window Tabs -->
+<div class="flex items-center gap-1">
+<div class="flex items-center gap-2 px-3 py-1.5 rounded-lg bg-white border border-slate-200/90 text-slate-900 text-xs font-semibold shadow-xs">
+<span class="material-symbols-outlined text-[15px] text-primary" style="font-variation-settings: 'FILL' 1;">terminal</span>
+<span>devos-term · zsh</span>
+<span class="size-1.5 rounded-full bg-emerald-500"></span>
+</div>
+<button class="flex items-center gap-1.5 px-2.5 py-1.5 rounded-lg text-slate-500 hover:text-slate-800 hover:bg-white/60 text-xs font-medium transition-colors">
+<span class="material-symbols-outlined text-[15px]">smart_toy</span>
+<span>claude · dev</span>
+</button>
+<button class="flex items-center gap-1.5 px-2.5 py-1.5 rounded-lg text-slate-500 hover:text-slate-800 hover:bg-white/60 text-xs font-medium transition-colors">
+<span class="material-symbols-outlined text-[15px]">code_blocks</span>
+<span>codex · runner</span>
+</button>
+<button class="flex items-center gap-1.5 px-2.5 py-1.5 rounded-lg text-slate-500 hover:text-slate-800 hover:bg-white/60 text-xs font-medium transition-colors">
+<span class="material-symbols-outlined text-[15px]">memory</span>
+<span>ollama · qwen3:8b</span>
+</button>
+</div>
+</div>
+<!-- Terminal Sub-actions -->
+<div class="flex items-center gap-1 text-slate-500">
+<span class="font-mono text-[11px] px-2 py-0.5 rounded bg-slate-100 text-slate-600 border border-slate-200">PID: 4892</span>
+<button class="p-1 hover:text-slate-900 rounded hover:bg-slate-200/50">
+<span class="material-symbols-outlined text-[16px]">split_scene</span>
+</button>
+<button class="p-1 hover:text-slate-900 rounded hover:bg-slate-200/50">
+<span class="material-symbols-outlined text-[16px]">more_vert</span>
+</button>
+</div>
+</div>
+<!-- Window Workspace Terminal & Doctor Output Body -->
+<div class="p-5 bg-white/95 text-slate-900 font-mono text-xs flex flex-col gap-4 overflow-y-auto max-h-[520px] custom-scrollbar">
+<!-- Welcome Banner & Kernel Info -->
+<div class="p-3.5 rounded-xl bg-slate-50 border border-slate-200/80 flex items-center justify-between">
+<div class="flex items-center gap-3">
+<div class="size-8 rounded-lg bg-primary-container text-white flex items-center justify-center font-sans font-extrabold text-sm shadow-xs">
+              F
+            </div>
+<div>
+<p class="font-sans font-bold text-sm text-[#0c171c]">Forja Doctor v2.4 <span class="text-xs font-normal text-slate-500">· Diagnóstico de Subsistemas &amp; Gaming Stack</span></p>
+<p class="text-[11px] text-slate-600">Alabaster Forge Edition · Wayland Compositor (KWin-scx) · Low-Latency Bazzite Core</p>
+</div>
+</div>
+<span class="inline-flex items-center gap-1 px-2.5 py-1 rounded-full bg-emerald-50 text-emerald-700 border border-emerald-200 text-[11px] font-sans font-semibold">
+<span class="size-1.5 rounded-full bg-emerald-500 animate-pulse"></span>
+            Sistema 100% Saudável
+          </span>
+</div>
+<!-- Shell Command Prompt -->
+<div class="flex items-baseline gap-2 pt-1 font-mono text-[13px]">
+<span class="font-bold text-primary">rodrigo@forjaos</span>
+<span class="text-slate-400">:</span>
+<span class="font-bold text-[#645efb]">~/proj/game-api</span>
+<span class="px-1.5 py-0.2 rounded bg-slate-100 text-slate-600 text-[11px] border border-slate-200 font-sans font-medium">(main)</span>
+<span class="text-slate-400">$</span>
+<span class="font-bold text-slate-900">forja doctor</span>
+</div>
+<!-- Doctor Status Checklist Items -->
+<div class="flex flex-col gap-2 pl-2">
+<!-- Item 1: Kernel -->
+<div class="flex items-start gap-3 p-2 rounded-lg bg-emerald-50/40 border border-emerald-200/60 transition-all hover:bg-emerald-50/70">
+<span class="material-symbols-outlined text-emerald-600 text-base mt-0.5" style="font-variation-settings: 'FILL' 1;">check_circle</span>
+<div class="flex-1">
+<div class="flex items-center gap-2">
+<span class="font-bold text-slate-900">Kernel 6.12.x-bazzite</span>
+<span class="px-1.5 py-0.2 text-[10px] rounded bg-emerald-100 text-emerald-800 font-sans font-semibold">sched_ext ativo</span>
+</div>
+<p class="text-slate-600 text-[11px] mt-0.5">Escalonador eBPF <code class="font-semibold text-primary">scx_lavd</code> em execução · Priorização inteligente para processos interativos e Render Loops.</p>
+</div>
+<span class="text-[10px] font-sans text-slate-500">latência &lt; 0.4ms</span>
+</div>
+<!-- Item 2: GPU & CUDA -->
+<div class="flex items-start gap-3 p-2 rounded-lg bg-emerald-50/40 border border-emerald-200/60 transition-all hover:bg-emerald-50/70">
+<span class="material-symbols-outlined text-emerald-600 text-base mt-0.5" style="font-variation-settings: 'FILL' 1;">check_circle</span>
+<div class="flex-1">
+<div class="flex items-center gap-2">
+<span class="font-bold text-slate-900">NVIDIA Open Kernel 590.28</span>
+<span class="px-1.5 py-0.2 text-[10px] rounded bg-cyan-100 text-cyan-800 font-sans font-semibold">CUDA 12.6 OK</span>
+<span class="text-[11px] text-slate-600 font-sans">RTX 4070 · 42°C</span>
+</div>
+<p class="text-slate-600 text-[11px] mt-0.5">Módulos GSP-RM carregados. Resync Wayland VRR (G-Sync Compatible) habilitado no monitor principal (165Hz).</p>
+</div>
+<span class="text-[10px] font-sans text-emerald-600 font-bold">28% VRAM</span>
+</div>
+<!-- Item 3: Docker Rootless -->
+<div class="flex items-start gap-3 p-2 rounded-lg bg-emerald-50/40 border border-emerald-200/60 transition-all hover:bg-emerald-50/70">
+<span class="material-symbols-outlined text-emerald-600 text-base mt-0.5" style="font-variation-settings: 'FILL' 1;">check_circle</span>
+<div class="flex-1">
+<div class="flex items-center gap-2">
+<span class="font-bold text-slate-900">Docker Rootless Daemon</span>
+<span class="px-1.5 py-0.2 text-[10px] rounded bg-blue-100 text-blue-800 font-sans font-semibold">4 containers ativos</span>
+</div>
+<p class="text-slate-600 text-[11px] mt-0.5">postgres-dev, redis-cache, qdrant-vector, game-orchestrator. Isolamento de user namespace verificado.</p>
+</div>
+<span class="text-[10px] font-sans text-slate-500">sock: ~/.docker/run</span>
+</div>
+<!-- Item 4: Git / KWallet -->
+<div class="flex items-start gap-3 p-2 rounded-lg bg-emerald-50/40 border border-emerald-200/60 transition-all hover:bg-emerald-50/70">
+<span class="material-symbols-outlined text-emerald-600 text-base mt-0.5" style="font-variation-settings: 'FILL' 1;">check_circle</span>
+<div class="flex-1">
+<div class="flex items-center gap-2">
+<span class="font-bold text-slate-900">Git &amp; Chaves SSH</span>
+<span class="px-1.5 py-0.2 text-[10px] rounded bg-purple-100 text-purple-800 font-sans font-semibold">Autenticado via KWallet</span>
+</div>
+<p class="text-slate-600 text-[11px] mt-0.5">Assinatura de commits com Ed25519 GPG ativa no repositório local. Sincronizado com origin/main.</p>
+</div>
+<span class="text-[10px] font-sans text-slate-500">GPG: 0x93FA..</span>
+</div>
+<!-- Item 5: Ollama -->
+<div class="flex items-start gap-3 p-2 rounded-lg bg-emerald-50/40 border border-emerald-200/60 transition-all hover:bg-emerald-50/70">
+<span class="material-symbols-outlined text-emerald-600 text-base mt-0.5" style="font-variation-settings: 'FILL' 1;">check_circle</span>
+<div class="flex-1">
+<div class="flex items-center gap-2">
+<span class="font-bold text-slate-900">Ollama Local LLM Service</span>
+<span class="px-1.5 py-0.2 text-[10px] rounded bg-sky-100 text-sky-800 font-sans font-semibold">qwen3:8b carregado</span>
+</div>
+<p class="text-slate-600 text-[11px] mt-0.5">Tensor cores FP16 ativados. Warmup pronto · 72 tokens/s de inferência local sem telemetria externa.</p>
+</div>
+<span class="text-[10px] font-sans text-slate-500">127.0.0.1:11434</span>
+</div>
+<!-- Item 6: Warning / Action required -->
+<div class="flex items-start gap-3 p-3 rounded-lg bg-amber-50/80 border border-amber-300 text-amber-950">
+<span class="material-symbols-outlined text-amber-600 text-base mt-0.5">warning</span>
+<div class="flex-1">
+<div class="flex items-center gap-2">
+<span class="font-bold">Unity Hub não instalado no prefixo do usuário</span>
+<span class="px-1.5 py-0.2 text-[10px] rounded bg-amber-200 text-amber-900 font-sans font-semibold">Ação Recomendada</span>
+</div>
+<p class="text-amber-900/80 text-[11px] mt-1 font-sans">
+                Para suporte completo a builds multiplataforma do game-api, execute a receita de automação de ferramentas:
+              </p>
+<div class="mt-2 flex items-center gap-2 font-mono text-xs">
+<span class="px-2 py-1 rounded bg-white text-slate-900 border border-amber-300/80">forja install unity</span>
+<button class="px-2.5 py-1 rounded-md bg-tertiary-container text-white text-[11px] font-sans font-semibold hover:bg-tertiary transition-colors shadow-xs">
+                  Instalar via Forja Package Store
+                </button>
+</div>
+</div>
+</div>
+</div>
+<!-- Terminal Active Prompt Line -->
+<div class="flex items-center gap-2 pt-2 border-t border-slate-100">
+<span class="font-bold text-primary">rodrigo@forjaos</span>
+<span class="text-slate-400">:</span>
+<span class="font-bold text-[#645efb]">~/proj/game-api</span>
+<span class="text-slate-400">$</span>
+<span class="inline-block size-2 bg-primary animate-pulse"></span>
+</div>
+</div>
+<!-- Window Status Bar Footer -->
+<div class="h-8 px-4 bg-[#f8fafc] border-t border-slate-200 flex items-center justify-between text-[11px] text-slate-500 font-sans">
+<div class="flex items-center gap-4">
+<span class="flex items-center gap-1.5">
+<span class="size-2 rounded-full bg-emerald-500"></span>
+            zsh 5.9 (x86_64-forja-linux)
+          </span>
+<span>UTF-8</span>
+<span>Buffer: 1000 linhas</span>
+</div>
+<div class="flex items-center gap-3">
+<button class="hover:text-primary transition-colors flex items-center gap-1">
+<span class="material-symbols-outlined text-[14px]">tune</span> Opções de Console
+          </button>
+<span class="font-mono text-[10px] bg-slate-200/70 px-1.5 py-0.2 rounded text-slate-700">Ctrl+Shift+T nova aba</span>
+</div>
+</div>
+</div>
+<!-- Right Side: Desktop Widgets / KDE Plasma 6 Plasmoids -->
+<div class="hidden md:flex flex-col gap-5 w-80 shrink-0">
+<!-- Plasmoid 1: Guará AI Assistant Mini Card -->
+<div class="glass-panel rounded-2xl p-4 border border-white/90 shadow-lg relative overflow-hidden group">
+<div class="absolute -right-6 -top-6 size-24 bg-primary/10 rounded-full blur-xl pointer-events-none group-hover:bg-primary/20 transition-all"></div>
+<div class="flex items-center justify-between pb-3 border-b border-slate-200/70">
+<div class="flex items-center gap-2.5">
+<!-- Guará Mascot Avatar -->
+<div class="size-10 rounded-xl bg-gradient-to-tr from-tertiary-container to-amber-500 p-0.5 shadow-md flex items-center justify-center">
+<div class="size-full rounded-[10px] bg-white flex items-center justify-center overflow-hidden">
+<img class="size-full object-cover" data-alt="A stylized minimalist digital art mascot representing Guará, an elegant maned wolf designed in clean geometric lines, vibrant burnt orange and soft white accents, high-tech cybernetic ear tags, looking friendly and intelligent against a bright pristine studio background." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCNNBcI7dUqr1t9q6o9bDWoxKhFLtZPM-rbF5B0qfaB_Zx54sFmdIxW671bBvPlvyctWklgtzHEoqVQ1sqVFB-HrZlM-NPzfi4i2jKWgZzIQm4A5VhF7hFwOnYCLxhEnt7PEw3l7KRSW_No8PCkC7aVToEsBJR4fqOucx0OhNIkvS90uzjLiVgOzk01xWycivcvMeIIguADKPv6Tw9J3dhhZeHk39-N99UoTCP1oxJe"/>
+</div>
+</div>
+<div>
+<div class="flex items-center gap-1.5">
+<h3 class="font-bold text-sm text-[#0c171c]">Guará AI</h3>
+<span class="px-1.5 py-0.2 text-[9px] font-bold rounded-full bg-emerald-100 text-emerald-800">100% LOCAL</span>
+</div>
+<p class="text-[11px] text-slate-500 font-medium">Ocioso · Escuta Ativa PipeWire</p>
+</div>
+</div>
+<button class="size-7 rounded-lg hover:bg-slate-100 text-slate-400 hover:text-slate-700 flex items-center justify-center" title="Configurações Guará">
+<span class="material-symbols-outlined text-[18px]">settings</span>
+</button>
+</div>
+<div class="py-3 flex flex-col gap-2">
+<div class="flex items-center justify-between text-xs">
+<span class="text-slate-500">Modelo Carregado:</span>
+<span class="font-mono font-semibold text-slate-800 bg-slate-100 px-1.5 py-0.5 rounded text-[11px]">qwen3:8b (NPU+CUDA)</span>
+</div>
+<div class="flex items-center justify-between text-xs">
+<span class="text-slate-500">Contexto Dev:</span>
+<span class="font-semibold text-primary truncate max-w-[140px]">game-api (Rust+Bevy)</span>
+</div>
+</div>
+<!-- Quick Interaction Input -->
+<div class="relative mt-1">
+<input class="w-full text-xs bg-white/90 border border-slate-200 rounded-xl py-2 pl-3 pr-8 focus:ring-2 focus:ring-primary/20 focus:border-primary placeholder:text-slate-400 text-slate-800 transition-all" placeholder="Perguntar ao Guará... [Super+Espaço]" type="text"/>
+<button class="absolute right-2 top-2 text-primary hover:text-primary-container" title="Enviar comando vocal ou texto">
+<span class="material-symbols-outlined text-[17px]">mic</span>
+</button>
+</div>
+</div>
+<!-- Plasmoid 2: Minimalist Hardware Telemetry Widget -->
+<div class="glass-panel rounded-2xl p-4 border border-white/90 shadow-lg flex flex-col gap-3">
+<div class="flex items-center justify-between pb-2 border-b border-slate-200/70">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-primary text-[18px]">speed</span>
+<h4 class="font-bold text-xs uppercase tracking-wider text-slate-700">Telemetria de Hardware</h4>
+</div>
+<span class="text-[10px] font-mono text-slate-400">poll: 1s</span>
+</div>
+<!-- Metrics Grid -->
+<div class="grid grid-cols-2 gap-2.5">
+<!-- CPU -->
+<div class="p-2.5 rounded-xl bg-white/90 border border-slate-200/80 shadow-xs flex flex-col justify-between">
+<div class="flex items-center justify-between">
+<span class="text-[11px] font-semibold text-slate-500">CPU (scx_lavd)</span>
+<span class="text-[10px] text-emerald-600 font-bold">-2%</span>
+</div>
+<div class="mt-1">
+<p class="text-lg font-bold text-slate-900 leading-tight">11%</p>
+<p class="text-[10px] font-mono text-slate-500">4.8 GHz · 16c/32t</p>
+</div>
+<div class="w-full bg-slate-100 rounded-full h-1.5 mt-2 overflow-hidden">
+<div class="bg-primary h-full rounded-full" style="width: 11%"></div>
+</div>
+</div>
+<!-- RAM -->
+<div class="p-2.5 rounded-xl bg-white/90 border border-slate-200/80 shadow-xs flex flex-col justify-between">
+<div class="flex items-center justify-between">
+<span class="text-[11px] font-semibold text-slate-500">Memória RAM</span>
+<span class="text-[10px] text-emerald-600 font-bold">+0.4%</span>
+</div>
+<div class="mt-1">
+<p class="text-lg font-bold text-slate-900 leading-tight">3.1 GB</p>
+<p class="text-[10px] font-mono text-slate-500">de 32 GB DDR5</p>
+</div>
+<div class="w-full bg-slate-100 rounded-full h-1.5 mt-2 overflow-hidden">
+<div class="bg-cyan-500 h-full rounded-full" style="width: 10%"></div>
+</div>
+</div>
+<!-- GPU -->
+<div class="p-2.5 rounded-xl bg-white/90 border border-slate-200/80 shadow-xs flex flex-col justify-between">
+<div class="flex items-center justify-between">
+<span class="text-[11px] font-semibold text-slate-500">RTX 4070</span>
+<span class="text-[10px] text-slate-600 font-mono">42°C</span>
+</div>
+<div class="mt-1">
+<p class="text-lg font-bold text-slate-900 leading-tight">28%</p>
+<p class="text-[10px] font-mono text-slate-500">CUDA 12.6 OK</p>
+</div>
+<div class="w-full bg-slate-100 rounded-full h-1.5 mt-2 overflow-hidden">
+<div class="bg-emerald-500 h-full rounded-full" style="width: 28%"></div>
+</div>
+</div>
+<!-- NVMe -->
+<div class="p-2.5 rounded-xl bg-white/90 border border-slate-200/80 shadow-xs flex flex-col justify-between">
+<div class="flex items-center justify-between">
+<span class="text-[11px] font-semibold text-slate-500">NVMe Principal</span>
+<span class="text-[10px] text-slate-500 font-mono">PCIe 4.0</span>
+</div>
+<div class="mt-1">
+<p class="text-lg font-bold text-slate-900 leading-tight">412 GB</p>
+<p class="text-[10px] font-mono text-slate-500">livres de 1 TB</p>
+</div>
+<div class="w-full bg-slate-100 rounded-full h-1.5 mt-2 overflow-hidden">
+<div class="bg-indigo-500 h-full rounded-full" style="width: 58%"></div>
+</div>
+</div>
+</div>
+<!-- Quick Quick-Fix Pill -->
+<button class="w-full py-1.5 px-3 rounded-xl bg-surface-container hover:bg-surface-container-high text-primary font-bold text-xs flex items-center justify-center gap-1.5 border border-primary/20 transition-all">
+<span class="material-symbols-outlined text-[16px]">build_circle</span>
+<span>Executar forja fix (Otimizar Caches)</span>
+</button>
+</div>
+<!-- Plasmoid 3: Active Project Status -->
+<div class="glass-panel rounded-2xl p-3.5 border border-white/90 shadow-lg flex items-center justify-between">
+<div class="flex items-center gap-3">
+<div class="size-8 rounded-lg bg-orange-100 text-orange-700 flex items-center justify-center">
+<span class="material-symbols-outlined text-[18px]">sports_esports</span>
+</div>
+<div>
+<p class="text-xs font-bold text-slate-800">game-api · Dev Profile</p>
+<p class="text-[10px] text-slate-500">Bevy Engine 0.14 · Vulkan Ready</p>
+</div>
+</div>
+<span class="size-2 rounded-full bg-emerald-500 animate-ping" title="Sessão Ativa"></span>
+</div>
+</div>
+</main>
+<!-- 3. Bottom Dock / Floating Plasma 6 Application Dock -->
+<footer class="relative z-30 pb-4 px-4 flex justify-center items-center pointer-events-auto">
+<div class="glass-dock px-3 py-2 rounded-2xl flex items-center gap-2">
+<!-- App 1: App Launcher Menu (Forja Kickoff) -->
+<div class="relative group">
+<button class="size-11 rounded-xl bg-primary-container text-white flex items-center justify-center shadow-md shadow-primary/20 hover:scale-110 active:scale-95 transition-all">
+<svg class="size-5" fill="none" viewbox="0 0 48 48" xmlns="http://www.w3.org/2000/svg">
+<path clip-rule="evenodd" d="M24 0.757355L47.2426 24L24 47.2426L0.757355 24L24 0.757355ZM21 35.7574V12.2426L9.24264 24L21 35.7574Z" fill="currentColor" fill-rule="evenodd"></path>
+</svg>
+</button>
+<span class="opacity-0 group-hover:opacity-100 transition-opacity absolute -top-8 left-1/2 -translate-x-1/2 px-2 py-0.5 rounded bg-slate-900 text-white text-[10px] font-semibold whitespace-nowrap pointer-events-none shadow-sm">
+          Menu de Aplicativos (Super)
+        </span>
+</div>
+<div class="h-6 w-px bg-slate-300/70 mx-1"></div>
+<!-- App 2: Dolphin File Manager -->
+<div class="relative group flex flex-col items-center">
+<button class="size-11 rounded-xl bg-white hover:bg-slate-50 border border-slate-200/90 text-primary flex items-center justify-center shadow-xs hover:scale-110 active:scale-95 transition-all">
+<span class="material-symbols-outlined text-[24px]">folder</span>
+</button>
+<span class="opacity-0 group-hover:opacity-100 transition-opacity absolute -top-8 left-1/2 -translate-x-1/2 px-2 py-0.5 rounded bg-slate-900 text-white text-[10px] font-semibold whitespace-nowrap pointer-events-none shadow-sm">
+          Arquivos (Dolphin)
+        </span>
+</div>
+<!-- App 3: Terminal (Active with Glowing Dot) -->
+<div class="relative group flex flex-col items-center">
+<button class="size-11 rounded-xl bg-slate-900 text-white flex items-center justify-center shadow-sm hover:scale-110 active:scale-95 transition-all">
+<span class="material-symbols-outlined text-[22px]">terminal</span>
+</button>
+<!-- Active App Indicator Dot -->
+<span class="size-1 rounded-full bg-primary mt-1 shadow-[0_0_6px_#006194]"></span>
+<span class="opacity-0 group-hover:opacity-100 transition-opacity absolute -top-8 left-1/2 -translate-x-1/2 px-2 py-0.5 rounded bg-slate-900 text-white text-[10px] font-semibold whitespace-nowrap pointer-events-none shadow-sm">
+          Terminal · devos-term (Ativo)
+        </span>
+</div>
+<!-- App 4: VS Code (Active with Glowing Dot) -->
+<div class="relative group flex flex-col items-center">
+<button class="size-11 rounded-xl bg-[#007acc] text-white flex items-center justify-center shadow-sm hover:scale-110 active:scale-95 transition-all">
+<span class="material-symbols-outlined text-[22px]">code</span>
+</button>
+<span class="size-1 rounded-full bg-primary mt-1 shadow-[0_0_6px_#006194]"></span>
+<span class="opacity-0 group-hover:opacity-100 transition-opacity absolute -top-8 left-1/2 -translate-x-1/2 px-2 py-0.5 rounded bg-slate-900 text-white text-[10px] font-semibold whitespace-nowrap pointer-events-none shadow-sm">
+          Visual Studio Code (Ativo)
+        </span>
+</div>
+<!-- App 5: Docker Desktop / Dashboard (Active) -->
+<div class="relative group flex flex-col items-center">
+<button class="size-11 rounded-xl bg-[#0db7ed] text-white flex items-center justify-center shadow-sm hover:scale-110 active:scale-95 transition-all">
+<span class="material-symbols-outlined text-[22px]">deployed_code</span>
+</button>
+<span class="size-1 rounded-full bg-primary mt-1 shadow-[0_0_6px_#006194]"></span>
+<span class="opacity-0 group-hover:opacity-100 transition-opacity absolute -top-8 left-1/2 -translate-x-1/2 px-2 py-0.5 rounded bg-slate-900 text-white text-[10px] font-semibold whitespace-nowrap pointer-events-none shadow-sm">
+          Docker Containers (4 Ativos)
+        </span>
+</div>
+<!-- App 6: Browser (Firefox / Brave) -->
+<div class="relative group flex flex-col items-center">
+<button class="size-11 rounded-xl bg-[#ff7139] text-white flex items-center justify-center shadow-sm hover:scale-110 active:scale-95 transition-all">
+<span class="material-symbols-outlined text-[22px]">public</span>
+</button>
+<span class="opacity-0 group-hover:opacity-100 transition-opacity absolute -top-8 left-1/2 -translate-x-1/2 px-2 py-0.5 rounded bg-slate-900 text-white text-[10px] font-semibold whitespace-nowrap pointer-events-none shadow-sm">
+          Navegador Web
+        </span>
+</div>
+<!-- App 7: Unity / Game Hub -->
+<div class="relative group flex flex-col items-center">
+<button class="size-11 rounded-xl bg-slate-800 text-white flex items-center justify-center shadow-sm hover:scale-110 active:scale-95 transition-all relative">
+<span class="material-symbols-outlined text-[22px]">sports_esports</span>
+<span class="absolute top-1 right-1 size-2 rounded-full bg-amber-400 ring-2 ring-white" title="Atualização disponível"></span>
+</button>
+<span class="opacity-0 group-hover:opacity-100 transition-opacity absolute -top-8 left-1/2 -translate-x-1/2 px-2 py-0.5 rounded bg-slate-900 text-white text-[10px] font-semibold whitespace-nowrap pointer-events-none shadow-sm">
+          Unity Hub &amp; Game Stack
+        </span>
+</div>
+<!-- App 8: System Settings (Plasma Config) -->
+<div class="relative group flex flex-col items-center">
+<button class="size-11 rounded-xl bg-white hover:bg-slate-50 border border-slate-200/90 text-slate-700 flex items-center justify-center shadow-xs hover:scale-110 active:scale-95 transition-all">
+<span class="material-symbols-outlined text-[22px]">settings</span>
+</button>
+<span class="opacity-0 group-hover:opacity-100 transition-opacity absolute -top-8 left-1/2 -translate-x-1/2 px-2 py-0.5 rounded bg-slate-900 text-white text-[10px] font-semibold whitespace-nowrap pointer-events-none shadow-sm">
+          Configurações do Sistema
+        </span>
+</div>
+<div class="h-6 w-px bg-slate-300/70 mx-1"></div>
+<!-- App 9: Trash -->
+<div class="relative group flex flex-col items-center">
+<button class="size-11 rounded-xl bg-transparent hover:bg-slate-100/70 text-slate-500 hover:text-slate-800 flex items-center justify-center hover:scale-110 active:scale-95 transition-all">
+<span class="material-symbols-outlined text-[20px]">delete</span>
+</button>
+<span class="opacity-0 group-hover:opacity-100 transition-opacity absolute -top-8 left-1/2 -translate-x-1/2 px-2 py-0.5 rounded bg-slate-900 text-white text-[10px] font-semibold whitespace-nowrap pointer-events-none shadow-sm">
+          Lixeira (Vazia)
+        </span>
+</div>
+</div>
+</footer>
+<!-- Light Micro-interaction Script -->
+<script>
+    // Keyboard shortcut hints or tab micro-interactions
+    document.addEventListener('keydown', (e) => {
+      if ((e.metaKey || e.ctrlKey) && e.code === 'Space') {
+        e.preventDefault();
+        alert('Guará AI: Pronto para seu comando vocal ou instrução de desenvolvimento.');
+      }
+    });
+  </script>
+</body></html>

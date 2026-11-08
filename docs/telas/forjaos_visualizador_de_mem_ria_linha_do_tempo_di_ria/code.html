@@ -1,0 +1,658 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="pt-BR"><head><meta charset="utf-8"/><meta content="width=device-width, initial-scale=1.0" name="viewport"/><meta content="web_dashboard" name="shell-type"/><link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet"/><link href="https://fonts.googleapis.com" rel="preconnect"/><link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&amp;family=JetBrains+Mono:wght@400;500;600;700&amp;family=Plus+Jakarta+Sans:wght@600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/><style>@layer base{html,body{margin:0;padding:0;}body{overscroll-behavior:none;}main>:first-child{margin-top:0!important;}main>:last-child{margin-bottom:0!important;}}::-webkit-scrollbar{display:none;}</style><script src="https://cdn.tailwindcss.com"></script><script id="tailwind-config">tailwind.config = {
+    darkMode: "class",
+    theme: {
+      extend: {
+        "colors": {
+          "primary-fixed-dim": "#00daf3",
+          "on-primary-fixed": "#001f24",
+          "on-tertiary-container": "#953f00",
+          "background": "#0f131d",
+          "surface": "#0f131d",
+          "on-error": "#690005",
+          "on-secondary-container": "#c4abff",
+          "tertiary-fixed-dim": "#ffb690",
+          "on-tertiary": "#552100",
+          "secondary": "#d0bcff",
+          "on-error-container": "#ffdad6",
+          "surface-variant": "#313540",
+          "primary": "#c3f5ff",
+          "error": "#ffb4ab",
+          "on-secondary-fixed": "#23005c",
+          "on-primary-fixed-variant": "#004f58",
+          "surface-container": "#1b1f2a",
+          "tertiary-container": "#ffc4a6",
+          "error-container": "#93000a",
+          "surface-container-low": "#171b26",
+          "surface-tint": "#00daf3",
+          "on-background": "#dfe2f0",
+          "outline": "#849396",
+          "tertiary-fixed": "#ffdbca",
+          "on-primary-container": "#00626e",
+          "secondary-container": "#571bc1",
+          "secondary-fixed": "#e9ddff",
+          "on-primary": "#00363d",
+          "inverse-primary": "#006875",
+          "inverse-on-surface": "#2c303b",
+          "on-surface-variant": "#bac9cc",
+          "surface-container-highest": "#313540",
+          "secondary-fixed-dim": "#d0bcff",
+          "surface-bright": "#353944",
+          "surface-container-high": "#262a35",
+          "surface-dim": "#0f131d",
+          "on-tertiary-fixed-variant": "#783200",
+          "outline-variant": "#3b494c",
+          "on-tertiary-fixed": "#341100",
+          "on-surface": "#dfe2f0",
+          "on-secondary": "#3c0091",
+          "on-secondary-fixed-variant": "#5516be",
+          "inverse-surface": "#dfe2f0",
+          "surface-container-lowest": "#0a0e18",
+          "primary-fixed": "#9cf0ff",
+          "primary-container": "#00e5ff",
+          "tertiary": "#ffe9df"
+        },
+        "borderRadius": {
+          "DEFAULT": "0.125rem",
+          "lg": "0.25rem",
+          "xl": "0.5rem",
+          "full": "0.75rem"
+        },
+        "spacing": {
+          "space-xl": "2rem",
+          "gutter-compact": "0.375rem",
+          "space-xs": "0.25rem",
+          "gutter": "0.75rem",
+          "margin-dock": "0.5rem",
+          "space-lg": "1.25rem",
+          "margin": "1rem",
+          "space-sm": "0.5rem",
+          "space-md": "0.75rem"
+        },
+        "fontFamily": {
+          "display-sm": [
+            "Plus Jakarta Sans"
+          ],
+          "display-lg": [
+            "Plus Jakarta Sans"
+          ],
+          "body-lg": [
+            "Inter"
+          ],
+          "label-md": [
+            "JetBrains Mono"
+          ],
+          "headline-lg": [
+            "Plus Jakarta Sans"
+          ],
+          "headline-sm": [
+            "Plus Jakarta Sans"
+          ],
+          "body-md": [
+            "Inter"
+          ],
+          "body-sm": [
+            "Inter"
+          ],
+          "code-md": [
+            "JetBrains Mono"
+          ],
+          "code-lg": [
+            "JetBrains Mono"
+          ],
+          "headline-md": [
+            "Plus Jakarta Sans"
+          ],
+          "code-sm": [
+            "JetBrains Mono"
+          ],
+          "label-xs": [
+            "JetBrains Mono"
+          ]
+        },
+        "fontSize": {
+          "display-sm": [
+            "30px",
+            {
+              "lineHeight": "38px",
+              "letterSpacing": "-0.015em",
+              "fontWeight": "600"
+            }
+          ],
+          "display-lg": [
+            "40px",
+            {
+              "lineHeight": "48px",
+              "letterSpacing": "-0.02em",
+              "fontWeight": "700"
+            }
+          ],
+          "body-lg": [
+            "16px",
+            {
+              "lineHeight": "24px",
+              "fontWeight": "400"
+            }
+          ],
+          "label-md": [
+            "12px",
+            {
+              "lineHeight": "16px",
+              "letterSpacing": "0.04em",
+              "fontWeight": "600"
+            }
+          ],
+          "headline-lg": [
+            "24px",
+            {
+              "lineHeight": "32px",
+              "letterSpacing": "-0.01em",
+              "fontWeight": "600"
+            }
+          ],
+          "headline-sm": [
+            "16px",
+            {
+              "lineHeight": "24px",
+              "fontWeight": "600"
+            }
+          ],
+          "body-md": [
+            "14px",
+            {
+              "lineHeight": "20px",
+              "fontWeight": "400"
+            }
+          ],
+          "body-sm": [
+            "12px",
+            {
+              "lineHeight": "16px",
+              "fontWeight": "400"
+            }
+          ],
+          "code-md": [
+            "13px",
+            {
+              "lineHeight": "18px",
+              "fontWeight": "400"
+            }
+          ],
+          "code-lg": [
+            "14px",
+            {
+              "lineHeight": "22px",
+              "fontWeight": "500"
+            }
+          ],
+          "headline-md": [
+            "20px",
+            {
+              "lineHeight": "28px",
+              "fontWeight": "600"
+            }
+          ],
+          "code-sm": [
+            "11px",
+            {
+              "lineHeight": "16px",
+              "fontWeight": "400"
+            }
+          ],
+          "label-xs": [
+            "10px",
+            {
+              "lineHeight": "14px",
+              "letterSpacing": "0.06em",
+              "fontWeight": "600"
+            }
+          ]
+        }
+      },
+    },
+  }</script></head><body class="bg-surface font-body-md text-on-surface antialiased select-none"><header class="fixed top-0 left-0 right-0 h-16 bg-surface-container-lowest/90 backdrop-blur-xl z-50 shadow-[0_1px_8px_rgba(0,0,0,0.4)] flex flex-col justify-between"><div class="h-8 px-space-md flex items-center justify-between bg-surface-container-low/60"><div class="flex items-center gap-space-sm"><span class="flex items-center justify-center w-5 h-5 rounded bg-surface-container-high"><span class="material-symbols-outlined text-primary text-headline-sm">memory</span></span><span class="font-code-sm text-code-sm text-on-surface tracking-tight">Forja Memory · memd v1.0 <span class="text-outline">[~/ForjaOS/vault]</span></span></div><div class="flex items-center gap-space-md font-label-xs text-label-xs"><div class="flex items-center gap-space-xs text-on-surface-variant"><span class="material-symbols-outlined text-code-sm text-primary">hub</span><span>14.280 nós · 38.410 arestas</span></div><div class="flex items-center gap-space-xs text-on-surface-variant"><span class="w-1.5 h-1.5 rounded-full bg-secondary animate-pulse"></span><span>memd: 84 MB · 0.2% CPU</span></div><div class="flex items-center gap-space-xs text-primary"><span class="material-symbols-outlined text-code-sm">verified</span><span>sqlite-vec pronto</span></div><div class="flex items-center gap-space-xs ml-space-sm"><button class="w-6 h-5 flex items-center justify-center hover:bg-surface-container-high hover:text-on-surface text-outline transition-colors" type="button"><span class="material-symbols-outlined text-headline-sm">minimize</span></button><button class="w-6 h-5 flex items-center justify-center hover:bg-surface-container-high hover:text-on-surface text-outline transition-colors" type="button"><span class="material-symbols-outlined text-body-sm">crop_square</span></button><button class="w-6 h-5 flex items-center justify-center hover:bg-error-container hover:text-on-error-container text-outline transition-colors" type="button"><span class="material-symbols-outlined text-headline-sm">close</span></button></div></div></div><div class="h-8 px-space-md flex items-center justify-between bg-surface-container-lowest"><nav class="flex items-center gap-space-xs h-full" data-active-classes="bg-surface-container text-primary font-code-md"><a class="h-7 px-space-sm flex items-center gap-space-xs rounded font-code-md text-code-md text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-colors" data-path="grafo-de-conhecimento" href="#">Grafo de Conhecimento <span class="font-label-xs text-label-xs text-outline">Ctrl+1</span></a><a class="h-7 px-space-sm flex items-center gap-space-xs rounded font-code-md text-code-md text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-colors" data-path="linha-do-tempo-daily" href="#">Linha do Tempo (Daily) <span class="font-label-xs text-label-xs text-outline">Ctrl+2</span></a><a class="h-7 px-space-sm flex items-center gap-space-xs rounded font-code-md text-code-md text-on-surface-variant hover:bg-space-container-high hover:text-on-surface transition-colors" data-path="busca-semantica-fts5" href="#">Busca Semântica &amp; FTS5 <span class="font-label-xs text-label-xs text-outline">Ctrl+3</span></a></nav><div class="flex items-center gap-space-sm"><button class="h-6 px-space-sm flex items-center gap-space-xs rounded bg-surface-container-high hover:bg-primary-container text-on-surface hover:text-on-primary-container transition-all font-code-sm text-code-sm" type="button"><span class="material-symbols-outlined text-code-sm">sync</span><span>Sincronizar Vault</span></button><div class="h-4 w-[1px] bg-surface-variant"></div><img alt="Profile" class="w-8 h-8 rounded-full object-cover" src="https://lh3.googleusercontent.com/aida/ALJJyrAdPqr7tJHyW3K8e3K2vp8VJPzFQG331rdZhxagw-MLB6QveJztNZCof6jfaBCRKSwNQrMzyVLQGWBu9judS_FHipCyxVVUu3aPP-VL4_TIVtJp7bZ4JGJoEZdf_oQc8gv0B3dE1zLrzYuS6GxsOzRS2pM8B3ByDEWCLnx2ZJRRXffbJMtzJMdzisMprYCr0rTHxDXlQ6tgnQIByoKS053Ii0dHoMxswglncFNvf3iqKQ"/></div></div></header><aside class="fixed left-0 top-16 bottom-0 w-64 bg-surface-container-lowest/80 backdrop-blur-xl z-40 flex flex-col justify-between py-space-sm shadow-[0_1px_8px_rgba(0,0,0,0.2)]"><div class="flex flex-col gap-space-xs px-space-xs"><div class="px-space-sm py-space-xs font-label-xs text-label-xs text-outline uppercase tracking-wider">Navegador Kirigami</div><nav class="flex flex-col gap-space-xs" data-active-classes="bg-surface-container text-primary font-code-md"><a class="flex items-center gap-space-sm px-space-sm py-space-xs rounded text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-colors font-body-sm text-body-sm" data-path="grafo-de-conhecimento" href="#"><span class="material-symbols-outlined text-headline-sm">scatter_plot</span>Grafo Geral</a><a class="flex items-center gap-space-sm px-space-sm py-space-xs rounded text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-colors font-body-sm text-body-sm" data-path="linha-do-tempo-daily" href="#"><span class="material-symbols-outlined text-headline-sm">calendar_month</span>Linha Temporal</a><a class="flex items-center gap-space-sm px-space-sm py-space-xs rounded text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-colors font-body-sm text-body-sm" data-path="busca-semantica-fts5" href="#"><span class="material-symbols-outlined text-headline-sm">manage_search</span>Vetores &amp; FTS5</a><a class="flex items-center gap-space-sm px-space-sm py-space-xs rounded text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-colors font-body-sm text-body-sm" data-path="filtros-e-clusters" href="#"><span class="material-symbols-outlined text-headline-sm">category</span>Clusters &amp; Tags</a></nav></div><div class="px-space-sm py-space-xs bg-surface-container-low/40 rounded mx-space-xs flex flex-col gap-space-xs"><div class="flex items-center justify-between font-label-xs text-label-xs text-on-surface-variant"><span>VRAM / GPU</span><span class="text-primary">0.8 GB</span></div><div class="w-full bg-surface-container-high h-1 rounded-full overflow-hidden"><div class="bg-primary-container h-full w-1/4"></div></div><div class="flex items-center justify-between font-code-sm text-code-sm text-outline"><span class="flex items-center gap-1"><span class="w-1.5 h-1.5 rounded-full bg-primary-fixed-dim"></span>graph.json</span><span>38.4k r</span></div></div></aside><div class="pl-64"><main class="relative pt-16 min-h-screen bg-surface w-full"><div class="flex flex-col w-full">
+<!-- Interactive Sub-Header / Daily Horizon Bar -->
+<section class="w-full bg-surface-container-lowest px-space-lg py-space-md shadow-md">
+<div class="flex flex-wrap items-center justify-between gap-space-md">
+<!-- Date Navigator -->
+<div class="flex items-center gap-space-sm">
+<div class="flex items-center bg-surface-container-low rounded-lg p-0.5">
+<button class="px-space-sm py-1 rounded text-on-surface-variant hover:text-primary hover:bg-surface-container font-code-sm text-code-sm flex items-center transition-colors" type="button">
+<span class="material-symbols-outlined text-body-md mr-1">chevron_left</span>06 Nov
+          </button>
+<button class="px-space-sm py-1 rounded text-on-surface-variant hover:text-primary hover:bg-surface-container font-code-sm text-code-sm flex items-center transition-colors" type="button">
+            07 Nov
+          </button>
+<div class="px-space-md py-1 rounded bg-primary-container text-on-primary-container font-code-md text-code-md flex items-center gap-1 shadow-sm font-semibold">
+<span class="material-symbols-outlined text-body-sm">event</span>
+            08 Nov 2026 (Hoje)
+          </div>
+<button class="px-space-sm py-1 rounded text-outline-variant font-code-sm text-code-sm cursor-not-allowed flex items-center opacity-40" disabled="" type="button">
+            09 Nov <span class="material-symbols-outlined text-body-md ml-1">chevron_right</span>
+</button>
+</div>
+<button class="px-space-sm py-1 rounded bg-surface-container-high hover:bg-surface-variant text-primary font-code-sm text-code-sm flex items-center gap-1 transition-all" type="button">
+<span class="material-symbols-outlined text-body-sm">today</span>
+          Ir para Hoje
+        </button>
+</div>
+<!-- Telemetry Heatmap Activity -->
+<div class="flex items-center gap-space-md bg-surface-container-low px-space-md py-1.5 rounded-lg">
+<div class="flex flex-col">
+<span class="font-label-xs text-label-xs text-outline uppercase tracking-wider">Atividade Contínua</span>
+<span class="font-code-sm text-code-sm text-on-surface">142 eventos capturados</span>
+</div>
+<!-- Micro Activity Matrix / Heatmap Sparkline -->
+<div class="flex items-end gap-1 h-6 px-1">
+<div class="w-1.5 h-2 rounded-sm bg-surface-variant" title="06:00: 2 ev"></div>
+<div class="w-1.5 h-3 rounded-sm bg-secondary-container" title="08:00: 8 ev"></div>
+<div class="w-1.5 h-5 rounded-sm bg-primary-container" title="10:00: 24 ev"></div>
+<div class="w-1.5 h-4 rounded-sm bg-secondary-container" title="11:00: 16 ev"></div>
+<div class="w-1.5 h-2 rounded-sm bg-surface-variant" title="12:00: 4 ev"></div>
+<div class="w-1.5 h-5 rounded-sm bg-primary-fixed-dim" title="13:00: 31 ev"></div>
+<div class="w-1.5 h-6 rounded-sm bg-primary-container" title="14:00: 45 ev (Pico)"></div>
+<div class="w-1.5 h-2 rounded-sm bg-surface-container-high animate-pulse" title="15:00: Em andamento"></div>
+<div class="w-1.5 h-1 rounded-sm bg-surface-container-high" title="16:00"></div>
+<div class="w-1.5 h-1 rounded-sm bg-surface-container-high" title="17:00"></div>
+</div>
+<div class="text-right pl-2 font-code-sm text-code-sm text-on-surface-variant">
+<span class="text-primary font-bold">4h 12m</span> foco
+        </div>
+</div>
+</div>
+<!-- Opt-in Collectors Filter Row -->
+<div class="flex flex-wrap items-center gap-space-sm mt-space-md pt-space-xs">
+<span class="font-label-xs text-label-xs text-outline uppercase tracking-wider flex items-center gap-1 mr-1">
+<span class="material-symbols-outlined text-body-sm text-primary">filter_alt</span> Coletores FR-132:
+      </span>
+<!-- Chip Shell Atuin -->
+<label class="cursor-pointer flex items-center gap-1.5 px-space-sm py-1 rounded bg-secondary-container/20 hover:bg-secondary-container/40 transition-colors">
+<input checked="" class="w-3.5 h-3.5 rounded bg-surface-container-lowest text-secondary focus:ring-0 cursor-pointer accent-secondary" type="checkbox"/>
+<span class="font-code-sm text-code-sm text-secondary flex items-center gap-1">
+<span class="material-symbols-outlined text-code-sm">terminal</span>
+          Shell Atuin
+        </span>
+<span class="px-1.5 py-0.2 rounded bg-secondary-container text-on-secondary-container font-label-xs text-label-xs">64</span>
+</label>
+<!-- Chip Git Commits -->
+<label class="cursor-pointer flex items-center gap-1.5 px-space-sm py-1 rounded bg-surface-container hover:bg-surface-container-high transition-colors">
+<input checked="" class="w-3.5 h-3.5 rounded bg-surface-container-lowest text-primary focus:ring-0 cursor-pointer accent-primary-container" type="checkbox"/>
+<span class="font-code-sm text-code-sm text-primary flex items-center gap-1">
+<span class="material-symbols-outlined text-code-sm">commit</span>
+          Git Commits &amp; Diffs
+        </span>
+<span class="px-1.5 py-0.2 rounded bg-surface-container-high text-primary font-label-xs text-label-xs">12</span>
+</label>
+<!-- Chip HERO Guará Voice/Cmd -->
+<label class="cursor-pointer flex items-center gap-1.5 px-space-sm py-1 rounded bg-tertiary-container/20 hover:bg-tertiary-container/30 transition-colors">
+<input checked="" class="w-3.5 h-3.5 rounded bg-surface-container-lowest text-tertiary-fixed-dim focus:ring-0 cursor-pointer accent-tertiary-fixed-dim" type="checkbox"/>
+<span class="font-code-sm text-code-sm text-tertiary-fixed-dim flex items-center gap-1">
+<span class="material-symbols-outlined text-code-sm">smart_toy</span>
+          Diálogos HERO
+        </span>
+<span class="px-1.5 py-0.2 rounded bg-on-tertiary-fixed-variant text-tertiary-fixed font-label-xs text-label-xs">18</span>
+</label>
+<!-- Chip KWin Focus -->
+<label class="cursor-pointer flex items-center gap-1.5 px-space-sm py-1 rounded bg-surface-container hover:bg-surface-container-high transition-colors">
+<input checked="" class="w-3.5 h-3.5 rounded bg-surface-container-lowest text-primary-fixed-dim focus:ring-0 cursor-pointer accent-primary-fixed-dim" type="checkbox"/>
+<span class="font-code-sm text-code-sm text-on-surface-variant flex items-center gap-1">
+<span class="material-symbols-outlined text-code-sm">desktop_windows</span>
+          Janelas KWin
+        </span>
+<span class="px-1.5 py-0.2 rounded bg-surface-container-high text-on-surface-variant font-label-xs text-label-xs">42</span>
+</label>
+<!-- Chip Vault Notes -->
+<label class="cursor-pointer flex items-center gap-1.5 px-space-sm py-1 rounded bg-surface-container hover:bg-surface-container-high transition-colors">
+<input checked="" class="w-3.5 h-3.5 rounded bg-surface-container-lowest text-primary focus:ring-0 cursor-pointer accent-primary" type="checkbox"/>
+<span class="font-code-sm text-code-sm text-on-surface-variant flex items-center gap-1">
+<span class="material-symbols-outlined text-code-sm">edit_note</span>
+          Notas Vault
+        </span>
+<span class="px-1.5 py-0.2 rounded bg-surface-container-high text-on-surface-variant font-label-xs text-label-xs">6</span>
+</label>
+<div class="ml-auto text-outline font-label-xs text-label-xs flex items-center gap-1">
+<span class="w-2 h-2 rounded-full bg-primary animate-ping"></span>
+        memd daemon coletando ativamente
+      </div>
+</div>
+</section>
+<!-- Dual-Column Interactive Workspace -->
+<div class="flex flex-col lg:flex-row w-full gap-space-md p-space-md">
+<!-- LEFT COLUMN: Chronological Timeline Feed (62%) -->
+<section class="w-full lg:w-[62%] flex flex-col gap-space-md">
+<!-- Timeline Header Card -->
+<div class="flex items-center justify-between px-space-md py-space-sm bg-surface-container-low rounded-lg shadow-sm">
+<div class="flex items-center gap-space-sm">
+<span class="material-symbols-outlined text-primary text-headline-sm">reorder</span>
+<h2 class="font-headline-sm text-headline-sm text-on-surface">Fluxo Cronológico do Dia</h2>
+<span class="font-code-sm text-code-sm text-outline">[UTC-03:00 Horário de Brasília]</span>
+</div>
+<div class="flex items-center gap-space-xs font-code-sm text-code-sm">
+<button class="px-2 py-1 rounded bg-surface-container hover:bg-surface-container-high text-on-surface-variant transition-colors" type="button">Expandir Todos</button>
+<button class="px-2 py-1 rounded bg-surface-container hover:bg-surface-container-high text-on-surface-variant transition-colors" type="button">Exportar JSON</button>
+</div>
+</div>
+<!-- Chronological Feed Container -->
+<div class="relative pl-6 space-y-space-md">
+<!-- Vertical Timeline Spine -->
+<div class="absolute left-2.5 top-3 bottom-3 w-0.5 bg-surface-variant"></div>
+<!-- LIVE EVENT MARKER (AGORA) -->
+<div class="relative flex items-center gap-space-md -ml-6 pl-6">
+<div class="absolute left-1.5 w-3.5 h-3.5 rounded-full bg-primary-container ring-4 ring-primary-container/20 animate-pulse"></div>
+<div class="flex items-center justify-between w-full bg-surface-container-low/80 py-1.5 px-space-md rounded-lg shadow-sm">
+<span class="font-code-sm text-code-sm text-primary font-bold flex items-center gap-1.5">
+<span class="w-1.5 h-1.5 rounded-full bg-primary-container animate-ping"></span>
+              AGORA — 14:32:04
+            </span>
+<span class="font-code-sm text-code-sm text-on-surface-variant">Executando compilador Rust (rustc) &amp; Godot Debugger</span>
+</div>
+</div>
+<!-- EVENT 1: 14:30 - HERO & Shell Voice Interaction -->
+<div class="relative flex items-start gap-space-md">
+<div class="absolute -left-[19px] top-3 w-3 h-3 rounded-full bg-tertiary-fixed-dim ring-2 ring-surface"></div>
+<div class="w-full bg-surface-container rounded-lg p-space-md shadow-sm hover:bg-surface-container-high transition-all flex flex-col gap-space-xs">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-space-sm">
+<span class="px-2 py-0.5 rounded font-code-sm text-code-sm bg-on-tertiary-fixed-variant text-tertiary-fixed font-semibold flex items-center gap-1">
+<span class="material-symbols-outlined text-body-sm text-tertiary-fixed-dim">record_voice_over</span>
+                  14:30:12 · HERO Diálogo &amp; Launcher
+                </span>
+<span class="font-code-sm text-code-sm text-outline">Polkit: Tier 1 Auto-Aprovado</span>
+</div>
+<span class="font-label-xs text-label-xs text-primary bg-surface-container-lowest px-2 py-0.5 rounded">2.1s latência</span>
+</div>
+<div class="flex items-start gap-space-md mt-space-xs bg-surface-container-lowest p-space-sm rounded">
+<!-- Guará Avatar Stamp -->
+<div class="w-10 h-10 rounded-lg bg-surface-container-high flex items-center justify-center shrink-0">
+<svg class="w-8 h-8" viewbox="0 0 100 100">
+<polygon fill="#f97316" points="50,15 25,65 50,85 75,65"></polygon>
+<polygon fill="#ffb690" points="50,25 35,60 50,75 65,60"></polygon>
+<polygon fill="#00e5ff" points="45,45 50,38 55,45 50,52"></polygon>
+<circle cx="38" cy="50" fill="#00daf3" r="3"></circle>
+<circle cx="62" cy="50" fill="#00daf3" r="3"></circle>
+</svg>
+</div>
+<div class="flex flex-col gap-1 min-w-0">
+<p class="font-body-md text-body-md text-on-surface italic">
+                  “Guará, sobe o ambiente do game-api e abre o Godot 4.3”
+                </p>
+<div class="font-code-sm text-code-sm text-primary flex items-center gap-2">
+<span class="text-outline">&gt;</span>
+<code>podman compose -f ~/proj/game-api/docker-compose.yml up -d &amp;&amp; godot4 --editor ~/proj/game-api/project.godot &amp;</code>
+</div>
+</div>
+</div>
+<div class="flex items-center gap-space-sm font-label-xs text-label-xs text-on-surface-variant pt-1">
+<span class="flex items-center gap-1 text-primary-fixed-dim"><span class="material-symbols-outlined text-body-sm">check_circle</span> Container postgres-vec UP</span>
+<span>·</span>
+<span class="flex items-center gap-1 text-primary-fixed-dim"><span class="material-symbols-outlined text-body-sm">check_circle</span> Godot 4.3 LTS PID: 49204</span>
+</div>
+</div>
+</div>
+<!-- EVENT 2: 14:15 - Git Commit & VS Code Diff -->
+<div class="relative flex items-start gap-space-md">
+<div class="absolute -left-[19px] top-3 w-3 h-3 rounded-full bg-primary-container ring-2 ring-surface"></div>
+<div class="w-full bg-surface-container rounded-lg p-space-md shadow-sm hover:bg-surface-container-high transition-all flex flex-col gap-space-xs">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-space-sm">
+<span class="px-2 py-0.5 rounded font-code-sm text-code-sm bg-surface-container-high text-primary font-semibold flex items-center gap-1">
+<span class="material-symbols-outlined text-body-sm">commit</span>
+                  14:15:48 · Git Commit
+                </span>
+<span class="font-code-sm text-code-sm text-primary">proj/game-api</span>
+<span class="font-code-sm text-code-sm text-outline">branch: main</span>
+</div>
+<span class="font-code-sm text-code-sm text-outline bg-surface-container-lowest px-2 py-0.5 rounded">7b3e9a1</span>
+</div>
+<p class="font-headline-sm text-headline-sm text-on-surface mt-1">
+              feat: raycasting physics collision handler
+            </p>
+<div class="bg-surface-container-lowest p-space-sm rounded font-code-sm text-code-sm flex flex-col gap-1">
+<div class="flex items-center justify-between text-outline">
+<span>Modificações no repositório:</span>
+<span class="text-primary font-semibold">+84 / -12 linhas</span>
+</div>
+<div class="text-on-surface-variant flex items-center gap-2">
+<span class="material-symbols-outlined text-body-sm text-primary">description</span>
+<span>src/physics/collision_space.rs</span>
+<span class="text-outline text-label-xs">[84 ins / 12 del]</span>
+</div>
+<div class="text-on-surface-variant flex items-center gap-2">
+<span class="material-symbols-outlined text-body-sm text-outline">description</span>
+<span>src/protocol/schema.capnp</span>
+<span class="text-outline text-label-xs">[8 ins / 0 del]</span>
+</div>
+</div>
+</div>
+</div>
+<!-- EVENT 3: 13:40 - 14:10 - Window & KWin Focus Session -->
+<div class="relative flex items-start gap-space-md">
+<div class="absolute -left-[19px] top-3 w-3 h-3 rounded-full bg-secondary ring-2 ring-surface"></div>
+<div class="w-full bg-surface-container rounded-lg p-space-md shadow-sm hover:bg-surface-container-high transition-all flex flex-col gap-space-xs">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-space-sm">
+<span class="px-2 py-0.5 rounded font-code-sm text-code-sm bg-secondary-container/40 text-secondary font-semibold flex items-center gap-1">
+<span class="material-symbols-outlined text-body-sm">hourglass_top</span>
+                  13:40 — 14:10 (30 min) · KWin Sessão Imersiva
+                </span>
+</div>
+<span class="font-label-xs text-label-xs text-secondary-fixed bg-surface-container-lowest px-2 py-0.5 rounded">0 Distrações</span>
+</div>
+<div class="flex items-center gap-space-md mt-space-xs text-on-surface">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-primary text-headline-sm">view_in_ar</span>
+<div class="flex flex-col">
+<span class="font-headline-sm text-headline-sm">Godot 4.3 &amp; Blender 4.2 LTS</span>
+<span class="font-body-sm text-body-sm text-on-surface-variant">Edição de malha 3D e colisores em <code class="text-primary font-code-sm">player_model.glb</code></span>
+</div>
+</div>
+</div>
+<!-- Focus Meter -->
+<div class="w-full bg-surface-container-lowest h-1.5 rounded-full overflow-hidden mt-space-xs flex">
+<div class="bg-primary-container h-full w-[75%]" title="Godot Editor"></div>
+<div class="bg-secondary-container h-full w-[25%]" title="Blender 3D"></div>
+</div>
+<div class="flex justify-between font-label-xs text-label-xs text-outline">
+<span>Godot: 22m 30s (75%)</span>
+<span>Blender: 7m 30s (25%)</span>
+</div>
+</div>
+</div>
+<!-- EVENT 4: 11:20 - Atuin Shell Command History -->
+<div class="relative flex items-start gap-space-md">
+<div class="absolute -left-[19px] top-3 w-3 h-3 rounded-full bg-secondary-container ring-2 ring-surface"></div>
+<div class="w-full bg-surface-container rounded-lg p-space-md shadow-sm hover:bg-surface-container-high transition-all flex flex-col gap-space-xs">
+<div class="flex items-center justify-between">
+<span class="px-2 py-0.5 rounded font-code-sm text-code-sm bg-secondary-container/30 text-secondary font-semibold flex items-center gap-1">
+<span class="material-symbols-outlined text-body-sm">terminal</span>
+                11:20:15 · Shell Pipeline (Atuin Sync)
+              </span>
+<span class="font-code-sm text-code-sm text-outline">Fish Shell / Alacritty</span>
+</div>
+<div class="bg-surface-container-lowest p-space-sm rounded font-code-sm text-code-sm flex flex-col gap-1.5">
+<div class="flex items-center justify-between text-on-surface">
+<div class="flex items-center gap-2">
+<span class="text-primary font-bold">➜</span>
+<code>forja doctor --check-subsystems</code>
+</div>
+<span class="text-primary-fixed-dim text-label-xs">[exit 0 · 410ms]</span>
+</div>
+<div class="flex items-center justify-between text-on-surface">
+<div class="flex items-center gap-2">
+<span class="text-primary font-bold">➜</span>
+<code>cargo test --workspace -- --nocapture</code>
+</div>
+<span class="text-primary-fixed-dim text-label-xs">[exit 0 · 14.8s]</span>
+</div>
+<div class="flex items-center justify-between text-on-surface">
+<div class="flex items-center gap-2">
+<span class="text-primary font-bold">➜</span>
+<code>podman logs -n 50 postgres-dev</code>
+</div>
+<span class="text-primary-fixed-dim text-label-xs">[exit 0 · 89ms]</span>
+</div>
+</div>
+</div>
+</div>
+<!-- EVENT 5: 10:05 - Obsidian/Vault Markdown Node Creation -->
+<div class="relative flex items-start gap-space-md">
+<div class="absolute -left-[19px] top-3 w-3 h-3 rounded-full bg-primary ring-2 ring-surface"></div>
+<div class="w-full bg-surface-container rounded-lg p-space-md shadow-sm hover:bg-surface-container-high transition-all flex flex-col gap-space-xs">
+<div class="flex items-center justify-between">
+<span class="px-2 py-0.5 rounded font-code-sm text-code-sm bg-surface-container-high text-primary font-semibold flex items-center gap-1">
+<span class="material-symbols-outlined text-body-sm">note_add</span>
+                10:05:02 · Vault Markdown Grafo
+              </span>
+<span class="font-label-xs text-label-xs text-primary-fixed-dim bg-surface-container-lowest px-2 py-0.5 rounded">sqlite-vec: Indexado</span>
+</div>
+<p class="font-body-md text-body-md text-on-surface">
+              Criação e interconexão de wikilink bidirecional:
+            </p>
+<div class="flex items-center gap-space-sm font-code-sm text-code-sm">
+<span class="px-2 py-1 rounded bg-surface-container-lowest text-primary">[[projects/game-api.md]]</span>
+<span class="text-outline">⟷</span>
+<span class="px-2 py-1 rounded bg-surface-container-lowest text-secondary">[[daily/2026-11-08.md]]</span>
+</div>
+</div>
+</div>
+<!-- EVENT 6: 09:15 - Boot & Workstation First Launch -->
+<div class="relative flex items-start gap-space-md">
+<div class="absolute -left-[19px] top-3 w-3 h-3 rounded-full bg-outline-variant ring-2 ring-surface"></div>
+<div class="w-full bg-surface-container rounded-lg p-space-md shadow-sm hover:bg-surface-container-high transition-all flex items-center justify-between">
+<div class="flex items-center gap-space-md">
+<span class="material-symbols-outlined text-outline text-headline-sm">power_settings_new</span>
+<div class="flex flex-col">
+<span class="font-headline-sm text-headline-sm text-on-surface">09:15:30 · Boot do Sistema ForjaOS</span>
+<span class="font-body-sm text-body-sm text-on-surface-variant">Inicialização (UEFI 2.1s + Kernel Linux 3.4s + SDDM 5.7s = 11.2s total)</span>
+</div>
+</div>
+<div class="font-label-xs text-label-xs text-primary bg-surface-container-lowest px-2 py-1 rounded flex items-center gap-1">
+<span class="material-symbols-outlined text-code-sm">verified_user</span>
+              TPM2 Desbloqueado
+            </div>
+</div>
+</div>
+</div>
+</section>
+<!-- RIGHT COLUMN: Markdown Daily Note Inspector (38%) -->
+<aside class="w-full lg:w-[38%] flex flex-col gap-space-md">
+<!-- Vault Inspector Card -->
+<div class="bg-surface-container rounded-lg shadow-sm flex flex-col overflow-hidden">
+<!-- Card Top Bar -->
+<div class="flex items-center justify-between px-space-md py-space-sm bg-surface-container-high">
+<div class="flex items-center gap-space-sm">
+<span class="material-symbols-outlined text-primary text-headline-sm">description</span>
+<div class="flex flex-col">
+<span class="font-code-md text-code-md text-on-surface font-semibold">daily/2026-11-08.md</span>
+<span class="font-label-xs text-label-xs text-outline">~/ForjaOS/vault/daily/2026-11-08.md</span>
+</div>
+</div>
+<button class="px-space-sm py-1 rounded bg-surface-container-lowest hover:bg-primary-container hover:text-on-primary-container text-primary font-code-sm text-code-sm flex items-center gap-1 transition-all" type="button">
+<span class="material-symbols-outlined text-code-sm">open_in_new</span>
+            Obsidian
+          </button>
+</div>
+<!-- Markdown Document Preview Container -->
+<div class="p-space-md space-y-space-md font-body-sm text-body-sm overflow-y-auto max-h-[580px]">
+<!-- YAML Frontmatter Block -->
+<div class="bg-surface-container-lowest p-space-sm rounded font-code-sm text-code-sm text-outline">
+<div class="text-outline-variant">---</div>
+<div><span class="text-secondary font-semibold">date:</span> <span class="text-on-surface">2026-11-08</span></div>
+<div><span class="text-secondary font-semibold">tags:</span> <span class="text-primary">[daily, gamedev, forja-session]</span></div>
+<div><span class="text-secondary font-semibold">total_commands:</span> <span class="text-on-surface">64</span></div>
+<div><span class="text-secondary font-semibold">active_project:</span> <span class="text-primary">game-api</span></div>
+<div><span class="text-secondary font-semibold">mascot_interactions:</span> <span class="text-tertiary-fixed-dim">18</span></div>
+<div><span class="text-secondary font-semibold">focus_time:</span> <span class="text-on-surface">4h 12m</span></div>
+<div class="text-outline-variant">---</div>
+</div>
+<!-- Document Header -->
+<div class="space-y-1">
+<h1 class="font-headline-lg text-headline-lg text-on-surface">Diário de Bordo — 08 de Novembro de 2026</h1>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Gerado e sincronizado continuamente pelo daemon <code class="text-primary font-code-sm">memd</code>.</p>
+</div>
+<!-- Section: Foco Principal -->
+<div class="space-y-2">
+<h2 class="font-headline-sm text-headline-sm text-primary flex items-center gap-1.5">
+<span>🎯</span> Foco Principal
+            </h2>
+<ul class="list-disc list-inside space-y-1 text-on-surface">
+<li>Implementação de física de raycasting no backend Godot + Rust (<a class="text-primary hover:underline font-code-sm" href="#">[[projects/game-api]]</a>).</li>
+<li>Ajuste de contêineres e banco de vetores <code class="text-primary-fixed-dim font-code-sm">sqlite-vec</code> com embeddings nomic.</li>
+</ul>
+</div>
+<!-- Section: Mascot Interactions -->
+<div class="space-y-2">
+<h2 class="font-headline-sm text-headline-sm text-tertiary-fixed-dim flex items-center gap-1.5">
+<span>🦊</span> Interações HERO (Guará)
+            </h2>
+<ul class="list-disc list-inside space-y-1 text-on-surface">
+<li>Transcrição de áudio em tempo real via PipeWire + Piper TTS local.</li>
+<li>Orquestração e subida de containers via Podman Compose com verificação de integridade.</li>
+</ul>
+</div>
+<!-- Section: Wikilinks -->
+<div class="space-y-2">
+<h2 class="font-headline-sm text-headline-sm text-secondary flex items-center gap-1.5">
+<span>🔗</span> Wikilinks Conectados Hoje
+            </h2>
+<div class="flex flex-wrap gap-1.5 font-code-sm text-code-sm">
+<span class="px-2 py-0.5 rounded bg-surface-container-high text-primary hover:bg-surface-variant cursor-pointer">[[projects/game-api]]</span>
+<span class="px-2 py-0.5 rounded bg-surface-container-high text-primary hover:bg-surface-variant cursor-pointer">[[daily/2026-11-07]]</span>
+<span class="px-2 py-0.5 rounded bg-surface-container-high text-primary hover:bg-surface-variant cursor-pointer">[[schema.sql]]</span>
+<span class="px-2 py-0.5 rounded bg-surface-container-high text-primary hover:bg-surface-variant cursor-pointer">[[notes/vulkan-shaders]]</span>
+</div>
+</div>
+<!-- Section: Productivity & Distribution Visualizer -->
+<div class="space-y-2 pt-2 bg-surface-container-lowest p-space-sm rounded">
+<div class="flex items-center justify-between">
+<span class="font-label-xs text-label-xs text-outline uppercase tracking-wider">Distribuição por Projeto</span>
+<span class="font-code-sm text-code-sm text-primary">game-api 78%</span>
+</div>
+<div class="w-full bg-surface-container-high h-2 rounded-full overflow-hidden flex">
+<div class="bg-primary-container h-full w-[78%]" title="game-api: 78%"></div>
+<div class="bg-secondary-container h-full w-[22%]" title="forjaos-image: 22%"></div>
+</div>
+<div class="flex justify-between font-label-xs text-label-xs text-on-surface-variant">
+<span>game-api (3h 16m)</span>
+<span>forjaos-image (0h 56m)</span>
+</div>
+</div>
+<!-- Section: Vector Embeddings Status -->
+<div class="flex items-center justify-between bg-surface-container-lowest px-space-sm py-2 rounded font-code-sm text-code-sm">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-primary text-body-md">neurology</span>
+<span class="text-on-surface">Embeddings SQLite-Vec:</span>
+</div>
+<span class="text-primary font-bold">12 novos (nomic-embed-text)</span>
+</div>
+</div>
+<!-- Terminal CLI Bottom Bar -->
+<div class="px-space-md py-space-sm bg-surface-container-lowest flex items-center justify-between font-code-sm text-code-sm">
+<div class="flex items-center gap-2 text-outline">
+<span class="text-primary font-bold">$</span>
+<code>forja memory timeline --date 2026-11-08</code>
+</div>
+<button class="text-outline hover:text-primary transition-colors" title="Copiar comando" type="button">
+<span class="material-symbols-outlined text-body-sm">content_copy</span>
+</button>
+</div>
+</div>
+<!-- Quick Context Action Card -->
+<div class="bg-surface-container-low p-space-md rounded-lg shadow-sm flex items-center justify-between">
+<div class="flex items-center gap-space-sm">
+<span class="material-symbols-outlined text-primary text-headline-sm">tune</span>
+<div class="flex flex-col">
+<span class="font-headline-sm text-headline-sm text-on-surface">Regras de Captura Ativa</span>
+<span class="font-body-sm text-body-sm text-on-surface-variant">Privacidade estrita: `.env` e senhas filtradas via regex</span>
+</div>
+</div>
+<button class="px-space-sm py-1 rounded bg-surface-container-high hover:bg-surface-variant text-on-surface font-code-sm text-code-sm transition-colors" type="button">
+          Configurar
+        </button>
+</div>
+</aside>
+</div>
+</div></main></div></body></html>

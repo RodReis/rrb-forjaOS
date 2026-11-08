@@ -1,0 +1,342 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="pt-BR"><head><meta charset="utf-8"/><meta content="width=device-width, initial-scale=1.0" name="viewport"/><meta content="web_blank" name="shell-type"/><link href="https://fonts.googleapis.com" rel="preconnect"/><link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&amp;family=JetBrains+Mono:wght@400;500;600&amp;family=Plus+Jakarta+Sans:wght@600;700&amp;display=swap" rel="stylesheet"/><link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/><style>@layer base{html,body{margin:0;padding:0;}body{overscroll-behavior:none;}main>:first-child{margin-top:0!important;}main>:last-child{margin-bottom:0!important;}}::-webkit-scrollbar{display:none;}</style><script src="https://cdn.tailwindcss.com"></script><script id="tailwind-config">tailwind.config={darkMode:"class",theme:{extend:{colors:{"surface-dim":"#0f131d","primary-fixed":"#9cf0ff","tertiary-fixed":"#ffdbca","primary":"#c3f5ff","secondary-fixed":"#e9ddff","on-secondary":"#3c0091","tertiary":"#ffe9df","on-primary-container":"#00626e","background":"#0f131d","surface-container-high":"#262a35","inverse-primary":"#006875","on-primary":"#00363d","on-tertiary-fixed-variant":"#783200","on-primary-fixed":"#001f24","tertiary-container":"#ffc4a6","secondary-fixed-dim":"#d0bcff","outline":"#849396","on-secondary-container":"#c4abff","inverse-surface":"#dfe2f0","on-surface-variant":"#bac9cc","surface-tint":"#00daf3","on-error-container":"#ffdad6","primary-container":"#00e5ff","tertiary-fixed-dim":"#ffb690","primary-fixed-dim":"#00daf3","error-container":"#93000a","on-tertiary-container":"#953f00","error":"#ffb4ab","inverse-on-surface":"#2c303b","surface-container":"#1b1f2a","secondary-container":"#571bc1","surface-container-highest":"#313540","on-surface":"#dfe2f0","surface":"#0f131d","on-tertiary":"#552100","on-background":"#dfe2f0","on-tertiary-fixed":"#341100","surface-variant":"#313540","surface-container-low":"#171b26","secondary":"#d0bcff","on-primary-fixed-variant":"#004f58","surface-bright":"#353944","outline-variant":"#3b494c","on-secondary-fixed":"#23005c","surface-container-lowest":"#0a0e18","on-secondary-fixed-variant":"#5516be","on-error":"#690005"},borderRadius:{DEFAULT:"0.125rem",lg:"0.25rem",xl:"0.5rem",full:"0.75rem"},spacing:{"gutter-compact":"0.375rem","margin-dock":"0.5rem","space-lg":"1.25rem",gutter:"0.75rem","space-xs":"0.25rem","space-xl":"2rem","space-sm":"0.5rem",margin:"1rem","space-md":"0.75rem"},fontFamily:{"code-sm":["JetBrains Mono"],"body-md":["Inter"],"display-sm":["Plus Jakarta Sans"],"body-sm":["Inter"],"label-xs":["JetBrains Mono"],"code-lg":["JetBrains Mono"],"headline-lg":["Plus Jakarta Sans"],"label-md":["JetBrains Mono"],"headline-md":["Plus Jakarta Sans"],"display-lg":["Plus Jakarta Sans"],"code-md":["JetBrains Mono"],"body-lg":["Inter"],"headline-sm":["Plus Jakarta Sans"]},fontSize:{"code-sm":["11px",{lineHeight:"16px",fontWeight:"400"}],"body-md":["14px",{lineHeight:"20px",fontWeight:"400"}],"display-sm":["30px",{lineHeight:"38px",letterSpacing:"-0.015em",fontWeight:"600"}],"body-sm":["12px",{lineHeight:"16px",fontWeight:"400"}],"label-xs":["10px",{lineHeight:"14px",letterSpacing:"0.06em",fontWeight:"600"}],"code-lg":["14px",{lineHeight:"22px",fontWeight:"500"}],"headline-lg":["24px",{lineHeight:"32px",letterSpacing:"-0.01em",fontWeight:"600"}],"label-md":["12px",{lineHeight:"16px",letterSpacing:"0.04em",fontWeight:"600"}],"headline-md":["20px",{lineHeight:"28px",fontWeight:"600"}],"display-lg":["40px",{lineHeight:"48px",letterSpacing:"-0.02em",fontWeight:"700"}],"code-md":["13px",{lineHeight:"18px",fontWeight:"400"}],"body-lg":["16px",{lineHeight:"24px",fontWeight:"400"}],"headline-sm":["16px",{lineHeight:"24px",fontWeight:"600"}]}}}}</script></head><body class="bg-surface font-body-md text-on-surface min-h-screen selection:bg-primary-container selection:text-on-primary-fixed flex items-center justify-center"><main class="w-full bg-surface min-h-screen flex items-center justify-center"><div class="flex flex-col w-full">
+<div class="w-full max-w-7xl mx-auto px-margin py-space-md flex flex-col gap-space-lg">
+<!-- Top System Telemetry & Branding Bar -->
+<header class="flex flex-col md:flex-row md:items-center justify-between gap-space-md bg-surface-container-lowest p-space-md rounded-xl shadow-xl">
+<div class="flex items-center gap-space-md">
+<div class="w-10 h-10 rounded-lg bg-surface-container flex items-center justify-center text-primary-container shadow-inner">
+<span class="material-symbols-outlined text-[24px]">terminal</span>
+</div>
+<div>
+<div class="flex items-center gap-space-sm flex-wrap">
+<span class="font-display-sm text-headline-sm text-primary tracking-wider uppercase">ForjaOS Setup</span>
+<span class="bg-surface-container-high text-primary-fixed-dim font-label-xs text-label-xs px-2 py-0.5 rounded uppercase tracking-wider">FR-020</span>
+<span class="bg-primary/10 text-primary-container font-label-xs text-label-xs px-2 py-0.5 rounded tracking-widest font-semibold uppercase">FIRST BOOT</span>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant mt-0.5">Ambiente de engenharia customizado · Estação de Trabalho Imutável</p>
+</div>
+</div>
+<div class="flex items-center gap-space-sm flex-wrap">
+<div class="flex items-center gap-2 bg-surface-container-low px-space-sm py-1.5 rounded-lg">
+<span class="w-2 h-2 rounded-full bg-primary-container animate-pulse"></span>
+<span class="font-label-xs text-label-xs text-on-surface-variant font-medium">KDE Plasma 6 Wayland</span>
+</div>
+<div class="flex items-center gap-2 bg-surface-container-low px-space-sm py-1.5 rounded-lg">
+<span class="w-2 h-2 rounded-full bg-secondary-fixed-dim"></span>
+<span class="font-label-xs text-label-xs text-on-surface-variant font-medium">Ollama: Online (qwen3:8b)</span>
+</div>
+<div class="flex items-center gap-2 bg-surface-container-low px-space-sm py-1.5 rounded-lg">
+<span class="material-symbols-outlined text-[14px] text-tertiary-fixed-dim">verified_user</span>
+<span class="font-label-xs text-label-xs text-tertiary-fixed-dim font-medium">TPM2 KWallet Active</span>
+</div>
+</div>
+</header>
+<!-- 6-Step Chrono Pipeline Stepper -->
+<nav aria-label="Progresso da Configuração" class="w-full bg-surface-container-low p-space-sm rounded-xl overflow-x-auto shadow-md">
+<div class="grid grid-cols-2 md:grid-cols-6 gap-space-xs min-w-[680px]">
+<!-- Step 1 -->
+<div class="flex items-center gap-space-sm p-space-sm rounded-lg bg-surface-container">
+<div class="w-6 h-6 rounded-full bg-primary/20 text-primary flex items-center justify-center font-label-xs text-label-xs">
+<span class="material-symbols-outlined text-[14px]">check</span>
+</div>
+<div class="min-w-0">
+<div class="font-label-xs text-label-xs text-on-surface-variant uppercase">01. Idioma</div>
+<div class="font-code-sm text-code-sm text-primary truncate">pt-BR / ABNT2</div>
+</div>
+</div>
+<!-- Step 2 -->
+<div class="flex items-center gap-space-sm p-space-sm rounded-lg bg-surface-container">
+<div class="w-6 h-6 rounded-full bg-tertiary-container/20 text-tertiary-fixed flex items-center justify-center font-label-xs text-label-xs">
+<span class="material-symbols-outlined text-[14px]">check</span>
+</div>
+<div class="min-w-0">
+<div class="font-label-xs text-label-xs text-on-surface-variant uppercase">02. Mascote</div>
+<div class="font-code-sm text-code-sm text-tertiary-fixed truncate">Guará · TTS</div>
+</div>
+</div>
+<!-- Step 3 -->
+<div class="flex items-center gap-space-sm p-space-sm rounded-lg bg-surface-container">
+<div class="w-6 h-6 rounded-full bg-primary/20 text-primary flex items-center justify-center font-label-xs text-label-xs">
+<span class="material-symbols-outlined text-[14px]">check</span>
+</div>
+<div class="min-w-0">
+<div class="font-label-xs text-label-xs text-on-surface-variant uppercase">03. Perfil Dev</div>
+<div class="font-code-sm text-code-sm text-primary truncate">Gamedev/Shaders</div>
+</div>
+</div>
+<!-- Step 4 -->
+<div class="flex items-center gap-space-sm p-space-sm rounded-lg bg-surface-container">
+<div class="w-6 h-6 rounded-full bg-primary/20 text-primary flex items-center justify-center font-label-xs text-label-xs">
+<span class="material-symbols-outlined text-[14px]">check</span>
+</div>
+<div class="min-w-0">
+<div class="font-label-xs text-label-xs text-on-surface-variant uppercase">04. Contas &amp; Git</div>
+<div class="font-code-sm text-code-sm text-primary truncate">gh / TPM2</div>
+</div>
+</div>
+<!-- Step 5 -->
+<div class="flex items-center gap-space-sm p-space-sm rounded-lg bg-surface-container">
+<div class="w-6 h-6 rounded-full bg-primary/20 text-primary flex items-center justify-center font-label-xs text-label-xs">
+<span class="material-symbols-outlined text-[14px]">check</span>
+</div>
+<div class="min-w-0">
+<div class="font-label-xs text-label-xs text-on-surface-variant uppercase">05. Ferramentas</div>
+<div class="font-code-sm text-code-sm text-primary truncate">Flatpaks &amp; CLI</div>
+</div>
+</div>
+<!-- Step 6 (Active) -->
+<div class="flex items-center gap-space-sm p-space-sm rounded-lg bg-primary-container/15 shadow-sm">
+<div class="w-6 h-6 rounded-full bg-primary-container text-on-primary-container flex items-center justify-center font-label-xs text-label-xs font-bold">
+            06
+          </div>
+<div class="min-w-0">
+<div class="font-label-xs text-label-xs text-primary font-bold uppercase tracking-wider">06. Compilar</div>
+<div class="font-code-sm text-code-sm text-on-surface truncate font-semibold">Atômico (87%)</div>
+</div>
+</div>
+</div>
+</nav>
+<!-- Main Dual Panel Workspace Grid -->
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-space-lg items-start">
+<!-- Left Column: Declarative Manifesto Summary (5 cols) -->
+<section class="lg:col-span-5 flex flex-col gap-space-md">
+<div class="bg-surface-container-low rounded-xl p-space-md shadow-md flex flex-col gap-space-md">
+<div class="flex items-center justify-between pb-space-xs">
+<div class="flex items-center gap-space-xs text-primary">
+<span class="material-symbols-outlined text-[20px]">tune</span>
+<h2 class="font-headline-sm text-headline-sm tracking-wide">Manifesto Declarativo</h2>
+</div>
+<span class="font-label-xs text-label-xs bg-surface-container-highest px-2 py-0.5 rounded text-on-surface-variant">bootc.spec.v1</span>
+</div>
+<!-- Section Item: Mascote Hero -->
+<div class="bg-surface-container p-space-sm rounded-lg flex items-start gap-space-sm">
+<div class="w-8 h-8 rounded-lg bg-tertiary-container/15 text-tertiary-fixed-dim flex items-center justify-center shrink-0">
+<span class="material-symbols-outlined text-[18px]">pets</span>
+</div>
+<div class="min-w-0 flex-1">
+<div class="flex items-center justify-between">
+<span class="font-label-md text-label-md text-tertiary-fixed">Mascote do Sistema</span>
+<span class="font-label-xs text-label-xs text-tertiary-fixed-dim bg-on-tertiary-fixed-variant/40 px-1.5 py-0.5 rounded">100% Local</span>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface font-medium mt-0.5">Guará <span class="text-on-surface-variant">(Lobo-Guará Cyber)</span></p>
+<p class="font-code-sm text-code-sm text-on-surface-variant mt-1 leading-snug">
+                Wake-word: openWakeWord • Neural TTS: Piper 'Fabíola' • LLM: Qwen3 8B
+              </p>
+</div>
+</div>
+<!-- Section Item: Profile Dev -->
+<div class="bg-surface-container p-space-sm rounded-lg flex items-start gap-space-sm">
+<div class="w-8 h-8 rounded-lg bg-surface-container-high text-primary flex items-center justify-center shrink-0">
+<span class="material-symbols-outlined text-[18px]">sports_esports</span>
+</div>
+<div class="min-w-0 flex-1">
+<div class="flex items-center justify-between">
+<span class="font-label-md text-label-md text-primary">Perfil Selecionado</span>
+<span class="font-label-xs text-label-xs text-primary-container bg-surface-container-highest px-1.5 py-0.5 rounded">Game Studio</span>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface font-medium mt-0.5">Gamedev &amp; Realtime Shaders</p>
+<div class="flex flex-wrap gap-1 mt-1.5">
+<span class="font-code-sm text-code-sm bg-surface-container-lowest px-1.5 py-0.5 rounded text-on-surface-variant">Godot 4.3 LTS</span>
+<span class="font-code-sm text-code-sm bg-surface-container-lowest px-1.5 py-0.5 rounded text-on-surface-variant">Blender 4.2 LTS</span>
+<span class="font-code-sm text-code-sm bg-surface-container-lowest px-1.5 py-0.5 rounded text-on-surface-variant">Vulkan SDK</span>
+<span class="font-code-sm text-code-sm bg-surface-container-lowest px-1.5 py-0.5 rounded text-on-surface-variant">Aseprite</span>
+</div>
+</div>
+</div>
+<!-- Section Item: IA & Agents -->
+<div class="bg-surface-container p-space-sm rounded-lg flex items-start gap-space-sm">
+<div class="w-8 h-8 rounded-lg bg-secondary-container/30 text-secondary-fixed flex items-center justify-center shrink-0">
+<span class="material-symbols-outlined text-[18px]">neurology</span>
+</div>
+<div class="min-w-0 flex-1">
+<div class="flex items-center justify-between">
+<span class="font-label-md text-label-md text-secondary-fixed">Agentes &amp; Inferência Local</span>
+<span class="font-label-xs text-label-xs text-secondary-fixed bg-secondary-container px-1.5 py-0.5 rounded font-mono">GPU-Offload</span>
+</div>
+<p class="font-code-sm text-code-sm text-on-surface mt-1">Ollama Daemon (qwen3:8b) + Hermes Engine</p>
+<p class="font-code-sm text-code-sm text-on-surface-variant">CLIs: claude-code • codex-agent • local-copilot</p>
+</div>
+</div>
+<!-- Section Item: Security & Auth -->
+<div class="bg-surface-container p-space-sm rounded-lg flex items-start gap-space-sm">
+<div class="w-8 h-8 rounded-lg bg-surface-container-high text-primary flex items-center justify-center shrink-0">
+<span class="material-symbols-outlined text-[18px]">key</span>
+</div>
+<div class="min-w-0 flex-1">
+<div class="flex items-center justify-between">
+<span class="font-label-md text-label-md text-on-surface">Cofre de Credenciais</span>
+<span class="font-label-xs text-label-xs text-primary-container bg-surface-container-highest px-1.5 py-0.5 rounded">TPM2 Binding</span>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface mt-0.5">GitHub Auth: <span class="font-code-sm text-code-sm text-primary">@rodrigo-forja</span></p>
+<p class="font-code-sm text-code-sm text-on-surface-variant mt-0.5">KWallet encriptado com PCR-7 • 0 plain-text tokens</p>
+</div>
+</div>
+<!-- Section Item: OS & Kernel Layer -->
+<div class="bg-surface-container p-space-sm rounded-lg flex items-start gap-space-sm">
+<div class="w-8 h-8 rounded-lg bg-surface-container-high text-primary-fixed flex items-center justify-center shrink-0">
+<span class="material-symbols-outlined text-[18px]">memory</span>
+</div>
+<div class="min-w-0 flex-1">
+<div class="flex items-center justify-between">
+<span class="font-label-md text-label-md text-on-surface">Base Imutável &amp; Drivers</span>
+<span class="font-label-xs text-label-xs text-on-surface-variant bg-surface-container-highest px-1.5 py-0.5 rounded">bootc Atomic</span>
+</div>
+<p class="font-code-sm text-code-sm text-on-surface-variant mt-1 leading-snug">
+                Fedora Atomic 41 • NVIDIA Open Kernel 590.28 • SELinux Enforcing • ZRAM 8GB lz4
+              </p>
+</div>
+</div>
+<!-- CLI Equivalent Box -->
+<div class="bg-surface-container-lowest p-space-sm rounded-lg flex flex-col gap-1">
+<div class="flex items-center justify-between text-on-surface-variant font-label-xs text-label-xs uppercase">
+<span>Reproduzir via CLI</span>
+<button class="hover:text-primary transition-colors flex items-center gap-1" title="Copiar comando" type="button">
+<span class="material-symbols-outlined text-[13px]">content_copy</span>
+<span>Copiar</span>
+</button>
+</div>
+<code class="font-code-sm text-code-sm text-primary-fixed-dim bg-surface-container-low px-space-sm py-1.5 rounded overflow-x-auto select-all block">forja setup --profile gamedev --mascot guara --voice fabiola --autostart --seal</code>
+</div>
+</div>
+</section>
+<!-- Right Column: Real-Time Compilation & Terminal Telemetry (7 cols) -->
+<section class="lg:col-span-7 flex flex-col gap-space-md">
+<!-- Live Provisioning Card -->
+<div class="bg-surface-container-low rounded-xl p-space-md shadow-md flex flex-col gap-space-md">
+<div class="flex flex-col sm:flex-row sm:items-center justify-between gap-space-sm pb-space-xs">
+<div>
+<div class="flex items-center gap-2">
+<span class="w-2.5 h-2.5 rounded-full bg-primary-container animate-ping"></span>
+<h2 class="font-headline-md text-headline-md text-on-surface">Provisionando Camada de Usuário</h2>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant mt-0.5">Sintetizando overlay imutável do sistema e dependências</p>
+</div>
+<div class="bg-surface-container px-3 py-1.5 rounded-lg flex items-center gap-2 self-start sm:self-auto">
+<span class="font-label-md text-label-md text-primary-container font-mono font-bold">87%</span>
+<span class="font-label-xs text-label-xs text-on-surface-variant uppercase tracking-wider">Concluído</span>
+</div>
+</div>
+<!-- High-End Cybernetic Progress Bar -->
+<div class="flex flex-col gap-2">
+<div class="w-full h-3 bg-surface-container-lowest rounded-full overflow-hidden p-0.5 shadow-inner">
+<div class="h-full bg-gradient-to-r from-primary-container via-surface-tint to-secondary-container rounded-full relative" style="width: 87%;">
+<div class="absolute inset-0 bg-white/20 animate-pulse"></div>
+</div>
+</div>
+<div class="flex items-center justify-between font-label-xs text-label-xs text-on-surface-variant">
+<span>Fase 4/5: Pós-instalação e Links Simbólicos</span>
+<span class="text-primary font-mono">42 de 48 camadas aplicadas</span>
+</div>
+</div>
+<!-- Real-Time Metrics Micro-Bar -->
+<div class="grid grid-cols-3 gap-space-sm bg-surface-container p-space-sm rounded-lg">
+<div class="flex flex-col">
+<span class="font-label-xs text-label-xs text-on-surface-variant uppercase">Taxa de E/S</span>
+<span class="font-code-lg text-code-lg text-primary font-bold">48.2 MB/s</span>
+</div>
+<div class="flex flex-col">
+<span class="font-label-xs text-label-xs text-on-surface-variant uppercase">Tempo Restante</span>
+<span class="font-code-lg text-code-lg text-tertiary-fixed-dim font-bold">~ 18 seg</span>
+</div>
+<div class="flex flex-col">
+<span class="font-label-xs text-label-xs text-on-surface-variant uppercase">Alocação Flatpak</span>
+<span class="font-code-lg text-code-lg text-secondary-fixed font-bold">12.4 GB</span>
+</div>
+</div>
+<!-- Embedded Tactical Terminal Console -->
+<div class="bg-surface-container-lowest rounded-lg p-space-sm flex flex-col font-code-sm text-code-sm shadow-inner min-h-[300px]">
+<div class="flex items-center justify-between pb-space-xs mb-space-xs text-on-surface-variant">
+<div class="flex items-center gap-1.5">
+<span class="w-2.5 h-2.5 rounded-full bg-error/60"></span>
+<span class="w-2.5 h-2.5 rounded-full bg-tertiary-container/60"></span>
+<span class="w-2.5 h-2.5 rounded-full bg-primary-container/60"></span>
+<span class="font-label-xs text-label-xs ml-2 text-on-surface-variant font-mono">forja-builder-daemon · tty7</span>
+</div>
+<span class="font-label-xs text-label-xs text-primary-container font-mono">LIVE BUFFER</span>
+</div>
+<!-- Scrollable Log Area -->
+<div class="flex flex-col gap-1.5 overflow-y-auto max-h-64 pr-1 leading-relaxed text-on-surface-variant select-text">
+<div class="flex items-start gap-2">
+<span class="text-primary shrink-0">[✓]</span>
+<span class="text-on-surface">Validando imagem base bootc <code class="text-primary-fixed">ghcr.io/forjaos-nvidia-open:stable</code></span>
+</div>
+<div class="flex items-start gap-2">
+<span class="text-primary shrink-0">[✓]</span>
+<span class="text-on-surface">Descompactando Flatpaks core (<code class="text-on-surface-variant">Godot 4.3 LTS</code>, <code class="text-on-surface-variant">Blender 4.2 LTS</code>)</span>
+</div>
+<div class="flex items-start gap-2">
+<span class="text-primary shrink-0">[✓]</span>
+<span class="text-on-surface">Configurando sockets rootless para Docker CE e Podman (user namespace isolado)</span>
+</div>
+<div class="flex items-start gap-2">
+<span class="text-primary shrink-0">[✓]</span>
+<span class="text-on-surface">Vinculando chaves de API ao cofre seguro KWallet via hardware TPM2</span>
+</div>
+<div class="flex items-start gap-2">
+<span class="text-tertiary-fixed shrink-0">[✓]</span>
+<span class="text-on-surface">Compilando modelo ONNX da wake-word '<span class="text-tertiary-fixed font-semibold">Guará</span>' com otimização TensorRT</span>
+</div>
+<div class="flex items-start gap-2 text-primary-container">
+<span class="animate-spin shrink-0 font-bold">⟳</span>
+<span class="text-primary font-medium">[RUNNING] Injetando aliases e plugins do Zsh (<code class="text-primary-container">starship</code> + <code class="text-primary-container">atuin</code> + <code class="text-primary-container">zoxide</code>)...</span>
+</div>
+<div class="flex items-start gap-2 text-on-surface-variant/60">
+<span class="shrink-0 font-mono">◦</span>
+<span>[PENDING] Sincronizando vault inicial de Memória em <code class="text-on-surface-variant">~/ForjaOS/vault/</code></span>
+</div>
+<div class="flex items-start gap-2 text-on-surface-variant/60">
+<span class="shrink-0 font-mono">◦</span>
+<span>[PENDING] Acionando selo criptográfico imutável OSTree (systemd-sysupdate)</span>
+</div>
+</div>
+<!-- Terminal Cursor Line -->
+<div class="flex items-center gap-2 text-primary font-mono text-label-xs mt-3 pt-2">
+<span class="text-on-surface-variant font-bold">$</span>
+<span class="text-primary-container animate-pulse font-bold">sys-finalize --atomic-commit --non-interactive</span>
+<span class="w-2 h-3.5 bg-primary-container animate-pulse inline-block"></span>
+</div>
+</div>
+</div>
+</section>
+</div>
+<!-- Bottom Action & Confirmation Bar -->
+<footer class="bg-surface-container-low p-space-md rounded-xl shadow-xl flex flex-col md:flex-row items-center justify-between gap-space-md">
+<!-- Left Action: Logs Trigger -->
+<button class="w-full md:w-auto px-space-md py-space-sm rounded-lg bg-surface-container text-on-surface hover:bg-surface-container-high transition-all flex items-center justify-center gap-2 font-code-sm text-code-sm" type="button">
+<span class="material-symbols-outlined text-[18px] text-primary">receipt_long</span>
+<span>Ver Logs Detalhados (journalctl -f)</span>
+</button>
+<!-- Center Guardrail Notice -->
+<div class="flex items-center gap-2 text-center md:text-left">
+<span class="material-symbols-outlined text-[20px] text-tertiary-fixed-dim animate-pulse">lock</span>
+<span class="font-body-sm text-body-sm text-on-surface-variant font-medium">
+          Não desligue o computador. A imagem persistente está sendo selada via TPM2.
+        </span>
+</div>
+<!-- Right Action: Finish & Enter OS (Ready State Simulation) -->
+<div class="w-full md:w-auto flex items-center gap-space-sm">
+<button class="w-full md:w-auto px-space-lg py-space-sm rounded-lg bg-gradient-to-r from-primary-container via-surface-tint to-primary font-display-sm text-headline-sm text-on-primary-fixed font-bold shadow-lg hover:shadow-primary-container/20 transition-all flex items-center justify-center gap-space-sm active:scale-95" id="finishBtn" type="button">
+<span>Finalizar e Entrar no Desktop</span>
+<span class="material-symbols-outlined text-[20px]">rocket_launch</span>
+</button>
+</div>
+</footer>
+</div>
+</div>
+<script>
+  // Minimal micro-interaction script for the simulation state
+  const btn = document.getElementById('finishBtn');
+  if (btn) {
+    btn.addEventListener('click', () => {
+      const originalText = btn.innerHTML;
+      btn.innerHTML = '<span class="material-symbols-outlined animate-spin text-[20px]">sync</span> Iniciando Sessão Wayland...';
+      btn.classList.add('opacity-90');
+      setTimeout(() => {
+        btn.innerHTML = '<span class="material-symbols-outlined text-[20px]">check_circle</span> Pronto!';
+      }, 1500);
+    });
+  }
+</script></main></body></html>
