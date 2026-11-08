@@ -78,4 +78,5 @@ Protótipo usa Material Symbols; produto usa Breeze recolorido pelos tokens ou S
 
 ## Pendências e divergências conhecidas
 
-- (nenhuma registrada ainda — adicione aqui o que o protótipo mostra e o PRD não prevê; cada item vira issue antes de implementar)
+- Flags `--voice --autostart --seal` não existem no `forja setup` do PRD (FR-024/FR-060); gerar só flags reais.
+- Log cita `systemd-sysupdate`, `TensorRT`, `PCR-7`, `Fedora Atomic 41`: nada disso é da arquitetura (ADR-002, ADR-012, FR-002).

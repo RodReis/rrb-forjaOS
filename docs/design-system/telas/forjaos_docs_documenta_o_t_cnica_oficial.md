@@ -85,4 +85,7 @@ Protótipo usa Material Symbols; produto usa Breeze recolorido pelos tokens ou S
 
 ## Pendências e divergências conhecidas
 
-- (nenhuma registrada ainda — adicione aqui o que o protótipo mostra e o PRD não prevê; cada item vira issue antes de implementar)
+- Protótipo usa Tailwind CDN; o site compila CSS estático a partir do palette (sem CDN em runtime).
+- Página `Escalonador eBPF scx_lavd` depende da base Universal Blue entregar sched_ext; confirmar antes de publicar.
+- `24.04 LTS` aparece 6×: versionamento é AAAA.MM.DD / vX.Y.Z (NFR-044).
+- `x86_64 / arm64` → só x86-64-v3 (§10.1).

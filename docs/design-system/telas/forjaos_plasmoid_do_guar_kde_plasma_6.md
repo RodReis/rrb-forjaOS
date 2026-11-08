@@ -59,4 +59,6 @@ Sem ícones Material no protótipo. Ícones necessários na implementação vêm
 
 ## Pendências e divergências conhecidas
 
-- (nenhuma registrada ainda — adicione aqui o que o protótipo mostra e o PRD não prevê; cada item vira issue antes de implementar)
+- Protótipo menciona Polkit e Tier 1; o PRD usa Policy Engine com tiers livre/alterar/bloqueado (FR-100).
+- Nomes de camadas SVG do protótipo (fur/eyes/spark/mouth) diferem do palette (body/ears/eyes/mouth/glow/badge); vale o palette.
+- Protótipo usa Fira Code (ADR-027 proíbe).

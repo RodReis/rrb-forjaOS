@@ -58,4 +58,5 @@ Sem ícones Material no protótipo. Ícones necessários na implementação vêm
 
 ## Pendências e divergências conhecidas
 
-- (nenhuma registrada ainda — adicione aqui o que o protótipo mostra e o PRD não prevê; cada item vira issue antes de implementar)
+- O protótipo mostra o overlay sempre aberto ocupando a coluna direita; no produto ele é um overlay sob demanda (FR-121). A composição da tela é referência de convivência janela + overlay, não um layout fixo.
+- Terminal padrão `forja-term` como perfil de Konsole (nome do perfil, não binário novo).

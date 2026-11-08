@@ -56,4 +56,5 @@ Sem ícones Material no protótipo. Ícones necessários na implementação vêm
 
 ## Pendências e divergências conhecidas
 
-- (nenhuma registrada ainda — adicione aqui o que o protótipo mostra e o PRD não prevê; cada item vira issue antes de implementar)
+- Chips FIDO2/Biometria aparecem no protótipo sem o PRD prever autenticação alternativa; exibir só se PAM configurado pelo usuário.
+- Protótipo usa Fira Code (ADR-027 proíbe).

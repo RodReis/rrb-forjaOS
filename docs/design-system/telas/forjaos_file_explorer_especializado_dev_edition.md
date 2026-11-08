@@ -92,4 +92,6 @@ Protótipo usa Material Symbols; produto usa Breeze recolorido pelos tokens ou S
 
 ## Pendências e divergências conhecidas
 
-- (nenhuma registrada ainda — adicione aqui o que o protótipo mostra e o PRD não prevê; cada item vira issue antes de implementar)
+- **Sem FR no PRD.** Antes de qualquer implementação: ADR definindo escopo (places + service menus + colunas Git via Dolphin plugins, sem fork) e FR novo (sugestão: FR-037 em §6.4).
+- Prévia do `docker-compose.yml` expõe `DATABASE_URL=postgres://root:secret@…` — toda prévia de env/segredo é mascarada (NFR-024).
+- `Escudo Ativo` na barra só com Escudo instalado (ADR-023).

@@ -117,4 +117,6 @@ Protótipo usa Material Symbols; produto usa Breeze recolorido pelos tokens ou S
 
 ## Pendências e divergências conhecidas
 
-- (nenhuma registrada ainda — adicione aqui o que o protótipo mostra e o PRD não prevê; cada item vira issue antes de implementar)
+- Sidebar de perfis/workspaces à esquerda não é funcionalidade do Konsole; fica fora do 1.0 ou vira plugin próprio por ADR.
+- `Atuin Cloud Sync` e `TPM2` não estão no PRD; atuin é local (FR-132) e chaves ficam no KWallet (FR-023).
+- `nftables strict/drop` → firewalld zona public (ADR-022).

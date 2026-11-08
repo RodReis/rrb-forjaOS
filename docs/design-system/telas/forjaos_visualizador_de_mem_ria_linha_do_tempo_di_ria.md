@@ -97,4 +97,6 @@ Protótipo usa Material Symbols; produto usa Breeze recolorido pelos tokens ou S
 
 ## Pendências e divergências conhecidas
 
-- (nenhuma registrada ainda — adicione aqui o que o protótipo mostra e o PRD não prevê; cada item vira issue antes de implementar)
+- Protótipo cita `Polkit: Tier 1 Auto-Aprovado` → Policy Engine tier livre (FR-100).
+- `Fish Shell / Alacritty` → zsh / Konsole (FR-035).
+- Número de nós/arestas e tamanho de memd são ilustrativos; vêm do `memory.db`.

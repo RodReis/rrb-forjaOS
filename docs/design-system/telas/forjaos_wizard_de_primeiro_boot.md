@@ -81,4 +81,6 @@ Protótipo usa Material Symbols; produto usa Breeze recolorido pelos tokens ou S
 
 ## Pendências e divergências conhecidas
 
-- (nenhuma registrada ainda — adicione aqui o que o protótipo mostra e o PRD não prevê; cada item vira issue antes de implementar)
+- Lista de pacotes por perfil no protótipo difere do FR-022 (Vite/Next, Tailwind CLI, PyTorch, Vulkan SDK não constam); vale o FR-022.
+- `TPM2` em KWallet não é requisito; remover menção.
+- Vozes Piper nomeadas no protótipo (Fabíola) precisam de licença verificada voz a voz (ADR-011).

@@ -56,4 +56,5 @@ Sem ícones Material no protótipo. Ícones necessários na implementação vêm
 
 ## Pendências e divergências conhecidas
 
-- (nenhuma registrada ainda — adicione aqui o que o protótipo mostra e o PRD não prevê; cada item vira issue antes de implementar)
+- Efeito scanlines/CRT do protótipo não será implementado (sem valor funcional, custo de legibilidade).
+- GRUB não renderiza blur/translucidez: fundo sólido `void` com wallpaper opcional a 20 %.

@@ -54,4 +54,4 @@ Sem ícones Material no protótipo. Ícones necessários na implementação vêm
 
 ## Pendências e divergências conhecidas
 
-- (nenhuma registrada ainda — adicione aqui o que o protótipo mostra e o PRD não prevê; cada item vira issue antes de implementar)
+- Versão anterior do overlay. Não implementar isoladamente; a spec canônica é `forjaos_central_de_comando_hero_corrigida`.

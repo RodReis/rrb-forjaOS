@@ -73,4 +73,6 @@ Protótipo usa Material Symbols; produto usa Breeze recolorido pelos tokens ou S
 
 ## Pendências e divergências conhecidas
 
-- (nenhuma registrada ainda — adicione aqui o que o protótipo mostra e o PRD não prevê; cada item vira issue antes de implementar)
+- Card Segurança e logs mostra CrowdSec/Suricata como se fossem padrão; são opt-in (ADR-023). Sem Escudo: firewalld + auditd + journald.
+- Tile `Firewall · nftables` → `Firewall · firewalld` (ADR-022).
+- Card Rede lista dispositivos na LAN: exige varredura ativa — avaliar tier e consumo antes de implementar (princípio 5).

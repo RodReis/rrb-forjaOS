@@ -95,4 +95,6 @@ Protótipo usa Material Symbols; produto usa Breeze recolorido pelos tokens ou S
 
 ## Pendências e divergências conhecidas
 
-- (nenhuma registrada ainda — adicione aqui o que o protótipo mostra e o PRD não prevê; cada item vira issue antes de implementar)
+- Tabela comparativa e métricas (★ 3.4k, 0.4ms, 3.8 GB VRAM) são ilustrativas: só publicar com medições em `docs/releases/` (NFR-033, G2).
+- `24.04 LTS` aparece 12×; `Kernel 6.9-cachyos-scx` e `NVIDIA Driver 555` não são da base (ADR-001).
+- Seção `Dolphin Dev Edition` depende do ADR do explorer.

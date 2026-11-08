@@ -51,4 +51,4 @@ Sem ícones Material no protótipo. Ícones necessários na implementação vêm
 
 ## Pendências e divergências conhecidas
 
-- (nenhuma registrada ainda — adicione aqui o que o protótipo mostra e o PRD não prevê; cada item vira issue antes de implementar)
+- Protótipo mostra 3 linhas de status (kernel, SELinux, PipeWire); FR-056 pede splash sem texto. Decisão: sem texto; linhas só com Esc (modo verboso).

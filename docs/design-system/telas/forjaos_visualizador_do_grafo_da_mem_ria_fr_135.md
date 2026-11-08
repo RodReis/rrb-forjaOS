@@ -91,4 +91,5 @@ Protótipo usa Material Symbols; produto usa Breeze recolorido pelos tokens ou S
 
 ## Pendências e divergências conhecidas
 
-- (nenhuma registrada ainda — adicione aqui o que o protótipo mostra e o PRD não prevê; cada item vira issue antes de implementar)
+- Protótipo assume WebGL2; ADR-019 manda QML puro primeiro e QtWebEngine só se 10k nós a 60 fps falhar.
+- Botão 3D fica desabilitado no 1.0.
